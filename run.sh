@@ -19,6 +19,9 @@ if [ ! -d "$PROGRAM_DIR" ]; then
   exit 1
 fi
 
+# 用于存储所有 result.txt 文件的数组
+declare -a result_files
+
 for i in $(seq 1 $NUM_ITERATIONS); do
     echo "  Running iteration $i"
 
@@ -76,6 +79,11 @@ for i in $(seq 1 $NUM_ITERATIONS); do
         python3 judge/score.py --input_file="$log_dir/input$i.txt" --output_file="$log_dir/output$i.txt" >> "$log_dir/result.txt"
         echo "  ----------------------------------------" >> "$log_dir/result.txt"
         echo "$log_dir : $result"
+	
+	 # 将 result.txt 文件添加到数组
+	if [[ $i -eq 1 ]]; then
+        	result_files+=("$log_dir/result.txt")
+	fi
     done
 
     wait # 等待所有后台进程完成
@@ -85,4 +93,13 @@ for i in $(seq 1 $NUM_ITERATIONS); do
 done
 
 echo "All jar files processed."
+
+# 使用 compare.py 比较所有 result.txt 文件
+if [[ ${#result_files[@]} -gt 0 ]]; then
+  echo "Comparing result files..."
+  python3 judge/compare.py "${result_files[@]}"
+else
+  echo "No result files found for comparison."
+fi
+
 exit 0 
