@@ -1,0 +1,32 @@
+{
+  "name": "elevator-judge-system",
+  "version": "1.0.0",
+  "description": "电梯模拟评判系统的Web界面",
+  "main": "app.py",
+  "scripts": {
+    "start": "python app.py",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/messmerr/BUAA_OO_U2_judge.git"
+  },
+  "keywords": [
+    "elevator",
+    "judge",
+    "simulation",
+    "flask",
+    "web-ui"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/messmerr/BUAA_OO_U2_judge/issues"
+  },
+  "homepage": "https://github.com/messmerr/BUAA_OO_U2_judge#readme",
+  "dependencies": {
+    "bootstrap": "^5.3.2",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.7.1"
+  }
+} 
