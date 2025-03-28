@@ -68,7 +68,7 @@ echo "Processing jar file: $jar_filename"
 	wait $PID  # 等待 PID 对应的进程结束
 	echo -n "iteration $i : " >> "$log_dir/result.txt"
     # 分析结果和计算得分
-    python3 judge/judge.py --input_file="$log_dir/input$i.txt" --output_dir="$log_dir/output$i.txt" >> "$log_dir/result.txt"
+    python3 judge/judge.py --input_file="$log_dir/input$i.txt" --output_file="$log_dir/output$i.txt" >> "$log_dir/result.txt"
     return_code=$?
     if [ $return_code -ne 0 ]; then
       echo "  Error: Python judge script failed with return code: $return_code"
