@@ -1,8 +1,10 @@
 import re
 import argparse
 
+
 class ValidationError(Exception):
     pass
+
 
 class ElevatorValidator:
     def __init__(self, input_file, output_file):
@@ -41,8 +43,9 @@ class ElevatorValidator:
                 timestamps.append(float(match.group(1)))
 
         for i in range(1, len(timestamps)):
-            if timestamps[i] < timestamps[i-1]:
-                raise ValidationError(f"Timestamp is not monotonically increasing: {timestamps[i]} < {timestamps[i-1]}")
+            if timestamps[i] < timestamps[i - 1]:
+                raise ValidationError(
+                    f"Timestamp is not monotonically increasing: {timestamps[i]} < {timestamps[i - 1]}")
 
     def validate_floor_and_elevator_ids(self):
         for line in self.output_events:
@@ -105,7 +108,7 @@ class ElevatorValidator:
             parts = line.split('-')
             event_type = parts[0].split(']')[1]
             timestamp = float(parts[0].split('[')[1].split(']')[0])
-            
+
             if event_type == "OPEN":
                 floor = parts[1]
                 elevator_id = int(parts[2])
@@ -145,7 +148,7 @@ class ElevatorValidator:
     def validate_passenger_in_out(self):
         elevator_passengers = {}  # Store the passengers in each elevator
         passenger_requests = {}  # Store the requests of each passenger
-        
+
         # Parse input requests to store passenger information
         input_pattern = re.compile(r"\[(\d+\.\d)\](\d+)-PRI-(\d+)-FROM-(B[1-4]|F[1-7])-TO-(B[1-4]|F[1-7])-BY-(\d)")
         for line in self.input_requests:
@@ -156,6 +159,7 @@ class ElevatorValidator:
                     "from_floor": from_floor,
                     "to_floor": to_floor,
                     "elevator_id": int(elevator_id),
+                    "finish": False
                 }
 
         for line in self.output_events:
@@ -175,11 +179,13 @@ class ElevatorValidator:
                     raise ValidationError(f"Passenger already in elevator: {passenger_id} in Elevator {elevator_id}")
 
                 if passenger_requests[passenger_id]["from_floor"] != floor:
-                     raise ValidationError(f"Passenger entered on wrong floor: {passenger_id} on Floor {floor}, expected {passenger_requests[passenger_id]['from_floor']}")
+                    raise ValidationError(
+                        f"Passenger entered on wrong floor: {passenger_id} on Floor {floor}, expected {passenger_requests[passenger_id]['from_floor']}")
 
                 if passenger_requests[passenger_id]["elevator_id"] != elevator_id:
-                    raise ValidationError(f"Passenger entered wrong elevator: {passenger_id} in Elevator {elevator_id}, expected {passenger_requests[passenger_id]['elevator_id']}")
-                
+                    raise ValidationError(
+                        f"Passenger entered wrong elevator: {passenger_id} in Elevator {elevator_id}, expected {passenger_requests[passenger_id]['elevator_id']}")
+
                 elevator_passengers[elevator_id].append(passenger_id)
 
             elif event_type == "OUT":
@@ -188,15 +194,28 @@ class ElevatorValidator:
                 elevator_id = int(parts[3])
 
                 if elevator_id not in elevator_passengers:
-                    raise ValidationError(f"Passenger exited from empty elevator: {passenger_id} from Elevator {elevator_id}")
+                    raise ValidationError(
+                        f"Passenger exited from empty elevator: {passenger_id} from Elevator {elevator_id}")
 
                 if passenger_id not in elevator_passengers[elevator_id]:
-                    raise ValidationError(f"Passenger not in elevator during exit: {passenger_id} from Elevator {elevator_id}")
+                    raise ValidationError(
+                        f"Passenger not in elevator during exit: {passenger_id} from Elevator {elevator_id}")
 
-                if passenger_requests[passenger_id]["to_floor"] != floor:
-                    raise ValidationError(f"Passenger exited on wrong floor: {passenger_id} on Floor {floor}, expected {passenger_requests[passenger_id]['to_floor']}")
+                if passenger_requests[passenger_id]["to_floor"] == floor:
+                    passenger_requests[passenger_id]["finish"] = True
+                else:
+                    passenger_requests[passenger_id]["from_floor"] = floor
 
                 elevator_passengers[elevator_id].remove(passenger_id)
+
+        error_sentence = ''
+        for passenger_id in passenger_requests.keys():
+            if passenger_requests[passenger_id]["finish"] != True:
+                from_floor = passenger_requests[passenger_id]["from_floor"]
+                to_floor = passenger_requests[passenger_id]["to_floor"]
+                error_sentence += f"Passenger did not arrive : {passenger_id} on Floor {from_floor}, expected {to_floor}\n"
+        if error_sentence != '':
+            raise ValidationError(error_sentence)
 
     def validate_elevator_capacity(self):
         elevator_passengers = {}  # Store the passengers in each elevator
@@ -216,17 +235,20 @@ class ElevatorValidator:
                 elevator_passengers[elevator_id].append(passenger_id)
 
                 if len(elevator_passengers[elevator_id]) > 6:
-                    raise ValidationError(f"Elevator capacity exceeded: Elevator {elevator_id} has {len(elevator_passengers[elevator_id])} passengers")
+                    raise ValidationError(
+                        f"Elevator capacity exceeded: Elevator {elevator_id} has {len(elevator_passengers[elevator_id])} passengers")
 
             elif event_type == "OUT":
                 passenger_id = parts[1]
                 elevator_id = int(parts[3])
 
                 if elevator_id not in elevator_passengers:
-                    raise ValidationError(f"Passenger exited from empty elevator: {passenger_id} from Elevator {elevator_id}")
+                    raise ValidationError(
+                        f"Passenger exited from empty elevator: {passenger_id} from Elevator {elevator_id}")
 
                 if passenger_id not in elevator_passengers[elevator_id]:
-                    raise ValidationError(f"Passenger not in elevator during exit: {passenger_id} from Elevator {elevator_id}")
+                    raise ValidationError(
+                        f"Passenger not in elevator during exit: {passenger_id} from Elevator {elevator_id}")
 
                 elevator_passengers[elevator_id].remove(passenger_id)
 
@@ -245,12 +267,14 @@ class ElevatorValidator:
             floor = parts[1]
             elevator_id = int(parts[2])
             if floor != "F1":
-                raise ValidationError(f"First action OPEN is on wrong floor: Elevator {elevator_id} on Floor {floor}, expected F1")
+                raise ValidationError(
+                    f"First action OPEN is on wrong floor: Elevator {elevator_id} on Floor {floor}, expected F1")
         elif event_type == "ARRIVE":
             floor = parts[1]
             elevator_id = int(parts[2])
             if floor != "F2" and floor != "B1":
-                raise ValidationError(f"First action ARRIVE is on wrong floor: Elevator {elevator_id} on Floor {floor}, expected F2/B1")
+                raise ValidationError(
+                    f"First action ARRIVE is on wrong floor: Elevator {elevator_id} on Floor {floor}, expected F2/B1")
         elif event_type == "IN":
             raise ValidationError(f"First action cannot be IN")
         elif event_type == "OUT":
@@ -259,7 +283,8 @@ class ElevatorValidator:
             floor = parts[1]
             elevator_id = int(parts[2])
             if floor != "F1":
-                raise ValidationError(f"First action CLOSE is on wrong floor: Elevator {elevator_id} on Floor {floor}, expected F1")
+                raise ValidationError(
+                    f"First action CLOSE is on wrong floor: Elevator {elevator_id} on Floor {floor}, expected F1")
 
     def validate_final_state(self):
         # - All passenger requests must be completed (OUT on their target floor)
@@ -342,8 +367,9 @@ class ElevatorValidator:
 
 def main():
     parser = argparse.ArgumentParser(description="Validate elevator simulation output.")
-    parser.add_argument("--input_file", default="/root/OO_unit2/input.txt", help="Path to the input file (generated by gen.py).")
-    parser.add_argument("--output_file", default="/root/OO_unit2/output.txt", help="Path to the output file (from the elevator simulation).")
+    parser.add_argument("--input_file", default="input.txt", help="Path to the input file (generated by gen.py).")
+    parser.add_argument("--output_file", default="output.txt",
+                        help="Path to the output file (from the elevator simulation).")
 
     args = parser.parse_args()
 
