@@ -75,7 +75,7 @@ echo "Processing jar file: $jar_filename"
       result=false
     fi
 
-    python3 judge/score.py "$log_dir/input$i.txt" "$log_dir/output$i.txt" >> "$log_dir/result.txt"
+    python3 judge/score.py --input_file="$log_dir/input$i.txt" --output_file="$log_dir/output$i.txt" >> "$log_dir/result.txt"
     echo "  ----------------------------------------" >> "$log_dir/result.txt"
 
   done
