@@ -1,5 +1,5 @@
 import re
-
+import argparse
 def calculate_performance_score(input_file="input.txt", output_file="output.txt"):
     """
     Calculates the performance score based on the given input and output files.
