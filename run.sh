@@ -42,7 +42,7 @@ echo "Processing jar file: $jar_filename"
 	
   timestamp=$(date "+%m-%d-%H-%M-%S")
   log_dir="log/$jar_filename_noext/$timestamp"
-  log_dir=$(readlink -f "log_dir")
+#  log_dir=$(readlink -f "log_dir")
   mkdir -p "$log_dir"
   touch "$log_dir/result.txt"
 
