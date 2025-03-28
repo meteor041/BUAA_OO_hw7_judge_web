@@ -22,14 +22,12 @@ fi
 for i in $(seq 1 $NUM_ITERATIONS); do
     echo "  Running iteration $i"
 
- 	
-    # 生成输入文件
+    # 生成输入文件，并将其保存到变量
     if [[ $# -eq 1 ]]; then
-      python3 judge/gen.py > stdin.txt
+      input_content=$(python3 judge/gen.py)
     else
-      python3 judge/gen.py --num_request=$NUM_REQUESTS --time_limit=$TIME_LIMIT >  stdin.txt
+      input_content=$(python3 judge/gen.py --num_request=$NUM_REQUESTS --time_limit=$TIME_LIMIT)
     fi
-
  
     # 遍历 jar 文件
     for jar_file in "$PROGRAM_DIR"/*.jar; do
@@ -48,8 +46,8 @@ for i in $(seq 1 $NUM_ITERATIONS); do
         current_concurrent=0
         result=true
 
-
-        cat stdin.txt > $log_dir/input$i.txt
+        #将input 写入到文件
+        echo "$input_content" > $log_dir/input$i.txt
         # 执行 Java 程序  (后台运行) &
         # -Xms 和 -Xmx 控制堆内存
         # -XX:MetaspaceSize 和 -XX:MaxMetaspaceSize 控制元空间 (Metaspace) 大小
