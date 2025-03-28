@@ -80,7 +80,7 @@ for i in $(seq 1 $NUM_ITERATIONS); do
 
     wait # 等待所有后台进程完成
 
-    echo "Finished processing $jar_filename"
+    echo "Finished processing"
 
 done
 
