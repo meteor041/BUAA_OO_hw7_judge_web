@@ -28,6 +28,7 @@ for i in $(seq 1 $NUM_ITERATIONS); do
     else
       input_content=$(python3 judge/gen.py --num_request=$NUM_REQUESTS --time_limit=$TIME_LIMIT)
     fi
+    echo "$input_content" > stdin.txt
  
     # 遍历 jar 文件
     for jar_file in "$PROGRAM_DIR"/*.jar; do
