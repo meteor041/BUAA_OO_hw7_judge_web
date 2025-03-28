@@ -24,6 +24,12 @@
             <li>在【<a href="{{ url_for('run_program') }}">运行评测</a>】页面配置参数并运行程序</li>
             <li>在【<a href="{{ url_for('logs') }}">日志查看</a>】页面查看和分析运行结果</li>
         </ol>
+
+	<h3>提示</h3>
+        <ol>
+            <li>本评测机只允许java21及以下版本的jar包</li>
+            <li>本评测机采用课程组所给数据投喂包,由于投喂包需要使用固定文件stdin.txt,不建议将循环次数设定大于1,否则会对并发处理产生影响</li>
+        </ol>
         
         <h3>快速开始</h3>
         <div class="action-buttons">
