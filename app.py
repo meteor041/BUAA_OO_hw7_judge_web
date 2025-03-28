@@ -237,7 +237,8 @@ def logs():
         flash('请求的路径不是目录', 'error')
         return redirect(url_for('logs'))
     
-    return render_template('logs.html', 
+    return render_template('logs.html',
+                           os=os,
                           items=items, 
                           current_path=rel_path,
                           breadcrumbs=breadcrumbs)
