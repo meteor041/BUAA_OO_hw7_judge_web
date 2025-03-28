@@ -1,0 +1,61 @@
+# Python相关
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# 虚拟环境
+venv/
+ENV/
+env/
+.env/
+
+# IDE和编辑器
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+.project
+.settings/
+.classpath
+
+# 运行时生成的文件
+input.txt
+output.txt
+stdin.txt
+log/
+program/
+
+# 证书和密钥
+*.pem
+*.key
+*.crt
+*.cer
+
+# 特定于项目的文件
+# 保留judge目录，但忽略其内部的生成文件
+judge/__pycache__/
+
+# 日志文件
+*.log
+
+# Flask相关
+instance/
+.webassets-cache 

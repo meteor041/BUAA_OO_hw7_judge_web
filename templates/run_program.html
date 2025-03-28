@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block title %}运行评测 - 电梯程序评测系统{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        运行评测
+    </div>
+    <div class="card-body">
+        <form id="run-form" method="POST" action="{{ url_for('run_program') }}">
+            <div class="form-group">
+                <label for="num_iterations">迭代次数:</label>
+                <input type="number" class="form-control" id="num_iterations" name="num_iterations" min="1" value="1" required>
+                <small class="form-text text-muted">指定程序运行的迭代次数</small>
+            </div>
+            
+            <div class="form-group">
+                <label for="num_requests">请求数量:</label>
+                <input type="number" class="form-control" id="num_requests" name="num_requests" min="1" value="50" required>
+                <small class="form-text text-muted">每次迭代生成的请求数量，默认为50</small>
+            </div>
+            
+            <div class="form-group">
+                <label for="time_limit">时间限制:</label>
+                <input type="number" class="form-control" id="time_limit" name="time_limit" min="1" value="10" required>
+                <small class="form-text text-muted">时间限制（秒），默认为10</small>
+            </div>
+            
+            <button type="submit" class="btn btn-primary" id="run-button" {% if is_running %}disabled{% endif %}>
+                {% if is_running %}运行中...{% else %}运行{% endif %}
+            </button>
+        </form>
+        
+        <hr>
+        
+        <h3>运行输出</h3>
+        {% if start_time %}
+        <p>开始时间: {{ start_time }}</p>
+        {% endif %}
+        <div class="terminal" id="terminal-output">
+{% if output %}{% for line in output %}{{ line }}
+{% endfor %}{% else %}程序尚未运行或没有输出{% endif %}</div>
+    </div>
+</div>
+{% endblock %} 

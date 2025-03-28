@@ -1,0 +1,92 @@
+{% extends "layout.html" %}
+
+{% block title %}日志查看 - 电梯程序评测系统{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        日志查看
+    </div>
+    <div class="card-body">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ url_for('logs') }}">日志根目录</a></li>
+                {% for crumb in breadcrumbs %}
+                <li class="breadcrumb-item"><a href="{{ url_for('logs', path=crumb.path) }}">{{ crumb.name }}</a></li>
+                {% endfor %}
+            </ol>
+        </nav>
+        
+        {% if items %}
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>名称</th>
+                        <th>类型</th>
+                        <th>大小</th>
+                        <th>修改时间</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if current_path %}
+                    <tr>
+                        <td colspan="5">
+                            <a href="{{ url_for('logs', path=os.path.dirname(current_path)) }}">
+                                <i class="fas fa-arrow-up"></i> 返回上级目录
+                            </a>
+                        </td>
+                    </tr>
+                    {% endif %}
+                    
+                    {% for item in items %}
+                    <tr>
+                        <td>
+                            {% if item.is_dir %}
+                            <i class="fas fa-folder folder-icon"></i>
+                            <a href="{{ url_for('logs', path=item.path) }}">{{ item.name }}</a>
+                            {% else %}
+                            <i class="fas fa-file-alt file-icon"></i>
+                            {{ item.name }}
+                            {% endif %}
+                        </td>
+                        <td>{{ 'Directory' if item.is_dir else 'File' }}</td>
+                        <td>{{ item.size if not item.is_dir else '-' }}</td>
+                        <td>{{ item.modified }}</td>
+                        <td>
+                            {% if not item.is_dir and item.name.endswith(('.txt', '.log')) %}
+                            <a href="{{ url_for('download_log', path=item.path) }}" class="btn btn-primary btn-sm">
+                                <i class="fas fa-download"></i> 下载
+                            </a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i> 当前目录为空
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // 为了使面包屑导航中的os.path.dirname正常工作
+    var os = {
+        path: {
+            dirname: function(path) {
+                if (!path) return '';
+                var parts = path.split('/');
+                parts.pop();
+                return parts.join('/');
+            }
+        }
+    };
+</script>
+{% endblock %} 

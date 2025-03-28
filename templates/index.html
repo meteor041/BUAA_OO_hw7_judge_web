@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block title %}首页 - 电梯程序评测系统{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        欢迎使用电梯程序评测系统
+    </div>
+    <div class="card-body">
+        <h2>系统概述</h2>
+        <p>本系统用于评测电梯调度模拟程序，通过分析程序的输出结果，评估其性能和正确性。</p>
+        
+        <h3>功能特点</h3>
+        <ul>
+            <li><strong>JAR包管理</strong>：上传、查看、下载和删除电梯程序JAR包</li>
+            <li><strong>程序运行</strong>：配置参数并运行电梯程序，实时查看运行状态</li>
+            <li><strong>日志查看</strong>：浏览和下载程序运行产生的日志文件</li>
+        </ul>
+        
+        <h3>使用流程</h3>
+        <ol>
+            <li>在【<a href="{{ url_for('jar_manager') }}">JAR管理</a>】页面上传您的电梯程序JAR包</li>
+            <li>在【<a href="{{ url_for('run_program') }}">运行评测</a>】页面配置参数并运行程序</li>
+            <li>在【<a href="{{ url_for('logs') }}">日志查看</a>】页面查看和分析运行结果</li>
+        </ol>
+        
+        <h3>快速开始</h3>
+        <div class="action-buttons">
+            <a href="{{ url_for('jar_manager') }}" class="btn btn-primary">管理JAR包</a>
+            <a href="{{ url_for('run_program') }}" class="btn btn-primary">运行评测</a>
+            <a href="{{ url_for('logs') }}" class="btn btn-primary">查看日志</a>
+        </div>
+    </div>
+</div>
+{% endblock %} 

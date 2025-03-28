@@ -1,0 +1,87 @@
+{% extends "layout.html" %}
+
+{% block title %}JAR包管理 - 电梯程序评测系统{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        JAR包管理
+    </div>
+    <div class="card-body">
+        <div class="upload-area" id="upload-area">
+            <i class="fas fa-cloud-upload-alt upload-icon"></i>
+            <div class="upload-text">点击或拖拽文件到此区域上传</div>
+            <div>支持的文件类型：.jar</div>
+            
+            <form id="upload-form" method="POST" action="{{ url_for('upload_file') }}" enctype="multipart/form-data" style="display: none;">
+                <input type="file" name="file" id="file-input" accept=".jar">
+            </form>
+        </div>
+
+        {% if jar_files %}
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>文件名</th>
+                        <th>大小</th>
+                        <th>上传时间</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for file in jar_files %}
+                    <tr>
+                        <td>{{ file.name }}</td>
+                        <td>{{ file.size_formatted }}</td>
+                        <td>{{ file.date }}</td>
+                        <td class="action-buttons">
+                            <a href="{{ url_for('download_file', filename=file.name) }}" class="btn btn-primary btn-sm">
+                                <i class="fas fa-download"></i> 下载
+                            </a>
+                            <form action="{{ url_for('delete_file', filename=file.name) }}" method="POST" style="display: inline;">
+                                <button type="submit" class="btn btn-danger btn-sm delete-btn" {% if is_running %}disabled{% endif %}>
+                                    <i class="fas fa-trash"></i> 删除
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        {% if total_pages > 1 %}
+        <nav>
+            <ul class="pagination">
+                <li class="page-item {% if page == 1 %}disabled{% endif %}">
+                    <a class="page-link" href="{{ url_for('jar_manager', page=page-1) }}" {% if page == 1 %}tabindex="-1"{% endif %}>上一页</a>
+                </li>
+                
+                {% for i in range(1, total_pages + 1) %}
+                <li class="page-item {% if page == i %}active{% endif %}">
+                    <a class="page-link" href="{{ url_for('jar_manager', page=i) }}">{{ i }}</a>
+                </li>
+                {% endfor %}
+                
+                <li class="page-item {% if page == total_pages %}disabled{% endif %}">
+                    <a class="page-link" href="{{ url_for('jar_manager', page=page+1) }}" {% if page == total_pages %}tabindex="-1"{% endif %}>下一页</a>
+                </li>
+            </ul>
+        </nav>
+        {% endif %}
+        
+        {% else %}
+        <div class="alert alert-warning">
+            没有找到JAR文件，请上传
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+{% if is_running %}
+<div class="alert alert-warning">
+    <i class="fas fa-exclamation-triangle"></i> 注意：程序正在运行中，删除操作已被禁用。
+</div>
+{% endif %}
+{% endblock %} 
