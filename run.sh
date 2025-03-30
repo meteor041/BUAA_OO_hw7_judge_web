@@ -117,7 +117,7 @@ java_pid=$!
 
     wait # 等待所有后台进程完成
 
-    echo "Finished processing $jar_filename"
+    echo "Finished processing"
 
 done
 
