@@ -1,0 +1,2896 @@
+Exception in thread "Elevator2" java.util.ConcurrentModificationException
+	at java.base/java.util.ArrayList$Itr.checkForComodification(ArrayList.java:1095)
+	at java.base/java.util.ArrayList$Itr.remove(ArrayList.java:1063)
+	at Elevator.getUpPassenger(Elevator.java:145)
+	at Elevator.strategy1(Elevator.java:233)
+	at Elevator.run(Elevator.java:126)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+iteration 1 : Validation Error: Passenger did not arrive : 16 on Floor B1, expected F2
+Passenger did not arrive : 17 on Floor B1, expected F2
+Passenger did not arrive : 18 on Floor B1, expected F2
+Passenger did not arrive : 19 on Floor B2, expected F4
+Passenger did not arrive : 20 on Floor B2, expected F4
+Passenger did not arrive : 21 on Floor B2, expected F4
+
+Trun: 28.4770
+WT: 2.7290
+W: 22.9000
+  ----------------------------------------
+iteration 2 : Accepted
+Trun: 30.3400
+WT: 4.8361
+W: 40.0000
+  ----------------------------------------
+iteration 3 : Accepted
+Trun: 28.9580
+WT: 4.0806
+W: 31.2000
+  ----------------------------------------
+iteration 4 : Accepted
+Trun: 27.3440
+WT: 4.5308
+W: 37.2000
+  ----------------------------------------
+iteration 5 : Accepted
+Trun: 26.0380
+WT: 2.7244
+W: 24.6000
+  ----------------------------------------
+iteration 6 : Accepted
+Trun: 32.4980
+WT: 4.0535
+W: 32.4000
+  ----------------------------------------
+iteration 7 : Accepted
+Trun: 26.7560
+WT: 3.3383
+W: 30.8000
+  ----------------------------------------
+iteration 8 : Accepted
+Trun: 24.5530
+WT: 3.4154
+W: 29.2000
+  ----------------------------------------
+iteration 9 : Accepted
+Trun: 27.2140
+WT: 3.3066
+W: 29.2000
+  ----------------------------------------
+iteration 10 : Accepted
+Trun: 28.4940
+WT: 3.2744
+W: 32.8000
+  ----------------------------------------
+iteration 11 : Accepted
+Trun: 28.7960
+WT: 2.9818
+W: 23.0000
+  ----------------------------------------
+iteration 12 : Accepted
+Trun: 31.0690
+WT: 3.3789
+W: 32.0000
+  ----------------------------------------
+iteration 13 : Accepted
+Trun: 27.5410
+WT: 3.2376
+W: 28.2000
+  ----------------------------------------
+iteration 14 : Accepted
+Trun: 29.0270
+WT: 4.6588
+W: 44.0000
+  ----------------------------------------
+iteration 15 : Accepted
+Trun: 24.8180
+WT: 3.3923
+W: 27.4000
+  ----------------------------------------
+iteration 16 : Accepted
+Trun: 28.6250
+WT: 3.9350
+W: 33.2000
+  ----------------------------------------
+iteration 17 : Accepted
+Trun: 21.4600
+WT: 3.5926
+W: 34.0000
+  ----------------------------------------
+iteration 18 : Accepted
+Trun: 27.9990
+WT: 3.3237
+W: 28.8000
+  ----------------------------------------
+iteration 19 : Accepted
+Trun: 28.2400
+WT: 3.9992
+W: 35.6000
+  ----------------------------------------
+iteration 20 : Accepted
+Trun: 29.4620
+WT: 3.6722
+W: 34.8000
+  ----------------------------------------
+iteration 21 : Accepted
+Trun: 30.2000
+WT: 3.2184
+W: 29.6000
+  ----------------------------------------
+iteration 22 : Accepted
+Trun: 29.4320
+WT: 3.3888
+W: 33.6000
+  ----------------------------------------
+iteration 23 : Accepted
+Trun: 27.8740
+WT: 3.9656
+W: 25.6000
+  ----------------------------------------
+iteration 24 : Accepted
+Trun: 27.2920
+WT: 3.3219
+W: 28.0000
+  ----------------------------------------
+iteration 25 : Accepted
+Trun: 28.1030
+WT: 3.3329
+W: 27.2000
+  ----------------------------------------
+iteration 26 : Accepted
+Trun: 29.8800
+WT: 6.0083
+W: 36.0000
+  ----------------------------------------
+Exception in thread "Elevator5" java.util.ConcurrentModificationException
+	at java.base/java.util.ArrayList$Itr.checkForComodification(ArrayList.java:1095)
+	at java.base/java.util.ArrayList$Itr.remove(ArrayList.java:1063)
+	at Elevator.getDownPassenger(Elevator.java:164)
+	at Elevator.strategy1(Elevator.java:237)
+	at Elevator.run(Elevator.java:126)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+iteration 27 : Validation Error: Passenger did not arrive : 25 on Floor F1, expected B3
+Passenger did not arrive : 26 on Floor F1, expected B3
+Passenger did not arrive : 27 on Floor F1, expected B3
+
+Trun: 27.4070
+WT: 3.8861
+W: 27.7000
+  ----------------------------------------
+iteration 28 : Accepted
+Trun: 27.2860
+WT: 4.3367
+W: 35.6000
+  ----------------------------------------
+iteration 29 : Accepted
+Trun: 26.3370
+WT: 3.8055
+W: 32.0000
+  ----------------------------------------
+iteration 30 : Accepted
+Trun: 28.5010
+WT: 3.6797
+W: 25.8000
+  ----------------------------------------
+iteration 31 : Accepted
+Trun: 28.0470
+WT: 3.6792
+W: 24.8000
+  ----------------------------------------
+iteration 32 : Accepted
+Trun: 26.9360
+WT: 3.5594
+W: 35.2000
+  ----------------------------------------
+iteration 33 : Accepted
+Trun: 25.2290
+WT: 3.4585
+W: 28.4000
+  ----------------------------------------
+iteration 34 : Accepted
+Trun: 26.2730
+WT: 3.4483
+W: 33.6000
+  ----------------------------------------
+iteration 35 : Accepted
+Trun: 27.7050
+WT: 2.6136
+W: 25.2000
+  ----------------------------------------
+Exception in thread "Elevator4" java.util.ConcurrentModificationException
+	at java.base/java.util.ArrayList$Itr.checkForComodification(ArrayList.java:1095)
+	at java.base/java.util.ArrayList$Itr.remove(ArrayList.java:1063)
+	at Elevator.getDownPassenger(Elevator.java:164)
+	at Elevator.strategy1(Elevator.java:237)
+	at Elevator.run(Elevator.java:126)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+iteration 36 : Validation Error: Passenger did not arrive : 7 on Floor F1, expected B3
+Passenger did not arrive : 8 on Floor F1, expected B3
+Passenger did not arrive : 9 on Floor F1, expected B3
+
+Trun: 26.0420
+WT: 4.0643
+W: 34.1000
+  ----------------------------------------
+iteration 37 : Accepted
+Trun: 29.3220
+WT: 3.9106
+W: 38.0000
+  ----------------------------------------
+iteration 38 : Accepted
+Trun: 27.3910
+WT: 3.4826
+W: 31.6000
+  ----------------------------------------
+iteration 39 : Accepted
+Trun: 27.4060
+WT: 4.5933
+W: 36.8000
+  ----------------------------------------
+iteration 40 : Accepted
+Trun: 28.3830
+WT: 2.5654
+W: 24.4000
+  ----------------------------------------
+iteration 41 : Accepted
+Trun: 24.2030
+WT: 3.1671
+W: 28.0000
+  ----------------------------------------
+iteration 42 : Accepted
+Trun: 27.3040
+WT: 3.8434
+W: 29.8000
+  ----------------------------------------
+Exception in thread "Elevator3" java.util.ConcurrentModificationException
+	at java.base/java.util.ArrayList$Itr.checkForComodification(ArrayList.java:1095)
+	at java.base/java.util.ArrayList$Itr.remove(ArrayList.java:1063)
+	at Elevator.getUpPassenger(Elevator.java:145)
+	at Elevator.strategy1(Elevator.java:233)
+	at Elevator.run(Elevator.java:126)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+iteration 43 : Validation Error: Passenger did not arrive : 7 on Floor F1, expected F5
+Passenger did not arrive : 8 on Floor F1, expected F5
+Passenger did not arrive : 9 on Floor F1, expected F5
+Passenger did not arrive : 16 on Floor B1, expected B4
+Passenger did not arrive : 17 on Floor B1, expected B4
+Passenger did not arrive : 18 on Floor B1, expected B4
+
+Trun: 28.3900
+WT: 3.8649
+W: 28.5000
+  ----------------------------------------
+iteration 44 : Accepted
+Trun: 25.2300
+WT: 3.9851
+W: 29.4000
+  ----------------------------------------
+iteration 45 : Accepted
+Trun: 28.4510
+WT: 3.2188
+W: 28.0000
+  ----------------------------------------
+iteration 46 : Accepted
+Trun: 25.9600
+WT: 3.0809
+W: 26.0000
+  ----------------------------------------
+iteration 47 : Accepted
+Trun: 28.7680
+WT: 3.2911
+W: 33.2000
+  ----------------------------------------
+iteration 48 : Accepted
+Trun: 29.3760
+WT: 2.7834
+W: 24.0000
+  ----------------------------------------
+iteration 49 : Accepted
+Trun: 31.1420
+WT: 4.1744
+W: 36.0000
+  ----------------------------------------
+iteration 50 : Accepted
+Trun: 25.5880
+WT: 3.8131
+W: 31.2000
+  ----------------------------------------
+iteration 51 : Accepted
+Trun: 21.0650
+WT: 4.1009
+W: 29.8000
+  ----------------------------------------
+iteration 52 : Accepted
+Trun: 27.4920
+WT: 3.6074
+W: 31.2000
+  ----------------------------------------
+iteration 53 : Accepted
+Trun: 25.6150
+WT: 3.8617
+W: 34.4000
+  ----------------------------------------
+iteration 54 : Accepted
+Trun: 27.3870
+WT: 3.9405
+W: 27.4000
+  ----------------------------------------
+iteration 55 : Accepted
+Trun: 29.8000
+WT: 3.4007
+W: 34.0000
+  ----------------------------------------
+iteration 56 : Accepted
+Trun: 31.1540
+WT: 4.1050
+W: 32.8000
+  ----------------------------------------
+iteration 57 : Accepted
+Trun: 29.8980
+WT: 2.9993
+W: 30.0000
+  ----------------------------------------
+iteration 58 : Accepted
+Trun: 30.9500
+WT: 4.7759
+W: 43.2000
+  ----------------------------------------
+iteration 59 : Accepted
+Trun: 20.7710
+WT: 3.9317
+W: 35.2000
+  ----------------------------------------
+iteration 60 : Accepted
+Trun: 28.0920
+WT: 3.8963
+W: 32.4000
+  ----------------------------------------
+iteration 61 : Accepted
+Trun: 23.2310
+WT: 3.2090
+W: 24.6000
+  ----------------------------------------
+iteration 62 : Accepted
+Trun: 30.6490
+WT: 4.3685
+W: 36.8000
+  ----------------------------------------
+iteration 63 : Accepted
+Trun: 24.2750
+WT: 3.8184
+W: 37.2000
+  ----------------------------------------
+iteration 64 : Accepted
+Trun: 31.0010
+WT: 3.5878
+W: 29.4000
+  ----------------------------------------
+iteration 65 : Accepted
+Trun: 25.3220
+WT: 3.6665
+W: 32.4000
+  ----------------------------------------
+Exception in thread "Elevator2" java.util.ConcurrentModificationException
+	at java.base/java.util.ArrayList$Itr.checkForComodification(ArrayList.java:1095)
+	at java.base/java.util.ArrayList$Itr.remove(ArrayList.java:1063)
+	at Elevator.getUpPassenger(Elevator.java:145)
+	at Elevator.strategy1(Elevator.java:233)
+	at Elevator.run(Elevator.java:126)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+iteration 66 : Validation Error: Passenger did not arrive : 7 on Floor B2, expected F3
+Passenger did not arrive : 8 on Floor B2, expected F3
+Passenger did not arrive : 9 on Floor B2, expected F3
+Passenger did not arrive : 28 on Floor B1, expected B3
+Passenger did not arrive : 29 on Floor B1, expected B3
+Passenger did not arrive : 30 on Floor B1, expected B3
+
+Trun: 27.3470
+WT: 3.7992
+W: 30.1000
+  ----------------------------------------
+iteration 67 : Accepted
+Trun: 29.7890
+WT: 3.2028
+W: 29.8000
+  ----------------------------------------
+iteration 68 : Accepted
+Trun: 24.7630
+WT: 2.6171
+W: 26.0000
+  ----------------------------------------
+iteration 69 : Accepted
+Trun: 30.1800
+WT: 4.4469
+W: 37.6000
+  ----------------------------------------
+iteration 70 : Accepted
+Trun: 29.6570
+WT: 3.4009
+W: 30.8000
+  ----------------------------------------
+iteration 71 : Accepted
+Trun: 25.2530
+WT: 3.7860
+W: 32.8000
+  ----------------------------------------
+iteration 72 : Accepted
+Trun: 28.1310
+WT: 4.2063
+W: 36.4000
+  ----------------------------------------
+iteration 73 : Accepted
+Trun: 28.0070
+WT: 4.0528
+W: 29.6000
+  ----------------------------------------
+iteration 74 : Accepted
+Trun: 30.6890
+WT: 4.1163
+W: 34.8000
+  ----------------------------------------
+iteration 75 : Accepted
+Trun: 22.4050
+WT: 2.8386
+W: 24.4000
+  ----------------------------------------
+iteration 76 : Accepted
+Trun: 32.2010
+WT: 4.5970
+W: 37.6000
+  ----------------------------------------
+iteration 77 : Accepted
+Trun: 32.3970
+WT: 4.2137
+W: 40.4000
+  ----------------------------------------
+iteration 78 : Accepted
+Trun: 30.0240
+WT: 3.8360
+W: 37.6000
+  ----------------------------------------
+iteration 79 : Accepted
+Trun: 25.3170
+WT: 3.2378
+W: 31.6000
+  ----------------------------------------
+iteration 80 : Accepted
+Trun: 26.2510
+WT: 3.0147
+W: 25.8000
+  ----------------------------------------
+iteration 81 : Accepted
+Trun: 28.7300
+WT: 3.9397
+W: 36.8000
+  ----------------------------------------
+iteration 82 : Accepted
+Trun: 29.7520
+WT: 4.0345
+W: 32.6000
+  ----------------------------------------
+iteration 83 : Accepted
+Trun: 26.6880
+WT: 3.8729
+W: 35.2000
+  ----------------------------------------
+iteration 84 : Accepted
+Trun: 27.4010
+WT: 4.2255
+W: 37.6000
+  ----------------------------------------
+iteration 85 : Accepted
+Trun: 25.5900
+WT: 3.3934
+W: 32.4000
+  ----------------------------------------
+iteration 86 : Accepted
+Trun: 30.5340
+WT: 4.0280
+W: 32.8000
+  ----------------------------------------
+iteration 87 : Accepted
+Trun: 29.1330
+WT: 3.1207
+W: 30.8000
+  ----------------------------------------
+iteration 88 : Accepted
+Trun: 28.0490
+WT: 3.9240
+W: 29.2000
+  ----------------------------------------
+iteration 89 : Accepted
+Trun: 29.1910
+WT: 3.3537
+W: 30.0000
+  ----------------------------------------
+iteration 90 : Accepted
+Trun: 29.2260
+WT: 2.8636
+W: 28.4000
+  ----------------------------------------
+iteration 91 : Accepted
+Trun: 27.2180
+WT: 3.9812
+W: 33.4000
+  ----------------------------------------
+iteration 92 : Accepted
+Trun: 29.3570
+WT: 3.3175
+W: 32.4000
+  ----------------------------------------
+iteration 93 : Accepted
+Trun: 28.7520
+WT: 3.1721
+W: 27.6000
+  ----------------------------------------
+iteration 94 : Accepted
+Trun: 26.6120
+WT: 3.2778
+W: 26.8000
+  ----------------------------------------
+iteration 95 : Accepted
+Trun: 28.7610
+WT: 3.3011
+W: 32.4000
+  ----------------------------------------
+iteration 96 : Accepted
+Trun: 26.4800
+WT: 3.9982
+W: 28.6000
+  ----------------------------------------
+iteration 97 : Accepted
+Trun: 26.7640
+WT: 2.7693
+W: 23.6000
+  ----------------------------------------
+iteration 98 : Accepted
+Trun: 26.6090
+WT: 3.5464
+W: 26.8000
+  ----------------------------------------
+iteration 99 : Accepted
+Trun: 23.0890
+WT: 3.6332
+W: 33.2000
+  ----------------------------------------
+iteration 100 : Accepted
+Trun: 28.0340
+WT: 2.7157
+W: 26.8000
+  ----------------------------------------
+iteration 101 : Accepted
+Trun: 31.6890
+WT: 3.5439
+W: 32.8000
+  ----------------------------------------
+iteration 102 : Accepted
+Trun: 26.2760
+WT: 2.9496
+W: 25.2000
+  ----------------------------------------
+iteration 103 : Accepted
+Trun: 26.0100
+WT: 4.0624
+W: 32.2000
+  ----------------------------------------
+iteration 104 : Accepted
+Trun: 27.7750
+WT: 3.0066
+W: 28.4000
+  ----------------------------------------
+iteration 105 : Accepted
+Trun: 28.4240
+WT: 3.8233
+W: 30.6000
+  ----------------------------------------
+iteration 106 : Accepted
+Trun: 27.5500
+WT: 3.3941
+W: 32.4000
+  ----------------------------------------
+iteration 107 : Accepted
+Trun: 28.3100
+WT: 3.3398
+W: 32.0000
+  ----------------------------------------
+iteration 108 : Accepted
+Trun: 28.7900
+WT: 3.9407
+W: 34.6000
+  ----------------------------------------
+iteration 109 : Accepted
+Trun: 28.9290
+WT: 4.0068
+W: 29.6000
+  ----------------------------------------
+iteration 110 : Accepted
+Trun: 31.2480
+WT: 3.9973
+W: 36.4000
+  ----------------------------------------
+iteration 111 : Accepted
+Trun: 25.8800
+WT: 3.1239
+W: 30.4000
+  ----------------------------------------
+iteration 112 : Accepted
+Trun: 29.4210
+WT: 4.5251
+W: 35.2000
+  ----------------------------------------
+iteration 113 : Accepted
+Trun: 25.4110
+WT: 3.5119
+W: 29.4000
+  ----------------------------------------
+iteration 114 : Accepted
+Trun: 26.1060
+WT: 3.3731
+W: 31.6000
+  ----------------------------------------
+iteration 115 : Accepted
+Trun: 23.8100
+WT: 3.5109
+W: 31.2000
+  ----------------------------------------
+iteration 116 : Accepted
+Trun: 27.8040
+WT: 4.9584
+W: 42.4000
+  ----------------------------------------
+iteration 117 : Accepted
+Trun: 31.3220
+WT: 4.5520
+W: 36.4000
+  ----------------------------------------
+iteration 118 : Accepted
+Trun: 21.8600
+WT: 3.6143
+W: 30.4000
+  ----------------------------------------
+iteration 119 : Accepted
+Trun: 29.9720
+WT: 4.2749
+W: 34.0000
+  ----------------------------------------
+iteration 120 : Accepted
+Trun: 28.0360
+WT: 3.4569
+W: 33.6000
+  ----------------------------------------
+iteration 121 : Accepted
+Trun: 26.6340
+WT: 4.0615
+W: 27.6000
+  ----------------------------------------
+iteration 122 : Accepted
+Trun: 26.0990
+WT: 3.7872
+W: 29.2000
+  ----------------------------------------
+iteration 123 : Accepted
+Trun: 29.1400
+WT: 3.4549
+W: 31.2000
+  ----------------------------------------
+iteration 124 : Accepted
+Trun: 26.7030
+WT: 2.7072
+W: 23.4000
+  ----------------------------------------
+iteration 125 : Accepted
+Trun: 26.2860
+WT: 3.4198
+W: 31.6000
+  ----------------------------------------
+iteration 126 : Accepted
+Trun: 29.7220
+WT: 3.6677
+W: 30.0000
+  ----------------------------------------
+iteration 127 : Accepted
+Trun: 27.6670
+WT: 3.9231
+W: 29.6000
+  ----------------------------------------
+iteration 128 : Accepted
+Trun: 32.3630
+WT: 4.2705
+W: 33.0000
+  ----------------------------------------
+iteration 129 : Accepted
+Trun: 32.1100
+WT: 3.2517
+W: 30.4000
+  ----------------------------------------
+iteration 130 : Accepted
+Trun: 27.5270
+WT: 3.4818
+W: 30.8000
+  ----------------------------------------
+iteration 131 : Accepted
+Trun: 28.3110
+WT: 3.9452
+W: 32.4000
+  ----------------------------------------
+iteration 132 : Accepted
+Trun: 28.7810
+WT: 3.2043
+W: 31.2000
+  ----------------------------------------
+iteration 133 : Accepted
+Trun: 29.8180
+WT: 3.5487
+W: 34.4000
+  ----------------------------------------
+iteration 134 : Accepted
+Trun: 27.7270
+WT: 3.6447
+W: 31.2000
+  ----------------------------------------
+iteration 135 : Accepted
+Trun: 25.9260
+WT: 3.3879
+W: 27.0000
+  ----------------------------------------
+iteration 136 : Accepted
+Trun: 30.5440
+WT: 3.5941
+W: 29.8000
+  ----------------------------------------
+iteration 137 : Accepted
+Trun: 31.6050
+WT: 2.8958
+W: 28.8000
+  ----------------------------------------
+iteration 138 : Accepted
+Trun: 30.6340
+WT: 2.9152
+W: 28.8000
+  ----------------------------------------
+iteration 139 : Accepted
+Trun: 25.2120
+WT: 2.7979
+W: 23.4000
+  ----------------------------------------
+iteration 140 : Accepted
+Trun: 26.8190
+WT: 4.5647
+W: 31.6000
+  ----------------------------------------
+iteration 141 : Accepted
+Trun: 28.2920
+WT: 4.0231
+W: 37.2000
+  ----------------------------------------
+iteration 142 : Accepted
+Trun: 28.0390
+WT: 3.7225
+W: 34.8000
+  ----------------------------------------
+iteration 143 : Accepted
+Trun: 27.6400
+WT: 3.3935
+W: 30.8000
+  ----------------------------------------
+iteration 144 : Accepted
+Trun: 25.8190
+WT: 2.8522
+W: 25.8000
+  ----------------------------------------
+iteration 145 : Accepted
+Trun: 26.2240
+WT: 2.9947
+W: 28.4000
+  ----------------------------------------
+iteration 146 : Accepted
+Trun: 28.4600
+WT: 4.2149
+W: 32.0000
+  ----------------------------------------
+iteration 147 : Accepted
+Trun: 29.8020
+WT: 3.9643
+W: 38.0000
+  ----------------------------------------
+Exception in thread "Elevator1" java.util.ConcurrentModificationException
+	at java.base/java.util.ArrayList$Itr.checkForComodification(ArrayList.java:1095)
+	at java.base/java.util.ArrayList$Itr.remove(ArrayList.java:1063)
+	at Elevator.getDownPassenger(Elevator.java:164)
+	at Elevator.strategy1(Elevator.java:237)
+	at Elevator.run(Elevator.java:126)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+iteration 148 : Validation Error: Passenger did not arrive : 10 on Floor F4, expected F3
+Passenger did not arrive : 11 on Floor F4, expected F3
+Passenger did not arrive : 12 on Floor F4, expected F3
+
+Trun: 27.7620
+WT: 2.8660
+W: 20.1000
+  ----------------------------------------
+iteration 149 : Accepted
+Trun: 24.2140
+WT: 5.3031
+W: 32.4000
+  ----------------------------------------
+iteration 150 : Accepted
+Trun: 25.2880
+WT: 3.4510
+W: 31.2000
+  ----------------------------------------
+iteration 151 : Accepted
+Trun: 28.0920
+WT: 3.2211
+W: 30.8000
+  ----------------------------------------
+iteration 152 : Accepted
+Trun: 31.4020
+WT: 4.0452
+W: 39.6000
+  ----------------------------------------
+iteration 153 : Accepted
+Trun: 26.5280
+WT: 2.5913
+W: 25.6000
+  ----------------------------------------
+iteration 154 : Accepted
+Trun: 24.4690
+WT: 4.3010
+W: 31.6000
+  ----------------------------------------
+iteration 155 : Accepted
+Trun: 27.8080
+WT: 3.2900
+W: 32.4000
+  ----------------------------------------
+iteration 156 : Accepted
+Trun: 29.9710
+WT: 4.5807
+W: 30.2000
+  ----------------------------------------
+iteration 157 : Accepted
+Trun: 23.8400
+WT: 4.2529
+W: 38.0000
+  ----------------------------------------
+iteration 158 : Accepted
+Trun: 24.9150
+WT: 3.7916
+W: 33.8000
+  ----------------------------------------
+iteration 159 : Accepted
+Trun: 25.4810
+WT: 3.5916
+W: 35.6000
+  ----------------------------------------
+iteration 160 : Accepted
+Trun: 29.7840
+WT: 3.4635
+W: 33.6000
+  ----------------------------------------
+iteration 161 : Accepted
+Trun: 29.1920
+WT: 3.0402
+W: 26.4000
+  ----------------------------------------
+iteration 162 : Accepted
+Trun: 23.9810
+WT: 3.1759
+W: 28.8000
+  ----------------------------------------
+iteration 163 : Accepted
+Trun: 28.2080
+WT: 4.0399
+W: 35.6000
+  ----------------------------------------
+iteration 164 : Accepted
+Trun: 31.9050
+WT: 3.6177
+W: 32.4000
+  ----------------------------------------
+iteration 165 : Accepted
+Trun: 26.2590
+WT: 2.2639
+W: 21.6000
+  ----------------------------------------
+iteration 166 : Accepted
+Trun: 27.7440
+WT: 3.7746
+W: 33.6000
+  ----------------------------------------
+iteration 167 : Accepted
+Trun: 27.5130
+WT: 2.4425
+W: 21.2000
+  ----------------------------------------
+iteration 168 : Accepted
+Trun: 26.4300
+WT: 2.4338
+W: 24.0000
+  ----------------------------------------
+iteration 169 : Accepted
+Trun: 29.7570
+WT: 3.8052
+W: 31.6000
+  ----------------------------------------
+iteration 170 : Accepted
+Trun: 25.4380
+WT: 3.3613
+W: 32.0000
+  ----------------------------------------
+iteration 171 : Accepted
+Trun: 25.0140
+WT: 3.1526
+W: 29.6000
+  ----------------------------------------
+iteration 172 : Accepted
+Trun: 28.8430
+WT: 4.0240
+W: 27.6000
+  ----------------------------------------
+iteration 173 : Accepted
+Trun: 28.0830
+WT: 4.3179
+W: 38.0000
+  ----------------------------------------
+iteration 174 : Accepted
+Trun: 24.5040
+WT: 3.2884
+W: 29.2000
+  ----------------------------------------
+iteration 175 : Accepted
+Trun: 28.7850
+WT: 4.0362
+W: 37.2000
+  ----------------------------------------
+iteration 176 : Accepted
+Trun: 28.7040
+WT: 4.2309
+W: 37.6000
+  ----------------------------------------
+iteration 177 : Accepted
+Trun: 28.7990
+WT: 3.5208
+W: 32.8000
+  ----------------------------------------
+iteration 178 : Accepted
+Trun: 27.0470
+WT: 2.7894
+W: 28.4000
+  ----------------------------------------
+iteration 179 : Accepted
+Trun: 27.1240
+WT: 3.0906
+W: 27.8000
+  ----------------------------------------
+iteration 180 : Accepted
+Trun: 27.7350
+WT: 3.3090
+W: 31.2000
+  ----------------------------------------
+iteration 181 : Accepted
+Trun: 27.7460
+WT: 2.2109
+W: 21.6000
+  ----------------------------------------
+iteration 182 : Accepted
+Trun: 27.2050
+WT: 3.4469
+W: 34.4000
+  ----------------------------------------
+iteration 183 : Accepted
+Trun: 25.0910
+WT: 3.5851
+W: 32.0000
+  ----------------------------------------
+iteration 184 : Accepted
+Trun: 27.5220
+WT: 3.9416
+W: 35.2000
+  ----------------------------------------
+iteration 185 : Accepted
+Trun: 29.8130
+WT: 3.7817
+W: 35.6000
+  ----------------------------------------
+iteration 186 : Accepted
+Trun: 27.3390
+WT: 3.6867
+W: 29.4000
+  ----------------------------------------
+iteration 187 : Accepted
+Trun: 26.7520
+WT: 3.9708
+W: 35.2000
+  ----------------------------------------
+iteration 188 : Accepted
+Trun: 30.3220
+WT: 3.8682
+W: 32.4000
+  ----------------------------------------
+iteration 189 : Accepted
+Trun: 29.5890
+WT: 4.1370
+W: 40.4000
+  ----------------------------------------
+iteration 190 : Accepted
+Trun: 33.2170
+WT: 4.0620
+W: 30.8000
+  ----------------------------------------
+iteration 191 : Accepted
+Trun: 28.6060
+WT: 3.2995
+W: 30.0000
+  ----------------------------------------
+iteration 192 : Accepted
+Trun: 34.6880
+WT: 4.8870
+W: 37.8000
+  ----------------------------------------
+iteration 193 : Accepted
+Trun: 24.7190
+WT: 3.7067
+W: 29.2000
+  ----------------------------------------
+iteration 194 : Accepted
+Trun: 26.0740
+WT: 4.4231
+W: 31.6000
+  ----------------------------------------
+iteration 195 : Accepted
+Trun: 22.3790
+WT: 2.9910
+W: 29.6000
+  ----------------------------------------
+iteration 196 : Accepted
+Trun: 30.3160
+WT: 4.5807
+W: 36.4000
+  ----------------------------------------
+iteration 197 : Accepted
+Trun: 32.1890
+WT: 3.8682
+W: 38.8000
+  ----------------------------------------
+iteration 198 : Accepted
+Trun: 28.8270
+WT: 3.1095
+W: 28.0000
+  ----------------------------------------
+iteration 199 : Accepted
+Trun: 27.7590
+WT: 3.6995
+W: 32.4000
+  ----------------------------------------
+iteration 200 : Accepted
+Trun: 28.9940
+WT: 3.5816
+W: 28.8000
+  ----------------------------------------
+iteration 201 : Accepted
+Trun: 27.4210
+WT: 3.5976
+W: 31.4000
+  ----------------------------------------
+iteration 202 : Accepted
+Trun: 31.4480
+WT: 5.0682
+W: 29.2000
+  ----------------------------------------
+iteration 203 : Accepted
+Trun: 27.5590
+WT: 4.5592
+W: 33.0000
+  ----------------------------------------
+iteration 204 : Accepted
+Trun: 30.6850
+WT: 3.4469
+W: 28.8000
+  ----------------------------------------
+iteration 205 : Accepted
+Trun: 27.5760
+WT: 4.7704
+W: 36.0000
+  ----------------------------------------
+iteration 206 : Accepted
+Trun: 26.5300
+WT: 3.4563
+W: 23.0000
+  ----------------------------------------
+iteration 207 : Accepted
+Trun: 25.2300
+WT: 2.5092
+W: 24.8000
+  ----------------------------------------
+iteration 208 : Accepted
+Trun: 28.3170
+WT: 4.4022
+W: 38.4000
+  ----------------------------------------
+iteration 209 : Accepted
+Trun: 25.9320
+WT: 3.0987
+W: 26.8000
+  ----------------------------------------
+iteration 210 : Accepted
+Trun: 28.7430
+WT: 4.6846
+W: 28.8000
+  ----------------------------------------
+iteration 211 : Accepted
+Trun: 29.3950
+WT: 3.8691
+W: 28.0000
+  ----------------------------------------
+iteration 212 : Accepted
+Trun: 27.2850
+WT: 3.6006
+W: 28.2000
+  ----------------------------------------
+iteration 213 : Accepted
+Trun: 29.6490
+WT: 4.4578
+W: 32.8000
+  ----------------------------------------
+iteration 214 : Accepted
+Trun: 30.0080
+WT: 4.2261
+W: 36.8000
+  ----------------------------------------
+iteration 215 : Accepted
+Trun: 27.8390
+WT: 4.1348
+W: 36.6000
+  ----------------------------------------
+iteration 216 : Accepted
+Trun: 27.3650
+WT: 4.0334
+W: 37.2000
+  ----------------------------------------
+iteration 217 : Accepted
+Trun: 25.6160
+WT: 4.8630
+W: 32.6000
+  ----------------------------------------
+iteration 218 : Accepted
+Trun: 22.7970
+WT: 2.9822
+W: 27.6000
+  ----------------------------------------
+iteration 219 : Accepted
+Trun: 30.2450
+WT: 4.1195
+W: 36.8000
+  ----------------------------------------
+iteration 220 : Accepted
+Trun: 25.4270
+WT: 3.3337
+W: 28.4000
+  ----------------------------------------
+iteration 221 : Accepted
+Trun: 27.3100
+WT: 4.4316
+W: 30.6000
+  ----------------------------------------
+Exception in thread "Elevator3" java.util.ConcurrentModificationException
+	at java.base/java.util.ArrayList$Itr.checkForComodification(ArrayList.java:1095)
+	at java.base/java.util.ArrayList$Itr.remove(ArrayList.java:1063)
+	at Elevator.getUpPassenger(Elevator.java:145)
+	at Elevator.strategy1(Elevator.java:233)
+	at Elevator.run(Elevator.java:126)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+iteration 222 : Validation Error: Passenger did not arrive : 13 on Floor B4, expected F5
+Passenger did not arrive : 14 on Floor B4, expected F5
+Passenger did not arrive : 15 on Floor B4, expected F5
+
+Trun: 28.2630
+WT: 4.1500
+W: 31.7000
+  ----------------------------------------
+iteration 223 : Accepted
+Trun: 28.2120
+WT: 4.1439
+W: 38.4000
+  ----------------------------------------
+iteration 224 : Accepted
+Trun: 20.0860
+WT: 3.4369
+W: 30.0000
+  ----------------------------------------
+iteration 225 : Accepted
+Trun: 33.0470
+WT: 4.6250
+W: 41.2000
+  ----------------------------------------
+iteration 226 : Accepted
+Trun: 27.0010
+WT: 3.6848
+W: 31.8000
+  ----------------------------------------
+iteration 227 : Accepted
+Trun: 29.2930
+WT: 4.8566
+W: 32.8000
+  ----------------------------------------
+iteration 228 : Accepted
+Trun: 29.3980
+WT: 2.9203
+W: 29.2000
+  ----------------------------------------
+iteration 229 : Accepted
+Trun: 30.1060
+WT: 3.5026
+W: 24.8000
+  ----------------------------------------
+iteration 230 : Accepted
+Trun: 28.5700
+WT: 4.2869
+W: 37.6000
+  ----------------------------------------
+iteration 231 : Accepted
+Trun: 25.1810
+WT: 4.6634
+W: 41.2000
+  ----------------------------------------
+iteration 232 : Accepted
+Trun: 28.1110
+WT: 3.5560
+W: 33.6000
+  ----------------------------------------
+iteration 233 : Accepted
+Trun: 25.4770
+WT: 3.2907
+W: 30.4000
+  ----------------------------------------
+iteration 234 : Accepted
+Trun: 34.2700
+WT: 5.0353
+W: 27.4000
+  ----------------------------------------
+iteration 235 : Accepted
+Trun: 28.5160
+WT: 3.1167
+W: 27.2000
+  ----------------------------------------
+iteration 236 : Accepted
+Trun: 31.0860
+WT: 4.3776
+W: 36.8000
+  ----------------------------------------
+iteration 237 : Accepted
+Trun: 28.6170
+WT: 3.2835
+W: 30.4000
+  ----------------------------------------
+iteration 238 : Accepted
+Trun: 25.3430
+WT: 3.6650
+W: 34.8000
+  ----------------------------------------
+iteration 239 : Accepted
+Trun: 28.1350
+WT: 2.6537
+W: 24.8000
+  ----------------------------------------
+iteration 240 : Accepted
+Trun: 24.4810
+WT: 3.7394
+W: 35.6000
+  ----------------------------------------
+iteration 241 : Accepted
+Trun: 28.4020
+WT: 3.4117
+W: 31.6000
+  ----------------------------------------
+iteration 242 : Accepted
+Trun: 24.3190
+WT: 4.3208
+W: 37.2000
+  ----------------------------------------
+iteration 243 : Accepted
+Trun: 23.3790
+WT: 3.1650
+W: 29.2000
+  ----------------------------------------
+iteration 244 : Accepted
+Trun: 25.0860
+WT: 3.3055
+W: 30.8000
+  ----------------------------------------
+iteration 245 : Accepted
+Trun: 22.6140
+WT: 4.6354
+W: 42.0000
+  ----------------------------------------
+iteration 246 : Accepted
+Trun: 19.4610
+WT: 2.6800
+W: 23.2000
+  ----------------------------------------
+iteration 247 : Accepted
+Trun: 27.9030
+WT: 3.7356
+W: 30.0000
+  ----------------------------------------
+iteration 248 : Accepted
+Trun: 30.6100
+WT: 3.6171
+W: 32.0000
+  ----------------------------------------
+iteration 249 : Accepted
+Trun: 28.3220
+WT: 4.7163
+W: 41.2000
+  ----------------------------------------
+iteration 250 : Accepted
+Trun: 25.9400
+WT: 4.3190
+W: 36.8000
+  ----------------------------------------
+iteration 251 : Accepted
+Trun: 30.3440
+WT: 3.1866
+W: 27.2000
+  ----------------------------------------
+iteration 252 : Accepted
+Trun: 32.6000
+WT: 4.4434
+W: 36.0000
+  ----------------------------------------
+iteration 253 : Accepted
+Trun: 30.3150
+WT: 4.5568
+W: 34.0000
+  ----------------------------------------
+iteration 254 : Accepted
+Trun: 27.1750
+WT: 2.8834
+W: 25.6000
+  ----------------------------------------
+iteration 255 : Accepted
+Trun: 22.5160
+WT: 3.6383
+W: 35.2000
+  ----------------------------------------
+iteration 256 : Accepted
+Trun: 29.3490
+WT: 4.5026
+W: 40.8000
+  ----------------------------------------
+iteration 257 : Accepted
+Trun: 31.0100
+WT: 4.6477
+W: 38.4000
+  ----------------------------------------
+iteration 258 : Accepted
+Trun: 26.8860
+WT: 2.9028
+W: 27.0000
+  ----------------------------------------
+iteration 259 : Accepted
+Trun: 26.7220
+WT: 3.5548
+W: 33.6000
+  ----------------------------------------
+iteration 260 : Accepted
+Trun: 27.2030
+WT: 3.9991
+W: 29.0000
+  ----------------------------------------
+iteration 261 : Accepted
+Trun: 31.2410
+WT: 3.3985
+W: 31.2000
+  ----------------------------------------
+iteration 262 : Accepted
+Trun: 27.0090
+WT: 3.1956
+W: 30.0000
+  ----------------------------------------
+iteration 263 : Accepted
+Trun: 28.7210
+WT: 4.3971
+W: 38.8000
+  ----------------------------------------
+iteration 264 : Accepted
+Trun: 28.5830
+WT: 3.7820
+W: 31.6000
+  ----------------------------------------
+iteration 265 : Accepted
+Trun: 31.0870
+WT: 4.4492
+W: 42.0000
+  ----------------------------------------
+iteration 266 : Accepted
+Trun: 25.3720
+WT: 3.5931
+W: 30.4000
+  ----------------------------------------
+iteration 267 : Accepted
+Trun: 24.5410
+WT: 3.7337
+W: 34.8000
+  ----------------------------------------
+iteration 268 : Accepted
+Trun: 21.0650
+WT: 2.8502
+W: 27.6000
+  ----------------------------------------
+iteration 269 : Accepted
+Trun: 25.9190
+WT: 4.4970
+W: 37.6000
+  ----------------------------------------
+iteration 270 : Accepted
+Trun: 29.2970
+WT: 3.9446
+W: 32.4000
+  ----------------------------------------
+iteration 271 : Accepted
+Trun: 26.7630
+WT: 3.5013
+W: 35.2000
+  ----------------------------------------
+iteration 272 : Accepted
+Trun: 29.1440
+WT: 3.7173
+W: 32.8000
+  ----------------------------------------
+iteration 273 : Accepted
+Trun: 28.1380
+WT: 4.2067
+W: 35.6000
+  ----------------------------------------
+iteration 274 : Accepted
+Trun: 25.6210
+WT: 2.1392
+W: 21.2000
+  ----------------------------------------
+iteration 275 : Accepted
+Trun: 29.9920
+WT: 3.8914
+W: 38.0000
+  ----------------------------------------
+iteration 276 : Accepted
+Trun: 25.2120
+WT: 4.1772
+W: 31.0000
+  ----------------------------------------
+iteration 277 : Accepted
+Trun: 29.1780
+WT: 5.0112
+W: 36.8000
+  ----------------------------------------
+Exception in thread "Elevator1" java.util.ConcurrentModificationException
+	at java.base/java.util.ArrayList$Itr.checkForComodification(ArrayList.java:1095)
+	at java.base/java.util.ArrayList$Itr.remove(ArrayList.java:1063)
+	at Elevator.getDownPassenger(Elevator.java:164)
+	at Elevator.strategy1(Elevator.java:237)
+	at Elevator.run(Elevator.java:126)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+iteration 278 : Validation Error: Passenger did not arrive : 10 on Floor F1, expected B2
+Passenger did not arrive : 11 on Floor F1, expected B2
+Passenger did not arrive : 12 on Floor F1, expected B2
+Passenger did not arrive : 13 on Floor F2, expected B3
+Passenger did not arrive : 14 on Floor F2, expected B3
+Passenger did not arrive : 15 on Floor F2, expected B3
+Passenger did not arrive : 25 on Floor B4, expected B1
+Passenger did not arrive : 26 on Floor B4, expected B1
+Passenger did not arrive : 27 on Floor B4, expected B1
+
+Trun: 28.1790
+WT: 2.8257
+W: 19.7000
+  ----------------------------------------
+iteration 279 : Accepted
+Trun: 28.1430
+WT: 3.8493
+W: 30.4000
+  ----------------------------------------
+iteration 280 : Accepted
+Trun: 22.3520
+WT: 2.7675
+W: 21.8000
+  ----------------------------------------
+iteration 281 : Accepted
+Trun: 23.5930
+WT: 2.7470
+W: 24.0000
+  ----------------------------------------
+iteration 282 : Accepted
+Trun: 30.3560
+WT: 5.4431
+W: 37.4000
+  ----------------------------------------
+iteration 283 : Accepted
+Trun: 25.1450
+WT: 3.3469
+W: 31.6000
+  ----------------------------------------
+iteration 284 : Accepted
+Trun: 24.8860
+WT: 2.8285
+W: 25.6000
+  ----------------------------------------
+iteration 285 : Accepted
+Trun: 19.1510
+WT: 4.3955
+W: 32.2000
+  ----------------------------------------
+iteration 286 : Accepted
+Trun: 26.0710
+WT: 3.6828
+W: 29.6000
+  ----------------------------------------
+iteration 287 : Accepted
+Trun: 21.6950
+WT: 4.6238
+W: 34.4000
+  ----------------------------------------
+Exception in thread "Elevator1" java.util.ConcurrentModificationException
+	at java.base/java.util.ArrayList$Itr.checkForComodification(ArrayList.java:1095)
+	at java.base/java.util.ArrayList$Itr.remove(ArrayList.java:1063)
+	at Elevator.getUpPassenger(Elevator.java:145)
+	at Elevator.strategy1(Elevator.java:233)
+	at Elevator.run(Elevator.java:126)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+iteration 288 : Validation Error: Passenger did not arrive : 4 on Floor F1, expected F2
+Passenger did not arrive : 5 on Floor F1, expected F2
+Passenger did not arrive : 6 on Floor F1, expected F2
+Passenger did not arrive : 13 on Floor F3, expected F4
+Passenger did not arrive : 14 on Floor F3, expected F4
+Passenger did not arrive : 15 on Floor F3, expected F4
+Passenger did not arrive : 16 on Floor F2, expected F4
+Passenger did not arrive : 17 on Floor F2, expected F4
+Passenger did not arrive : 18 on Floor F2, expected F4
+Passenger did not arrive : 25 on Floor B4, expected F2
+Passenger did not arrive : 26 on Floor B4, expected F2
+Passenger did not arrive : 27 on Floor B4, expected F2
+
+Trun: 19.5120
+WT: 1.8812
+W: 11.3000
+  ----------------------------------------
+iteration 289 : Accepted
+Trun: 31.1870
+WT: 4.5282
+W: 41.2000
+  ----------------------------------------
+iteration 290 : Accepted
+Trun: 29.2800
+WT: 3.7054
+W: 34.0000
+  ----------------------------------------
+iteration 291 : Accepted
+Trun: 26.8730
+WT: 3.5793
+W: 27.6000
+  ----------------------------------------
+iteration 292 : Accepted
+Trun: 23.4830
+WT: 3.2082
+W: 29.4000
+  ----------------------------------------
+iteration 293 : Accepted
+Trun: 28.9700
+WT: 3.5053
+W: 34.4000
+  ----------------------------------------
+iteration 294 : Accepted
+Trun: 28.5880
+WT: 3.2560
+W: 32.4000
+  ----------------------------------------
+iteration 295 : Accepted
+Trun: 27.0420
+WT: 3.9752
+W: 36.4000
+  ----------------------------------------
+iteration 296 : Accepted
+Trun: 27.8930
+WT: 3.6953
+W: 36.0000
+  ----------------------------------------
+iteration 297 : Accepted
+Trun: 27.2420
+WT: 3.8459
+W: 33.4000
+  ----------------------------------------
+iteration 298 : Accepted
+Trun: 27.5290
+WT: 4.0153
+W: 33.6000
+  ----------------------------------------
+iteration 299 : Accepted
+Trun: 28.4390
+WT: 4.0307
+W: 31.0000
+  ----------------------------------------
+iteration 300 : Accepted
+Trun: 27.7160
+WT: 3.5568
+W: 31.2000
+  ----------------------------------------
+iteration 301 : Accepted
+Trun: 25.2500
+WT: 3.0677
+W: 25.0000
+  ----------------------------------------
+iteration 302 : Accepted
+Trun: 27.0890
+WT: 3.5825
+W: 27.2000
+  ----------------------------------------
+iteration 303 : Accepted
+Trun: 31.1090
+WT: 4.7673
+W: 39.6000
+  ----------------------------------------
+iteration 304 : Accepted
+Trun: 22.3830
+WT: 2.5170
+W: 24.4000
+  ----------------------------------------
+iteration 305 : Accepted
+Trun: 26.2010
+WT: 3.1902
+W: 28.8000
+  ----------------------------------------
+iteration 306 : Accepted
+Trun: 27.2550
+WT: 3.0944
+W: 30.4000
+  ----------------------------------------
+Exception in thread "Elevator1" java.util.ConcurrentModificationException
+	at java.base/java.util.ArrayList$Itr.checkForComodification(ArrayList.java:1095)
+	at java.base/java.util.ArrayList$Itr.remove(ArrayList.java:1063)
+	at Elevator.getDownPassenger(Elevator.java:164)
+	at Elevator.strategy1(Elevator.java:237)
+	at Elevator.run(Elevator.java:126)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+iteration 307 : Validation Error: Passenger did not arrive : 4 on Floor F1, expected B2
+Passenger did not arrive : 5 on Floor F1, expected B2
+Passenger did not arrive : 6 on Floor F1, expected B2
+
+Trun: 23.3200
+WT: 3.6300
+W: 28.9000
+  ----------------------------------------
+iteration 308 : Accepted
+Trun: 27.9280
+WT: 3.4806
+W: 31.6000
+  ----------------------------------------
+iteration 309 : Accepted
+Trun: 27.3110
+WT: 3.9932
+W: 36.0000
+  ----------------------------------------
+Exception in thread "Elevator6" java.util.ConcurrentModificationException
+	at java.base/java.util.ArrayList$Itr.checkForComodification(ArrayList.java:1095)
+	at java.base/java.util.ArrayList$Itr.remove(ArrayList.java:1063)
+	at Elevator.getUpPassenger(Elevator.java:145)
+	at Elevator.strategy1(Elevator.java:233)
+	at Elevator.run(Elevator.java:126)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+iteration 310 : Validation Error: Passenger did not arrive : 10 on Floor F4, expected F6
+Passenger did not arrive : 11 on Floor F4, expected F6
+Passenger did not arrive : 12 on Floor F4, expected F6
+Passenger did not arrive : 22 on Floor F3, expected F7
+Passenger did not arrive : 23 on Floor F3, expected F7
+Passenger did not arrive : 24 on Floor F3, expected F7
+
+Trun: 30.9290
+WT: 2.9284
+W: 22.5000
+  ----------------------------------------
+iteration 311 : Accepted
+Trun: 27.6380
+WT: 2.0193
+W: 20.8000
+  ----------------------------------------
+iteration 312 : Accepted
+Trun: 27.5930
+WT: 2.6153
+W: 25.0000
+  ----------------------------------------
+iteration 313 : Accepted
+Trun: 26.7200
+WT: 5.0039
+W: 32.6000
+  ----------------------------------------
+iteration 314 : Accepted
+Trun: 33.2520
+WT: 4.5607
+W: 34.6000
+  ----------------------------------------
+iteration 315 : Accepted
+Trun: 19.3370
+WT: 3.1573
+W: 31.2000
+  ----------------------------------------
+iteration 316 : Accepted
+Trun: 22.4230
+WT: 3.4778
+W: 28.8000
+  ----------------------------------------
+iteration 317 : Accepted
+Trun: 28.2250
+WT: 3.8640
+W: 35.2000
+  ----------------------------------------
+iteration 318 : Accepted
+Trun: 25.3740
+WT: 3.1053
+W: 28.2000
+  ----------------------------------------
+iteration 319 : Accepted
+Trun: 27.5380
+WT: 3.2807
+W: 32.4000
+  ----------------------------------------
+iteration 320 : Accepted
+Trun: 26.6470
+WT: 3.4239
+W: 28.4000
+  ----------------------------------------
+iteration 321 : Accepted
+Trun: 26.0190
+WT: 4.4551
+W: 37.0000
+  ----------------------------------------
+iteration 322 : Accepted
+Trun: 32.5170
+WT: 4.8607
+W: 42.4000
+  ----------------------------------------
+iteration 323 : Accepted
+Trun: 30.5840
+WT: 4.1969
+W: 37.6000
+  ----------------------------------------
+iteration 324 : Accepted
+Trun: 27.9120
+WT: 4.2940
+W: 33.6000
+  ----------------------------------------
+iteration 325 : Accepted
+Trun: 25.6850
+WT: 5.6836
+W: 35.6000
+  ----------------------------------------
+iteration 326 : Accepted
+Trun: 30.3120
+WT: 3.1921
+W: 31.6000
+  ----------------------------------------
+iteration 327 : Accepted
+Trun: 29.4310
+WT: 4.2855
+W: 34.0000
+  ----------------------------------------
+iteration 328 : Accepted
+Trun: 30.6310
+WT: 3.9571
+W: 36.2000
+  ----------------------------------------
+iteration 329 : Accepted
+Trun: 30.0910
+WT: 3.2937
+W: 30.8000
+  ----------------------------------------
+iteration 330 : Accepted
+Trun: 27.3820
+WT: 3.1629
+W: 30.8000
+  ----------------------------------------
+Exception in thread "Elevator1" java.util.ConcurrentModificationException
+	at java.base/java.util.ArrayList$Itr.checkForComodification(ArrayList.java:1095)
+	at java.base/java.util.ArrayList$Itr.remove(ArrayList.java:1063)
+	at Elevator.getDownPassenger(Elevator.java:164)
+	at Elevator.strategy1(Elevator.java:237)
+	at Elevator.run(Elevator.java:126)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+iteration 331 : Validation Error: Passenger did not arrive : 25 on Floor F1, expected B3
+Passenger did not arrive : 26 on Floor F1, expected B3
+Passenger did not arrive : 27 on Floor F1, expected B3
+
+Trun: 26.2940
+WT: 5.3438
+W: 32.1000
+  ----------------------------------------
+iteration 332 : Accepted
+Trun: 30.9930
+WT: 4.2602
+W: 37.6000
+  ----------------------------------------
+iteration 333 : Accepted
+Trun: 26.7950
+WT: 3.7071
+W: 34.4000
+  ----------------------------------------
+iteration 334 : Accepted
+Trun: 27.3830
+WT: 3.7082
+W: 29.2000
+  ----------------------------------------
+iteration 335 : Accepted
+Trun: 27.0230
+WT: 3.3204
+W: 32.0000
+  ----------------------------------------
+iteration 336 : Accepted
+Trun: 27.3000
+WT: 3.0598
+W: 25.2000
+  ----------------------------------------
+iteration 337 : Accepted
+Trun: 30.0070
+WT: 3.3073
+W: 30.4000
+  ----------------------------------------
+iteration 338 : Accepted
+Trun: 31.2380
+WT: 4.6490
+W: 35.2000
+  ----------------------------------------
+iteration 339 : Accepted
+Trun: 30.0390
+WT: 3.7236
+W: 28.4000
+  ----------------------------------------
+iteration 340 : Accepted
+Trun: 30.0090
+WT: 2.5560
+W: 23.6000
+  ----------------------------------------
+iteration 341 : Accepted
+Trun: 28.5930
+WT: 4.4522
+W: 30.6000
+  ----------------------------------------
+iteration 342 : Accepted
+Trun: 28.4180
+WT: 2.9557
+W: 24.0000
+  ----------------------------------------
+iteration 343 : Accepted
+Trun: 23.9290
+WT: 2.9628
+W: 26.4000
+  ----------------------------------------
+iteration 344 : Accepted
+Trun: 28.0570
+WT: 3.4985
+W: 26.0000
+  ----------------------------------------
+iteration 345 : Accepted
+Trun: 28.4910
+WT: 3.2678
+W: 27.2000
+  ----------------------------------------
+iteration 346 : Accepted
+Trun: 28.2050
+WT: 4.1152
+W: 33.6000
+  ----------------------------------------
+iteration 347 : Accepted
+Trun: 24.0910
+WT: 3.4988
+W: 30.2000
+  ----------------------------------------
+iteration 348 : Accepted
+Trun: 28.1290
+WT: 2.9119
+W: 28.8000
+  ----------------------------------------
+iteration 349 : Accepted
+Trun: 30.7990
+WT: 3.6974
+W: 33.2000
+  ----------------------------------------
+iteration 350 : Accepted
+Trun: 28.1420
+WT: 5.0535
+W: 42.0000
+  ----------------------------------------
+iteration 351 : Accepted
+Trun: 23.5070
+WT: 2.6485
+W: 26.4000
+  ----------------------------------------
+iteration 352 : Accepted
+Trun: 26.4510
+WT: 3.0352
+W: 29.2000
+  ----------------------------------------
+iteration 353 : Accepted
+Trun: 28.1090
+WT: 3.3518
+W: 31.2000
+  ----------------------------------------
+iteration 354 : Accepted
+Trun: 29.5310
+WT: 3.5720
+W: 33.2000
+  ----------------------------------------
+iteration 355 : Accepted
+Trun: 27.4940
+WT: 4.3116
+W: 30.6000
+  ----------------------------------------
+iteration 356 : Accepted
+Trun: 23.7050
+WT: 3.6494
+W: 36.4000
+  ----------------------------------------
+iteration 357 : Accepted
+Trun: 30.3230
+WT: 2.9148
+W: 27.2000
+  ----------------------------------------
+iteration 358 : Accepted
+Trun: 24.7090
+WT: 4.2987
+W: 34.8000
+  ----------------------------------------
+iteration 359 : Accepted
+Trun: 31.5450
+WT: 3.5958
+W: 29.0000
+  ----------------------------------------
+iteration 360 : Accepted
+Trun: 28.9240
+WT: 3.6114
+W: 32.0000
+  ----------------------------------------
+iteration 361 : Accepted
+Trun: 31.2630
+WT: 2.6628
+W: 26.0000
+  ----------------------------------------
+iteration 362 : Accepted
+Trun: 29.6180
+WT: 3.8584
+W: 38.4000
+  ----------------------------------------
+iteration 363 : Accepted
+Trun: 32.7140
+WT: 3.7725
+W: 32.4000
+  ----------------------------------------
+iteration 364 : Accepted
+Trun: 28.3170
+WT: 4.7024
+W: 36.4000
+  ----------------------------------------
+iteration 365 : Accepted
+Trun: 25.3750
+WT: 2.9576
+W: 28.8000
+  ----------------------------------------
+iteration 366 : Accepted
+Trun: 23.9040
+WT: 3.9205
+W: 35.6000
+  ----------------------------------------
+iteration 367 : Accepted
+Trun: 28.8230
+WT: 3.8858
+W: 35.6000
+  ----------------------------------------
+iteration 368 : Accepted
+Trun: 31.3120
+WT: 3.4837
+W: 33.6000
+  ----------------------------------------
+iteration 369 : Accepted
+Trun: 27.0140
+WT: 3.6166
+W: 32.0000
+  ----------------------------------------
+iteration 370 : Accepted
+Trun: 25.8370
+WT: 3.7219
+W: 33.6000
+  ----------------------------------------
+iteration 371 : Accepted
+Trun: 24.4670
+WT: 3.1242
+W: 24.4000
+  ----------------------------------------
+iteration 372 : Accepted
+Trun: 25.2430
+WT: 3.7770
+W: 32.8000
+  ----------------------------------------
+iteration 373 : Accepted
+Trun: 27.6620
+WT: 3.1347
+W: 27.8000
+  ----------------------------------------
+iteration 374 : Accepted
+Trun: 29.8670
+WT: 4.0643
+W: 37.6000
+  ----------------------------------------
+iteration 375 : Accepted
+Trun: 31.3340
+WT: 4.6129
+W: 35.6000
+  ----------------------------------------
+iteration 376 : Accepted
+Trun: 25.4270
+WT: 4.9279
+W: 33.6000
+  ----------------------------------------
+iteration 377 : Accepted
+Trun: 32.2550
+WT: 4.8971
+W: 38.6000
+  ----------------------------------------
+iteration 378 : Accepted
+Trun: 28.3060
+WT: 5.3023
+W: 34.0000
+  ----------------------------------------
+iteration 379 : Accepted
+Trun: 25.6610
+WT: 4.4402
+W: 37.6000
+  ----------------------------------------
+iteration 380 : Accepted
+Trun: 27.4080
+WT: 4.5450
+W: 36.8000
+  ----------------------------------------
+iteration 381 : Accepted
+Trun: 26.1630
+WT: 3.2364
+W: 31.6000
+  ----------------------------------------
+iteration 382 : Accepted
+Trun: 23.0930
+WT: 4.6270
+W: 42.8000
+  ----------------------------------------
+iteration 383 : Accepted
+Trun: 31.0020
+WT: 3.8154
+W: 36.0000
+  ----------------------------------------
+iteration 384 : Accepted
+Trun: 25.5680
+WT: 2.8058
+W: 24.4000
+  ----------------------------------------
+iteration 385 : Accepted
+Trun: 25.1280
+WT: 4.1623
+W: 32.8000
+  ----------------------------------------
+iteration 386 : Accepted
+Trun: 24.1800
+WT: 4.0403
+W: 32.8000
+  ----------------------------------------
+iteration 387 : Accepted
+Trun: 28.0310
+WT: 3.7023
+W: 33.6000
+  ----------------------------------------
+iteration 388 : Accepted
+Trun: 30.4090
+WT: 4.2482
+W: 34.4000
+  ----------------------------------------
+iteration 389 : Accepted
+Trun: 27.9850
+WT: 3.5719
+W: 30.8000
+  ----------------------------------------
+iteration 390 : Accepted
+Trun: 30.0070
+WT: 3.4180
+W: 27.6000
+  ----------------------------------------
+iteration 391 : Accepted
+Trun: 26.1790
+WT: 2.7411
+W: 24.2000
+  ----------------------------------------
+iteration 392 : Accepted
+Trun: 30.1570
+WT: 3.4739
+W: 32.0000
+  ----------------------------------------
+iteration 393 : Accepted
+Trun: 25.5180
+WT: 3.1684
+W: 30.8000
+  ----------------------------------------
+iteration 394 : Accepted
+Trun: 28.6600
+WT: 4.6506
+W: 36.4000
+  ----------------------------------------
+iteration 395 : Accepted
+Trun: 24.8890
+WT: 3.5831
+W: 34.8000
+  ----------------------------------------
+iteration 396 : Accepted
+Trun: 26.2630
+WT: 3.8710
+W: 34.0000
+  ----------------------------------------
+iteration 397 : Accepted
+Trun: 28.5750
+WT: 3.2175
+W: 31.6000
+  ----------------------------------------
+iteration 398 : Accepted
+Trun: 20.6390
+WT: 4.6976
+W: 35.6000
+  ----------------------------------------
+iteration 399 : Accepted
+Trun: 29.6350
+WT: 4.2448
+W: 39.6000
+  ----------------------------------------
+iteration 400 : Accepted
+Trun: 27.5630
+WT: 3.5990
+W: 31.2000
+  ----------------------------------------
+iteration 401 : Accepted
+Trun: 27.3820
+WT: 3.5442
+W: 35.6000
+  ----------------------------------------
+iteration 402 : Accepted
+Trun: 26.2850
+WT: 3.4917
+W: 27.0000
+  ----------------------------------------
+iteration 403 : Accepted
+Trun: 21.4510
+WT: 3.9851
+W: 32.4000
+  ----------------------------------------
+iteration 404 : Accepted
+Trun: 22.4080
+WT: 2.8301
+W: 25.2000
+  ----------------------------------------
+iteration 405 : Accepted
+Trun: 26.2580
+WT: 3.2843
+W: 32.4000
+  ----------------------------------------
+iteration 406 : Accepted
+Trun: 25.8230
+WT: 3.3972
+W: 29.2000
+  ----------------------------------------
+iteration 407 : Accepted
+Trun: 26.8410
+WT: 3.7350
+W: 31.6000
+  ----------------------------------------
+iteration 408 : Accepted
+Trun: 21.1770
+WT: 3.8577
+W: 28.0000
+  ----------------------------------------
+iteration 409 : Accepted
+Trun: 24.3210
+WT: 2.2210
+W: 20.4000
+  ----------------------------------------
+iteration 410 : Accepted
+Trun: 29.2250
+WT: 3.8996
+W: 27.6000
+  ----------------------------------------
+iteration 411 : Accepted
+Trun: 27.8420
+WT: 3.5006
+W: 34.0000
+  ----------------------------------------
+iteration 412 : Accepted
+Trun: 25.9280
+WT: 3.7894
+W: 34.0000
+  ----------------------------------------
+iteration 413 : Accepted
+Trun: 28.3270
+WT: 3.4414
+W: 33.6000
+  ----------------------------------------
+iteration 414 : Accepted
+Trun: 26.5010
+WT: 3.0419
+W: 24.8000
+  ----------------------------------------
+Exception in thread "Elevator2" java.util.ConcurrentModificationException
+	at java.base/java.util.ArrayList$Itr.checkForComodification(ArrayList.java:1095)
+	at java.base/java.util.ArrayList$Itr.remove(ArrayList.java:1063)
+	at Elevator.getDownPassenger(Elevator.java:164)
+	at Elevator.strategy1(Elevator.java:237)
+	at Elevator.run(Elevator.java:126)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+iteration 415 : Validation Error: Passenger did not arrive : 7 on Floor F1, expected B1
+Passenger did not arrive : 8 on Floor F1, expected B1
+Passenger did not arrive : 9 on Floor F1, expected B1
+Passenger did not arrive : 22 on Floor F3, expected F7
+Passenger did not arrive : 23 on Floor F3, expected F7
+Passenger did not arrive : 24 on Floor F3, expected F7
+Passenger did not arrive : 25 on Floor F7, expected B1
+Passenger did not arrive : 26 on Floor F7, expected B1
+Passenger did not arrive : 27 on Floor F7, expected B1
+
+Trun: 23.8330
+WT: 3.2370
+W: 22.5000
+  ----------------------------------------
+iteration 416 : Accepted
+Trun: 27.4550
+WT: 3.0675
+W: 25.6000
+  ----------------------------------------
+iteration 417 : Accepted
+Trun: 27.2220
+WT: 4.2541
+W: 38.8000
+  ----------------------------------------
+iteration 418 : Accepted
+Trun: 29.6650
+WT: 5.3924
+W: 25.2000
+  ----------------------------------------
+iteration 419 : Accepted
+Trun: 28.9350
+WT: 3.7335
+W: 33.6000
+  ----------------------------------------
+iteration 420 : Accepted
+Trun: 29.1440
+WT: 3.8179
+W: 34.4000
+  ----------------------------------------
+iteration 421 : Accepted
+Trun: 29.7200
+WT: 2.7561
+W: 27.2000
+  ----------------------------------------
+iteration 422 : Accepted
+Trun: 30.5250
+WT: 4.2719
+W: 36.0000
+  ----------------------------------------
+iteration 423 : Accepted
+Trun: 25.8170
+WT: 2.6209
+W: 25.2000
+  ----------------------------------------
+iteration 424 : Accepted
+Trun: 29.2510
+WT: 4.1142
+W: 33.6000
+  ----------------------------------------
+iteration 425 : Accepted
+Trun: 25.9390
+WT: 3.4132
+W: 32.8000
+  ----------------------------------------
+iteration 426 : Accepted
+Trun: 28.2400
+WT: 3.2409
+W: 30.0000
+  ----------------------------------------
+iteration 427 : Accepted
+Trun: 27.8020
+WT: 3.6633
+W: 34.0000
+  ----------------------------------------
+iteration 428 : Accepted
+Trun: 28.4480
+WT: 4.0940
+W: 34.4000
+  ----------------------------------------
+iteration 429 : Accepted
+Trun: 22.5960
+WT: 3.8590
+W: 36.0000
+  ----------------------------------------
+iteration 430 : Accepted
+Trun: 26.6780
+WT: 4.2825
+W: 36.0000
+  ----------------------------------------
+iteration 431 : Accepted
+Trun: 28.1610
+WT: 3.3857
+W: 31.2000
+  ----------------------------------------
+iteration 432 : Accepted
+Trun: 25.6100
+WT: 4.1969
+W: 34.4000
+  ----------------------------------------
+iteration 433 : Accepted
+Trun: 29.5850
+WT: 4.4557
+W: 31.8000
+  ----------------------------------------
+iteration 434 : Accepted
+Trun: 24.2630
+WT: 3.2781
+W: 33.2000
+  ----------------------------------------
+iteration 435 : Accepted
+Trun: 26.9440
+WT: 3.4224
+W: 32.0000
+  ----------------------------------------
+Exception in thread "Elevator1" java.util.ConcurrentModificationException
+	at java.base/java.util.ArrayList$Itr.checkForComodification(ArrayList.java:1095)
+	at java.base/java.util.ArrayList$Itr.remove(ArrayList.java:1063)
+	at Elevator.getUpPassenger(Elevator.java:145)
+	at Elevator.strategy1(Elevator.java:233)
+	at Elevator.run(Elevator.java:126)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+iteration 436 : Validation Error: Passenger did not arrive : 13 on Floor F1, expected F6
+Passenger did not arrive : 14 on Floor F1, expected F6
+Passenger did not arrive : 15 on Floor F1, expected F6
+Passenger did not arrive : 16 on Floor F6, expected F1
+Passenger did not arrive : 17 on Floor F6, expected F1
+Passenger did not arrive : 18 on Floor F6, expected F1
+
+Trun: 26.3220
+WT: 3.0485
+W: 20.1000
+  ----------------------------------------
+iteration 437 : Accepted
+Trun: 28.2090
+WT: 3.1042
+W: 28.0000
+  ----------------------------------------
+iteration 438 : Accepted
+Trun: 31.3760
+WT: 3.4970
+W: 30.0000
+  ----------------------------------------
+iteration 439 : Accepted
+Trun: 28.1530
+WT: 2.9771
+W: 27.2000
+  ----------------------------------------
+iteration 440 : Accepted
+Trun: 28.8250
+WT: 4.2973
+W: 29.6000
+  ----------------------------------------
+iteration 441 : Accepted
+Trun: 27.6550
+WT: 3.7389
+W: 35.2000
+  ----------------------------------------
+iteration 442 : Accepted
+Trun: 31.3290
+WT: 5.6445
+W: 35.6000
+  ----------------------------------------
+iteration 443 : Accepted
+Trun: 24.6950
+WT: 2.1388
+W: 18.4000
+  ----------------------------------------
+iteration 444 : Accepted
+Trun: 28.8560
+WT: 3.5649
+W: 34.8000
+  ----------------------------------------
+iteration 445 : Accepted
+Trun: 26.4320
+WT: 3.5627
+W: 33.6000
+  ----------------------------------------
+iteration 446 : Accepted
+Trun: 28.3860
+WT: 3.7188
+W: 36.0000
+  ----------------------------------------
+iteration 447 : Accepted
+Trun: 27.5750
+WT: 2.7063
+W: 20.6000
+  ----------------------------------------
+iteration 448 : Accepted
+Trun: 27.0230
+WT: 4.8097
+W: 27.8000
+  ----------------------------------------
+iteration 449 : Accepted
+Trun: 27.3500
+WT: 3.4045
+W: 30.8000
+  ----------------------------------------
+iteration 450 : Accepted
+Trun: 27.0890
+WT: 3.2406
+W: 25.2000
+  ----------------------------------------
+iteration 451 : Accepted
+Trun: 29.7430
+WT: 2.7977
+W: 26.8000
+  ----------------------------------------
+iteration 452 : Accepted
+Trun: 26.4310
+WT: 3.9315
+W: 38.4000
+  ----------------------------------------
+iteration 453 : Accepted
+Trun: 28.2980
+WT: 3.5151
+W: 31.6000
+  ----------------------------------------
+iteration 454 : Accepted
+Trun: 26.1300
+WT: 4.6890
+W: 32.0000
+  ----------------------------------------
+iteration 455 : Accepted
+Trun: 27.5770
+WT: 3.1020
+W: 27.4000
+  ----------------------------------------
+iteration 456 : Accepted
+Trun: 22.5450
+WT: 3.1667
+W: 28.2000
+  ----------------------------------------
+iteration 457 : Accepted
+Trun: 20.8670
+WT: 3.6402
+W: 27.0000
+  ----------------------------------------
+iteration 458 : Accepted
+Trun: 29.6270
+WT: 4.7614
+W: 33.6000
+  ----------------------------------------
+iteration 459 : Accepted
+Trun: 26.1850
+WT: 2.7206
+W: 26.0000
+  ----------------------------------------
+iteration 460 : Accepted
+Trun: 30.2800
+WT: 3.6471
+W: 28.0000
+  ----------------------------------------
+iteration 461 : Accepted
+Trun: 26.8660
+WT: 3.9322
+W: 33.4000
+  ----------------------------------------
+iteration 462 : Accepted
+Trun: 29.1310
+WT: 5.0136
+W: 38.4000
+  ----------------------------------------
+iteration 463 : Accepted
+Trun: 29.6120
+WT: 3.9131
+W: 30.8000
+  ----------------------------------------
+iteration 464 : Accepted
+Trun: 22.4670
+WT: 2.6885
+W: 26.0000
+  ----------------------------------------
+iteration 465 : Accepted
+Trun: 31.0060
+WT: 3.5138
+W: 32.0000
+  ----------------------------------------
+iteration 466 : Accepted
+Trun: 24.7370
+WT: 3.1212
+W: 30.8000
+  ----------------------------------------
+iteration 467 : Accepted
+Trun: 30.2120
+WT: 3.7727
+W: 37.6000
+  ----------------------------------------
+iteration 468 : Accepted
+Trun: 25.6410
+WT: 4.2388
+W: 36.6000
+  ----------------------------------------
+iteration 469 : Accepted
+Trun: 30.7880
+WT: 3.8533
+W: 29.6000
+  ----------------------------------------
+iteration 470 : Accepted
+Trun: 31.6260
+WT: 4.3142
+W: 28.8000
+  ----------------------------------------
+iteration 471 : Accepted
+Trun: 29.7040
+WT: 3.6462
+W: 32.8000
+  ----------------------------------------
+iteration 472 : Accepted
+Trun: 27.6750
+WT: 2.8757
+W: 27.2000
+  ----------------------------------------
+iteration 473 : Accepted
+Trun: 29.1020
+WT: 2.9245
+W: 29.2000
+  ----------------------------------------
+iteration 474 : Accepted
+Trun: 28.4100
+WT: 4.6538
+W: 40.4000
+  ----------------------------------------
+iteration 475 : Accepted
+Trun: 24.0080
+WT: 3.6106
+W: 31.2000
+  ----------------------------------------
+iteration 476 : Accepted
+Trun: 27.6780
+WT: 2.9414
+W: 29.6000
+  ----------------------------------------
+iteration 477 : Accepted
+Trun: 31.9930
+WT: 4.1846
+W: 37.6000
+  ----------------------------------------
+iteration 478 : Accepted
+Trun: 22.4770
+WT: 3.5554
+W: 32.4000
+  ----------------------------------------
+iteration 479 : Accepted
+Trun: 31.1160
+WT: 4.0706
+W: 35.2000
+  ----------------------------------------
+iteration 480 : Accepted
+Trun: 26.8060
+WT: 3.1912
+W: 27.8000
+  ----------------------------------------
+iteration 481 : Accepted
+Trun: 27.5630
+WT: 3.4832
+W: 30.8000
+  ----------------------------------------
+iteration 482 : Accepted
+Trun: 29.3140
+WT: 3.6880
+W: 32.8000
+  ----------------------------------------
+iteration 483 : Accepted
+Trun: 31.5110
+WT: 3.9670
+W: 34.0000
+  ----------------------------------------
+iteration 484 : Accepted
+Trun: 24.8370
+WT: 3.0634
+W: 22.4000
+  ----------------------------------------
+iteration 485 : Accepted
+Trun: 29.3060
+WT: 3.1850
+W: 30.8000
+  ----------------------------------------
+iteration 486 : Accepted
+Trun: 27.2640
+WT: 5.2972
+W: 34.2000
+  ----------------------------------------
+iteration 487 : Accepted
+Trun: 26.6040
+WT: 4.8474
+W: 29.0000
+  ----------------------------------------
+iteration 488 : Accepted
+Trun: 25.7120
+WT: 3.4985
+W: 31.8000
+  ----------------------------------------
+iteration 489 : Accepted
+Trun: 27.9640
+WT: 3.0641
+W: 28.0000
+  ----------------------------------------
+iteration 490 : Accepted
+Trun: 33.7940
+WT: 5.1757
+W: 35.6000
+  ----------------------------------------
+iteration 491 : Accepted
+Trun: 21.8630
+WT: 5.8248
+W: 27.4000
+  ----------------------------------------
+iteration 492 : Accepted
+Trun: 35.6850
+WT: 4.4697
+W: 38.4000
+  ----------------------------------------
+iteration 493 : Accepted
+Trun: 32.2730
+WT: 3.6052
+W: 32.4000
+  ----------------------------------------
+iteration 494 : Accepted
+Trun: 25.1600
+WT: 3.3014
+W: 26.4000
+  ----------------------------------------
+iteration 495 : Accepted
+Trun: 26.3870
+WT: 5.0528
+W: 34.8000
+  ----------------------------------------
+iteration 496 : Accepted
+Trun: 25.4160
+WT: 4.2139
+W: 38.8000
+  ----------------------------------------
+iteration 497 : Accepted
+Trun: 27.0260
+WT: 3.3297
+W: 25.4000
+  ----------------------------------------
+iteration 498 : Accepted
+Trun: 27.2770
+WT: 3.7048
+W: 30.8000
+  ----------------------------------------
+iteration 499 : Accepted
+Trun: 29.3790
+WT: 3.4784
+W: 30.4000
+  ----------------------------------------
+iteration 500 : Accepted
+Trun: 25.8120
+WT: 2.7217
+W: 26.4000
+  ----------------------------------------
+iteration 501 : Accepted
+Trun: 29.4370
+WT: 3.1202
+W: 30.8000
+  ----------------------------------------
+iteration 502 : Accepted
+Trun: 28.7270
+WT: 4.2067
+W: 40.4000
+  ----------------------------------------
+iteration 503 : Accepted
+Trun: 29.0030
+WT: 2.4797
+W: 22.8000
+  ----------------------------------------
+iteration 504 : Accepted
+Trun: 27.4670
+WT: 4.0317
+W: 27.4000
+  ----------------------------------------
+iteration 505 : Accepted
+Trun: 22.6980
+WT: 4.1875
+W: 35.2000
+  ----------------------------------------
+iteration 506 : Accepted
+Trun: 31.4450
+WT: 3.7897
+W: 36.8000
+  ----------------------------------------
+iteration 507 : Accepted
+Trun: 31.5910
+WT: 4.2903
+W: 33.2000
+  ----------------------------------------
+iteration 508 : Accepted
+Trun: 22.3220
+WT: 3.6464
+W: 29.4000
+  ----------------------------------------
+iteration 509 : Accepted
+Trun: 26.1730
+WT: 3.7646
+W: 37.2000
+  ----------------------------------------
+iteration 510 : Accepted
+Trun: 30.3800
+WT: 3.9867
+W: 32.4000
+  ----------------------------------------
+iteration 511 : Accepted
+Trun: 26.2540
+WT: 4.4444
+W: 34.2000
+  ----------------------------------------
+iteration 512 : Accepted
+Trun: 25.6520
+WT: 3.2734
+W: 31.6000
+  ----------------------------------------
+iteration 513 : Accepted
+Trun: 24.1980
+WT: 3.0478
+W: 29.2000
+  ----------------------------------------
+iteration 514 : Accepted
+Trun: 26.3090
+WT: 4.0635
+W: 38.8000
+  ----------------------------------------
+iteration 515 : Accepted
+Trun: 26.9830
+WT: 3.4738
+W: 28.0000
+  ----------------------------------------
+iteration 516 : Accepted
+Trun: 23.8360
+WT: 4.6607
+W: 33.8000
+  ----------------------------------------
+iteration 517 : Accepted
+Trun: 30.0050
+WT: 2.8764
+W: 27.6000
+  ----------------------------------------
+iteration 518 : Accepted
+Trun: 24.4760
+WT: 3.4381
+W: 30.8000
+  ----------------------------------------
+iteration 519 : Accepted
+Trun: 27.6450
+WT: 3.2503
+W: 28.4000
+  ----------------------------------------
+iteration 520 : Accepted
+Trun: 22.0340
+WT: 2.9609
+W: 26.0000
+  ----------------------------------------
+iteration 521 : Accepted
+Trun: 19.5890
+WT: 3.2159
+W: 30.8000
+  ----------------------------------------
+iteration 522 : Accepted
+Trun: 26.7960
+WT: 3.0733
+W: 28.0000
+  ----------------------------------------
+iteration 523 : Accepted
+Trun: 30.1910
+WT: 2.0300
+W: 20.4000
+  ----------------------------------------
+iteration 524 : Accepted
+Trun: 22.9110
+WT: 3.4564
+W: 29.6000
+  ----------------------------------------
+iteration 525 : Accepted
+Trun: 24.9720
+WT: 3.8067
+W: 28.4000
+  ----------------------------------------
+iteration 526 : Accepted
+Trun: 29.9550
+WT: 3.6060
+W: 34.4000
+  ----------------------------------------
+iteration 527 : Accepted
+Trun: 22.1010
+WT: 3.6301
+W: 29.6000
+  ----------------------------------------
+iteration 528 : Accepted
+Trun: 30.2770
+WT: 3.6432
+W: 29.2000
+  ----------------------------------------
+iteration 529 : Accepted
+Trun: 29.9000
+WT: 4.4123
+W: 29.2000
+  ----------------------------------------
+iteration 530 : Accepted
+Trun: 28.6370
+WT: 3.5863
+W: 31.2000
+  ----------------------------------------
+iteration 531 : Accepted
+Trun: 29.2730
+WT: 6.1546
+W: 45.6000
+  ----------------------------------------
+iteration 532 : Accepted
+Trun: 28.0660
+WT: 2.5097
+W: 24.0000
+  ----------------------------------------
+iteration 533 : Accepted
+Trun: 27.8430
+WT: 3.7631
+W: 35.2000
+  ----------------------------------------
+iteration 534 : Accepted
+Trun: 25.0970
+WT: 3.5096
+W: 30.4000
+  ----------------------------------------
+iteration 535 : Accepted
+Trun: 29.6410
+WT: 3.6485
+W: 34.8000
+  ----------------------------------------
+iteration 536 : Accepted
+Trun: 27.7490
+WT: 3.6753
+W: 33.2000
+  ----------------------------------------
+iteration 537 : Accepted
+Trun: 26.0100
+WT: 3.5417
+W: 25.8000
+  ----------------------------------------
+iteration 538 : Accepted
+Trun: 24.7650
+WT: 3.3202
+W: 30.4000
+  ----------------------------------------
+iteration 539 : Accepted
+Trun: 27.4760
+WT: 4.3478
+W: 39.6000
+  ----------------------------------------
+iteration 540 : Accepted
+Trun: 32.5190
+WT: 3.8281
+W: 32.8000
+  ----------------------------------------
+iteration 541 : Accepted
+Trun: 27.0720
+WT: 2.5743
+W: 22.2000
+  ----------------------------------------
+iteration 542 : Accepted
+Trun: 24.4460
+WT: 4.0202
+W: 32.4000
+  ----------------------------------------
+iteration 543 : Accepted
+Trun: 23.4920
+WT: 3.3729
+W: 30.0000
+  ----------------------------------------
+iteration 544 : Accepted
+Trun: 28.0030
+WT: 3.1319
+W: 28.8000
+  ----------------------------------------

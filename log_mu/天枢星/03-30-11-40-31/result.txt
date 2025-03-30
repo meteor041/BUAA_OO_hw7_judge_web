@@ -1,0 +1,38 @@
+Exception in thread "Thread-7" java.util.ConcurrentModificationException
+	at java.base/java.util.HashMap$HashIterator.nextNode(HashMap.java:1605)
+	at java.base/java.util.HashMap$KeyIterator.next(HashMap.java:1628)
+	at Elevator.openandclose(Elevator.java:99)
+	at Elevator.run(Elevator.java:53)
+iteration 5 : Validation Error: Passenger did not arrive : 1 on Floor F1, expected F6
+Passenger did not arrive : 2 on Floor F1, expected F6
+Passenger did not arrive : 3 on Floor F1, expected F6
+Passenger did not arrive : 4 on Floor F1, expected F6
+Passenger did not arrive : 5 on Floor F1, expected F6
+Passenger did not arrive : 6 on Floor F1, expected F6
+Passenger did not arrive : 7 on Floor F1, expected F6
+Passenger did not arrive : 8 on Floor F6, expected F3
+Passenger did not arrive : 9 on Floor F6, expected F3
+Passenger did not arrive : 10 on Floor F6, expected F3
+Passenger did not arrive : 11 on Floor F6, expected F3
+Passenger did not arrive : 12 on Floor F6, expected F3
+Passenger did not arrive : 13 on Floor F6, expected F3
+Passenger did not arrive : 14 on Floor F6, expected F3
+Passenger did not arrive : 50 on Floor F3, expected B3
+Passenger did not arrive : 51 on Floor F3, expected B3
+Passenger did not arrive : 52 on Floor F3, expected B3
+Passenger did not arrive : 53 on Floor F3, expected B3
+Passenger did not arrive : 54 on Floor F3, expected B3
+Passenger did not arrive : 55 on Floor F3, expected B3
+Passenger did not arrive : 56 on Floor F3, expected B3
+Passenger did not arrive : 64 on Floor F6, expected B4
+Passenger did not arrive : 65 on Floor F6, expected B4
+Passenger did not arrive : 66 on Floor F6, expected B4
+Passenger did not arrive : 67 on Floor F6, expected B4
+Passenger did not arrive : 68 on Floor F6, expected B4
+Passenger did not arrive : 69 on Floor F6, expected B4
+Passenger did not arrive : 70 on Floor F6, expected B4
+
+Trun: 23.5270
+WT: 8.4716
+W: 42.9000
+  ----------------------------------------

@@ -1,0 +1,3 @@
+Debug output from compare.py
+Arguments: ['judge/compare.py', 'log/天权星/03-30-14-51-05/result.txt', 'log/天枢星/03-30-14-51-05/result.txt', 'log/天玑星/03-30-14-51-05/result.txt', 'log/天璇星/03-30-14-51-05/result.txt', 'log/开阳星/03-30-14-51-05/result.txt', 'log/摇光星/03-30-14-51-05/result.txt', 'log/洞明星/03-30-14-51-05/result.txt', 'log/玉衡星/03-30-14-51-05/result.txt']
+Using input files: ['log/天权星/03-30-14-51-05/result.txt', 'log/天枢星/03-30-14-51-05/result.txt', 'log/天玑星/03-30-14-51-05/result.txt', 'log/天璇星/03-30-14-51-05/result.txt', 'log/开阳星/03-30-14-51-05/result.txt', 'log/摇光星/03-30-14-51-05/result.txt', 'log/洞明星/03-30-14-51-05/result.txt', 'log/玉衡星/03-30-14-51-05/result.txt']

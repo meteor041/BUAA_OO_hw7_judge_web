@@ -1,0 +1,68 @@
+iteration 1 : Validation Error: Passenger did not arrive : 8 on Floor F2, expected B2
+Passenger did not arrive : 9 on Floor F2, expected B2
+Passenger did not arrive : 10 on Floor F2, expected B2
+Passenger did not arrive : 11 on Floor F2, expected B2
+Passenger did not arrive : 12 on Floor F2, expected B2
+Passenger did not arrive : 13 on Floor F2, expected B2
+Passenger did not arrive : 14 on Floor F2, expected B2
+Passenger did not arrive : 15 on Floor F7, expected B3
+Passenger did not arrive : 16 on Floor F7, expected B3
+Passenger did not arrive : 17 on Floor F7, expected B3
+Passenger did not arrive : 18 on Floor F7, expected B3
+Passenger did not arrive : 19 on Floor F7, expected B3
+Passenger did not arrive : 20 on Floor F7, expected B3
+Passenger did not arrive : 21 on Floor F7, expected B3
+Passenger did not arrive : 22 on Floor F6, expected F3
+Passenger did not arrive : 23 on Floor F6, expected F3
+Passenger did not arrive : 24 on Floor F6, expected F3
+Passenger did not arrive : 25 on Floor F6, expected F3
+Passenger did not arrive : 26 on Floor F6, expected F3
+Passenger did not arrive : 27 on Floor F6, expected F3
+Passenger did not arrive : 28 on Floor F6, expected F3
+Passenger did not arrive : 29 on Floor F2, expected B4
+Passenger did not arrive : 30 on Floor F2, expected B4
+Passenger did not arrive : 31 on Floor F2, expected B4
+Passenger did not arrive : 32 on Floor F2, expected B4
+Passenger did not arrive : 33 on Floor F2, expected B4
+Passenger did not arrive : 34 on Floor F2, expected B4
+Passenger did not arrive : 35 on Floor F2, expected B4
+Passenger did not arrive : 36 on Floor F7, expected F4
+Passenger did not arrive : 37 on Floor F7, expected F4
+Passenger did not arrive : 38 on Floor F7, expected F4
+Passenger did not arrive : 39 on Floor F7, expected F4
+Passenger did not arrive : 40 on Floor F7, expected F4
+Passenger did not arrive : 41 on Floor F7, expected F4
+Passenger did not arrive : 42 on Floor F7, expected F4
+Passenger did not arrive : 43 on Floor F7, expected F2
+Passenger did not arrive : 44 on Floor F7, expected F2
+Passenger did not arrive : 45 on Floor F7, expected F2
+Passenger did not arrive : 46 on Floor F7, expected F2
+Passenger did not arrive : 47 on Floor F7, expected F2
+Passenger did not arrive : 48 on Floor F7, expected F2
+Passenger did not arrive : 49 on Floor F7, expected F2
+Passenger did not arrive : 50 on Floor F5, expected B4
+Passenger did not arrive : 51 on Floor F5, expected B4
+Passenger did not arrive : 52 on Floor F5, expected B4
+Passenger did not arrive : 53 on Floor F5, expected B4
+Passenger did not arrive : 54 on Floor F5, expected B4
+Passenger did not arrive : 55 on Floor F5, expected B4
+Passenger did not arrive : 56 on Floor F5, expected B4
+Passenger did not arrive : 57 on Floor F2, expected F6
+Passenger did not arrive : 58 on Floor F2, expected F6
+Passenger did not arrive : 59 on Floor F2, expected F6
+Passenger did not arrive : 60 on Floor F2, expected F6
+Passenger did not arrive : 61 on Floor F2, expected F6
+Passenger did not arrive : 62 on Floor F2, expected F6
+Passenger did not arrive : 63 on Floor F2, expected F6
+Passenger did not arrive : 64 on Floor F3, expected F5
+Passenger did not arrive : 65 on Floor F3, expected F5
+Passenger did not arrive : 66 on Floor F3, expected F5
+Passenger did not arrive : 67 on Floor F3, expected F5
+Passenger did not arrive : 68 on Floor F3, expected F5
+Passenger did not arrive : 69 on Floor F3, expected F5
+Passenger did not arrive : 70 on Floor F3, expected F5
+
+Trun: 79.5770
+WT: 2.3966
+W: 469.6000
+  ----------------------------------------

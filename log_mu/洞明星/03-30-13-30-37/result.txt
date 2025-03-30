@@ -1,0 +1,38 @@
+Exception in thread "Thread-2" java.util.ConcurrentModificationException
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1714)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:682)
+	at Elevator.addPickups(Elevator.java:205)
+	at Elevator.handleCurrentFloor(Elevator.java:183)
+	at Elevator.determineNextAction(Elevator.java:141)
+	at Elevator.run(Elevator.java:113)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+iteration 1 : Validation Error: Passenger did not arrive : 8 on Floor B1, expected F5
+Passenger did not arrive : 9 on Floor B1, expected F5
+Passenger did not arrive : 10 on Floor B1, expected F5
+Passenger did not arrive : 11 on Floor B1, expected F5
+Passenger did not arrive : 12 on Floor B1, expected F5
+Passenger did not arrive : 13 on Floor B1, expected F5
+Passenger did not arrive : 14 on Floor B1, expected F5
+Passenger did not arrive : 36 on Floor F6, expected F3
+Passenger did not arrive : 37 on Floor F6, expected F3
+Passenger did not arrive : 38 on Floor F6, expected F3
+Passenger did not arrive : 39 on Floor F6, expected F3
+Passenger did not arrive : 40 on Floor F6, expected F3
+Passenger did not arrive : 41 on Floor F6, expected F3
+Passenger did not arrive : 42 on Floor F6, expected F3
+Passenger did not arrive : 50 on Floor B3, expected F4
+Passenger did not arrive : 51 on Floor B3, expected F4
+Passenger did not arrive : 52 on Floor B3, expected F4
+Passenger did not arrive : 53 on Floor B3, expected F4
+Passenger did not arrive : 54 on Floor B3, expected F4
+Passenger did not arrive : 55 on Floor B3, expected F4
+Passenger did not arrive : 56 on Floor B3, expected F4
+
+Trun: 15.4650
+WT: 3.9867
+W: 33.8000
+  ----------------------------------------

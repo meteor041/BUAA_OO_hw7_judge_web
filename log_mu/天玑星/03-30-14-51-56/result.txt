@@ -1,0 +1,57 @@
+iteration 1 : Accepted
+Trun: 20.1590
+WT: 5.3577
+W: 44.4000
+  ----------------------------------------
+iteration 2 : Accepted
+Trun: 13.2520
+WT: 4.1562
+W: 22.4000
+  ----------------------------------------
+iteration 3 : Accepted
+Trun: 16.6050
+WT: 5.6536
+W: 30.4000
+  ----------------------------------------
+Exception in thread "Thread-0" java.util.ConcurrentModificationException
+	at java.base/java.util.HashMap$HashIterator.nextNode(HashMap.java:1605)
+	at java.base/java.util.HashMap$KeyIterator.next(HashMap.java:1628)
+	at RequestQueue.dequeue(RequestQueue.java:87)
+	at Elevator.openAndClose(Elevator.java:102)
+	at Elevator.run(Elevator.java:52)
+iteration 4 : Validation Error: Passenger did not arrive : 41 on Floor F6, expected B4
+Passenger did not arrive : 42 on Floor F6, expected B4
+Passenger did not arrive : 43 on Floor F6, expected B4
+Passenger did not arrive : 44 on Floor F6, expected B4
+Passenger did not arrive : 45 on Floor F6, expected B4
+
+Trun: 19.1540
+WT: 6.5305
+W: 29.1000
+  ----------------------------------------
+Exception in thread "Thread-0" java.util.ConcurrentModificationException
+	at java.base/java.util.HashMap$HashIterator.nextNode(HashMap.java:1605)
+	at java.base/java.util.HashMap$KeyIterator.next(HashMap.java:1628)
+	at RequestQueue.dequeue(RequestQueue.java:80)
+	at Elevator.openAndClose(Elevator.java:102)
+	at Elevator.run(Elevator.java:52)
+iteration 5 : Validation Error: Passenger did not arrive : 11 on Floor F1, expected B2
+Passenger did not arrive : 12 on Floor F1, expected B2
+Passenger did not arrive : 13 on Floor F1, expected B2
+Passenger did not arrive : 14 on Floor F1, expected B2
+Passenger did not arrive : 15 on Floor F1, expected B2
+Passenger did not arrive : 21 on Floor F7, expected F5
+Passenger did not arrive : 22 on Floor F7, expected F5
+Passenger did not arrive : 23 on Floor F7, expected F5
+Passenger did not arrive : 24 on Floor F7, expected F5
+Passenger did not arrive : 25 on Floor F7, expected F5
+Passenger did not arrive : 31 on Floor B3, expected B1
+Passenger did not arrive : 32 on Floor B3, expected B1
+Passenger did not arrive : 33 on Floor B3, expected B1
+Passenger did not arrive : 34 on Floor B3, expected B1
+Passenger did not arrive : 35 on Floor B3, expected B1
+
+Trun: 23.8710
+WT: 9.7407
+W: 27.9000
+  ----------------------------------------

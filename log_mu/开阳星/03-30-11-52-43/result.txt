@@ -1,0 +1,24 @@
+iteration 1 : Validation Error: Passenger did not arrive : 1 on Floor B3, expected F2
+Passenger did not arrive : 2 on Floor B3, expected F2
+Passenger did not arrive : 3 on Floor B3, expected F2
+Passenger did not arrive : 4 on Floor B3, expected F2
+Passenger did not arrive : 5 on Floor B3, expected F2
+Passenger did not arrive : 6 on Floor B3, expected F2
+Passenger did not arrive : 7 on Floor B3, expected F2
+
+Trun: 29.4350
+WT: 0.0000
+W: 28.4000
+  ----------------------------------------
+iteration 2 : Validation Error: Passenger did not arrive : 1 on Floor B3, expected F5
+Passenger did not arrive : 2 on Floor B3, expected F5
+Passenger did not arrive : 3 on Floor B3, expected F5
+Passenger did not arrive : 4 on Floor B3, expected F5
+Passenger did not arrive : 5 on Floor B3, expected F5
+Passenger did not arrive : 6 on Floor B3, expected F5
+Passenger did not arrive : 7 on Floor B3, expected F5
+
+Trun: 29.4240
+WT: 0.0000
+W: 28.4000
+  ----------------------------------------

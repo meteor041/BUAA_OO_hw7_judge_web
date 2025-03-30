@@ -1,0 +1,31 @@
+Exception in thread "Thread-0" java.util.ConcurrentModificationException
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1714)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:682)
+	at Elevator.addPickups(Elevator.java:205)
+	at Elevator.handleCurrentFloor(Elevator.java:183)
+	at Elevator.determineNextAction(Elevator.java:141)
+	at Elevator.run(Elevator.java:113)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+iteration 1 : Validation Error: Passenger did not arrive : 16 on Floor B2, expected F6
+Passenger did not arrive : 19 on Floor B2, expected B4
+Passenger did not arrive : 25 on Floor B4, expected F2
+Passenger did not arrive : 31 on Floor B1, expected B2
+Passenger did not arrive : 36 on Floor F7, expected B1
+Passenger did not arrive : 43 on Floor B4, expected F3
+Passenger did not arrive : 60 on Floor F7, expected F2
+Passenger did not arrive : 75 on Floor B3, expected B1
+Passenger did not arrive : 84 on Floor F7, expected B2
+Passenger did not arrive : 91 on Floor F1, expected B2
+Passenger did not arrive : 95 on Floor F5, expected B3
+Passenger did not arrive : 96 on Floor B3, expected F5
+Passenger did not arrive : 97 on Floor B4, expected F7
+Passenger did not arrive : 98 on Floor B2, expected F2
+
+Trun: 25.4980
+WT: 9.7795
+W: 80.0000
+  ----------------------------------------

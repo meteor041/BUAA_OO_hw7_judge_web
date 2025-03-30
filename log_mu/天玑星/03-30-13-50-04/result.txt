@@ -1,0 +1,18 @@
+Exception in thread "Thread-0" java.util.ConcurrentModificationException
+	at java.base/java.util.HashMap$HashIterator.nextNode(HashMap.java:1605)
+	at java.base/java.util.HashMap$KeyIterator.next(HashMap.java:1628)
+	at RequestQueue.dequeue(RequestQueue.java:80)
+	at Elevator.openAndClose(Elevator.java:102)
+	at Elevator.run(Elevator.java:52)
+iteration 1 : Validation Error: Passenger did not arrive : 8 on Floor F2, expected F4
+Passenger did not arrive : 9 on Floor F2, expected F4
+Passenger did not arrive : 10 on Floor F2, expected F4
+Passenger did not arrive : 11 on Floor F2, expected F4
+Passenger did not arrive : 12 on Floor F2, expected F4
+Passenger did not arrive : 13 on Floor F2, expected F4
+Passenger did not arrive : 14 on Floor F2, expected F4
+
+Trun: 20.6600
+WT: 6.8227
+W: 61.1000
+  ----------------------------------------

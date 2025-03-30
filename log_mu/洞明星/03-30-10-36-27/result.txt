@@ -1,0 +1,59 @@
+Exception in thread "Thread-2" java.util.ConcurrentModificationException
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1714)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:682)
+	at Elevator.addPickups(Elevator.java:205)
+	at Elevator.handleCurrentFloor(Elevator.java:183)
+	at Elevator.determineNextAction(Elevator.java:141)
+	at Elevator.run(Elevator.java:113)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+iteration 1 : Validation Error: Passenger did not arrive : 43 on Floor F5, expected B2
+Passenger did not arrive : 44 on Floor F5, expected B2
+Passenger did not arrive : 45 on Floor F5, expected B2
+Passenger did not arrive : 46 on Floor F5, expected B2
+Passenger did not arrive : 47 on Floor F5, expected B2
+Passenger did not arrive : 48 on Floor F5, expected B2
+Passenger did not arrive : 49 on Floor F1, expected F3
+Passenger did not arrive : 50 on Floor F1, expected F3
+Passenger did not arrive : 51 on Floor F1, expected F3
+Passenger did not arrive : 52 on Floor F1, expected F3
+Passenger did not arrive : 53 on Floor F1, expected F3
+Passenger did not arrive : 54 on Floor F1, expected F3
+Passenger did not arrive : 109 on Floor F7, expected B1
+Passenger did not arrive : 110 on Floor F7, expected B1
+Passenger did not arrive : 111 on Floor F7, expected B1
+Passenger did not arrive : 112 on Floor F7, expected B1
+Passenger did not arrive : 113 on Floor F7, expected B1
+Passenger did not arrive : 114 on Floor F7, expected B1
+Passenger did not arrive : 127 on Floor F5, expected F3
+Passenger did not arrive : 128 on Floor F5, expected F3
+Passenger did not arrive : 129 on Floor F5, expected F3
+Passenger did not arrive : 130 on Floor F5, expected F3
+Passenger did not arrive : 131 on Floor F5, expected F3
+Passenger did not arrive : 132 on Floor F5, expected F3
+Passenger did not arrive : 169 on Floor F5, expected B1
+Passenger did not arrive : 170 on Floor F5, expected B1
+Passenger did not arrive : 171 on Floor F5, expected B1
+Passenger did not arrive : 172 on Floor F5, expected B1
+Passenger did not arrive : 173 on Floor F5, expected B1
+Passenger did not arrive : 174 on Floor F5, expected B1
+Passenger did not arrive : 247 on Floor F2, expected F1
+Passenger did not arrive : 248 on Floor F2, expected F1
+Passenger did not arrive : 249 on Floor F2, expected F1
+Passenger did not arrive : 250 on Floor F2, expected F1
+Passenger did not arrive : 251 on Floor F2, expected F1
+Passenger did not arrive : 252 on Floor F2, expected F1
+Passenger did not arrive : 259 on Floor F4, expected B3
+Passenger did not arrive : 260 on Floor F4, expected B3
+Passenger did not arrive : 261 on Floor F4, expected B3
+Passenger did not arrive : 262 on Floor F4, expected B3
+Passenger did not arrive : 263 on Floor F4, expected B3
+Passenger did not arrive : 264 on Floor F4, expected B3
+
+Trun: 61.6010
+WT: 22.9928
+W: 158.6000
+  ----------------------------------------

@@ -2,15 +2,7 @@ import random
 import time
 import argparse
 
-def generate_request(passenger_id, timestamp, floors, elevator_ids, priority):
-    from_floor = random.choice(floors)
-    to_floor = random.choice(floors)
-    while from_floor == to_floor:
-        to_floor = random.choice(floors)
 
-    elevator_id = random.choice(elevator_ids)
-
-    return f"[{timestamp:.1f}]{passenger_id}-PRI-{priority}-FROM-{from_floor}-TO-{to_floor}-BY-{elevator_id}"
 
 def generate_random_floats_one_decimal(num: int, min_val: float = 0.0, max_val: float = 1.0):
     """
@@ -51,7 +43,7 @@ def main():
     parser.add_argument("--num_requests", type=int, default=50, help="Number of requests to generate (1-100).")
     parser.add_argument("--time_limit", type=int, default=50, help="Limit of input time(1.0-50.0)")
     parser.add_argument("--seed", type=int, default=None, help="Random seed for reproducibility.")
-
+    parser.add_argument("--duplicate_times", type=int, default=1, help="Number of requests to generate.")
     args = parser.parse_args()
 
     if not 1 <= args.num_requests <= 100:
@@ -65,14 +57,33 @@ def main():
     elevator_ids = list(range(1, 7))
     passenger_id_counter = 1
     timestamps = generate_random_floats_one_decimal(args.num_requests, min_val=1.0, max_val=args.time_limit)
-    for i in range(args.num_requests):
-        passenger_id = f"{passenger_id_counter}"
-        priority = random.randint(1, 100)
-        timestamp = timestamps[i]
-        request = generate_request(passenger_id, timestamp, floors, elevator_ids, priority)
-        print(request)
+    elevator_used_count = [0] * 11
+    def generate_request(timestamp, floors, elevator_ids, priority, duplicate_times):
+        nonlocal passenger_id_counter
+        nonlocal elevator_used_count
+        from_floor = random.choice(floors)
+        to_floor = random.choice(floors)
+        while from_floor == to_floor:
+            to_floor = random.choice(floors)
 
-        passenger_id_counter += 1
+        elevator_id = random.choice(elevator_ids)
+        while elevator_used_count[elevator_ids.index(elevator_id)] > 30 - duplicate_times:
+            elevator_id = random.choice(elevator_ids)
+        s = ''
+        for _ in range(1, duplicate_times + 1):
+            s += f"[{timestamp:.1f}]{passenger_id_counter}-PRI-{priority}-FROM-{from_floor}-TO-{to_floor}-BY-{elevator_id}\n"
+            passenger_id_counter += 1
+            elevator_used_count[elevator_ids.index(elevator_id)] += 1
+        return s
+
+    for i in range(args.num_requests):
+        # passenger_id = f"{passenger_id_counter}"
+        priority = random.randint(1, 2)
+        timestamp = timestamps[i]
+        request = generate_request(timestamp, floors, elevator_ids, priority, args.duplicate_times)
+        print(request, end="")
+
+        # passenger_id_counter += 1
 
 
 if __name__ == "__main__":

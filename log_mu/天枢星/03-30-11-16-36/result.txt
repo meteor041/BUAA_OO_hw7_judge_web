@@ -1,0 +1,25 @@
+Exception in thread "Thread-3" java.util.ConcurrentModificationException
+	at java.base/java.util.HashMap$HashIterator.nextNode(HashMap.java:1605)
+	at java.base/java.util.HashMap$KeyIterator.next(HashMap.java:1628)
+	at Elevator.openandclose(Elevator.java:99)
+	at Elevator.run(Elevator.java:53)
+  Warning: Java程序超时被终止 (迭代 1)
+iteration 1 : Validation Error: Passenger did not arrive : 15 on Floor F1, expected F2
+Passenger did not arrive : 16 on Floor F1, expected F2
+Passenger did not arrive : 17 on Floor F1, expected F2
+Passenger did not arrive : 18 on Floor F1, expected F2
+Passenger did not arrive : 19 on Floor F1, expected F2
+Passenger did not arrive : 20 on Floor F1, expected F2
+Passenger did not arrive : 21 on Floor F1, expected F2
+Passenger did not arrive : 43 on Floor F6, expected F1
+Passenger did not arrive : 44 on Floor F6, expected F1
+Passenger did not arrive : 45 on Floor F6, expected F1
+Passenger did not arrive : 46 on Floor F6, expected F1
+Passenger did not arrive : 47 on Floor F6, expected F1
+Passenger did not arrive : 48 on Floor F6, expected F1
+Passenger did not arrive : 49 on Floor F6, expected F1
+
+Trun: 26.7600
+WT: 7.7269
+W: 54.3000
+  ----------------------------------------
