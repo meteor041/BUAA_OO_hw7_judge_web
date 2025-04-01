@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const deleteButtons = document.querySelectorAll('.delete-btn');
     deleteButtons.forEach(function(btn) {
         btn.addEventListener('click', function(e) {
-            if (!confirm('确定要删除这个文件吗？此操作不可恢复。')) {
+            if (!confirm('确定要删除这个文件吗？此操作不可恢复。如果这不是你的文件,请不要删除。')) {
                 e.preventDefault();
             }
         });

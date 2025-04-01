@@ -260,7 +260,7 @@ def download_log():
         return redirect(url_for('logs'))
     
     # 检查文件扩展名
-    allowed_extensions = ('txt', 'log')
+    allowed_extensions = ('txt', 'log', 'csv')
     if not path.endswith(allowed_extensions):
         flash('不允许下载此类型的文件', 'error')
         return redirect(url_for('logs', path=os.path.dirname(path)))
