@@ -55,7 +55,7 @@
                         <td>{{ item.size if not item.is_dir else '-' }}</td>
                         <td>{{ item.modified }}</td>
                         <td>
-                            {% if not item.is_dir and item.name.endswith(('.txt', '.log')) %}
+                            {% if not item.is_dir and item.name.endswith(('.txt', '.log', '.csv')) %}
                             <a href="{{ url_for('download_log', path=item.path) }}" class="btn btn-primary btn-sm">
                                 <i class="fas fa-download"></i> 下载
                             </a>
