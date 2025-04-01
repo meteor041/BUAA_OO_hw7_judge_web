@@ -1,8 +1,11 @@
 import os
 import subprocess
 import time
+import csv
+import re
 from datetime import datetime
 from flask import Flask, render_template, request, redirect, url_for, flash, jsonify, send_from_directory, send_file
+from collections import defaultdict
 from werkzeug.utils import secure_filename
 import threading
 import glob
@@ -283,6 +286,124 @@ def format_size(size):
             return f"{size:.2f} {unit}"
         size /= 1024.0
     return f"{size:.2f} TB"
+
+@app.route('/chart')
+def chart():
+    """渲染性能分析图表页面"""
+    return render_template('chart.html')
+
+@app.route('/chart_data')
+def chart_data():
+    """提供图表数据的API"""
+    result_file = os.path.join(LOG_FOLDER, 'result.csv')
+    
+    # 检查文件是否存在
+    if not os.path.exists(result_file):
+        return jsonify({'error': 'No data available'})
+    
+    try:
+        # 读取CSV文件
+        with open(result_file, 'r', encoding='utf-8') as f:
+            reader = csv.reader(f)
+            rows = list(reader)
+        
+        # 如果文件为空或只有标题行
+        if len(rows) <= 1:
+            return jsonify({'error': 'No data available'})
+        
+        # 解析数据
+        # 第一行是标题: 测试案例,系统运行时间(Tmax),平均完成时间(WT),系统耗电量(W),ARRIVE操作次数,OPEN操作次数,CLOSE操作次数,完成乘客数
+        headers = rows[0]
+        data = rows[1:]  # 跳过标题行
+        
+        # 按测试时间分组
+        time_pattern = r'_(\d{2}-\d{2}-\d{2}-\d{2}-\d{2})$'
+        test_runs = defaultdict(list)
+        
+        for row in data:
+            if not row[0]:  # 忽略空测试案例
+                continue
+                
+            # 提取测试对象和测试时间
+            test_case = row[0]
+            time_match = re.search(time_pattern, test_case)
+            
+            if time_match:
+                test_time = time_match.group(1)  # 提取时间部分
+                test_object = test_case.replace('_' + test_time, '')  # 提取测试对象部分
+                
+                # 将数据添加到对应的测试时间组
+                test_runs[test_time].append({
+                    'test_object': test_object,
+                    'tmax': float(row[1]) if row[1] else 0,
+                    'wt': float(row[2]) if row[2] else 0,
+                    'w': float(row[3]) if row[3] else 0,
+                    'arrive': int(row[4]) if row[4] else 0,
+                    'open': int(row[5]) if row[5] else 0,
+                    'close': int(row[6]) if row[6] else 0,
+                    'completed_passengers': row[7] if row[7] else '0/0'
+                })
+        
+        # 按时间倒序排序并取最近15次运行
+        sorted_times = sorted(test_runs.keys(), reverse=True)
+        recent_times = sorted_times[:15]
+        
+        # 准备返回数据
+        result = {
+            'runs': [],  # 测试运行时间
+            'testObjects': [],  # 测试对象名称
+            'tmax': [],  # 系统运行时间数据
+            'wt': [],  # 平均完成时间数据
+            'w': [],  # 系统耗电量数据
+            'completedPassengers': []  # 完成乘客数据
+        }
+        
+        # 获取所有测试对象
+        all_test_objects = set()
+        for time in recent_times:
+            for run in test_runs[time]:
+                all_test_objects.add(run['test_object'])
+        
+        # 将测试对象转换为列表并排序
+        test_objects_list = sorted(list(all_test_objects))
+        result['testObjects'] = test_objects_list
+        
+        # 为每个测试对象初始化数据数组
+        for _ in test_objects_list:
+            result['tmax'].append([])
+            result['wt'].append([])
+            result['w'].append([])
+            result['completedPassengers'].append([])
+        
+        # 填充数据
+        for time in recent_times:
+            result['runs'].append(time)  # 添加测试时间
+            
+            # 为每个测试对象查找对应的数据
+            for obj_idx, test_object in enumerate(test_objects_list):
+                found = False
+                
+                for run in test_runs[time]:
+                    if run['test_object'] == test_object:
+                        result['tmax'][obj_idx].append(run['tmax'])
+                        result['wt'][obj_idx].append(run['wt'])
+                        result['w'][obj_idx].append(run['w'])
+                        result['completedPassengers'][obj_idx].append(run['completed_passengers'])
+                        found = True
+                        break
+                
+                # 如果没有找到该测试对象的数据，填充null
+                if not found:
+                    result['tmax'][obj_idx].append(None)
+                    result['wt'][obj_idx].append(None)
+                    result['w'][obj_idx].append(None)
+                    result['completedPassengers'][obj_idx].append('0/0')
+        
+        return jsonify(result)
+    
+    except Exception as e:
+        print(f"Error processing chart data: {str(e)}")
+        return jsonify({'error': f'Error processing data: {str(e)}'})
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=8082)

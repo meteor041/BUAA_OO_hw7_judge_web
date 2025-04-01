@@ -1,0 +1,262 @@
+{% extends "layout.html" %}
+
+{% block title %}性能分析图表 - 电梯程序评测系统{% endblock %}
+
+{% block head %}
+<!-- 引入Chart.js库 -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+    .chart-container {
+        position: relative;
+        height: 60vh;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    
+    .slider-container {
+        width: 100%;
+        text-align: center;
+        margin: 20px 0;
+    }
+    
+    .slider {
+        width: 80%;
+        margin: 0 auto;
+    }
+    
+    .chart-title {
+        text-align: center;
+        margin-bottom: 20px;
+        font-weight: bold;
+    }
+    
+    .no-data {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 60vh;
+        font-size: 1.5rem;
+        color: var(--secondary-color);
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        性能分析图表
+    </div>
+    <div class="card-body">
+        <div class="chart-title" id="chart-title">系统运行时间 (Tmax)</div>
+        
+        <div id="chart-container" class="chart-container">
+            <canvas id="performanceChart"></canvas>
+        </div>
+        
+        <div id="no-data-message" class="no-data" style="display: none;">
+            <div>
+                <i class="fas fa-exclamation-circle"></i> 没有可用的性能数据。请先运行评测程序生成数据。
+            </div>
+        </div>
+        
+        <div class="slider-container">
+            <input type="range" min="1" max="3" value="1" class="slider" id="chartSlider">
+            <div id="slider-label">1/3 - 系统运行时间 (Tmax)</div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // 图表类型和标题
+        const chartTypes = [
+            { id: 1, name: '系统运行时间 (Tmax)', dataKey: 'tmax' },
+            { id: 2, name: '平均完成时间 (WT)', dataKey: 'wt' },
+            { id: 3, name: '系统耗电量 (W)', dataKey: 'w' }
+        ];
+        
+        // 滑动条事件监听
+        const slider = document.getElementById('chartSlider');
+        const sliderLabel = document.getElementById('slider-label');
+        const chartTitle = document.getElementById('chart-title');
+        
+        // 图表对象
+        let performanceChart = null;
+        
+        // 获取性能数据
+        fetch('/chart_data')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('无法获取性能数据');
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.error) {
+                    showNoDataMessage();
+                    return;
+                }
+                
+                if (data.runs.length === 0) {
+                    showNoDataMessage();
+                    return;
+                }
+                
+                // 初始化图表
+                initChart(data, chartTypes[0].dataKey);
+                
+                // 滑动条事件
+                slider.addEventListener('input', function() {
+                    const chartTypeIndex = parseInt(this.value) - 1;
+                    const chartType = chartTypes[chartTypeIndex];
+                    
+                    sliderLabel.textContent = `${this.value}/3 - ${chartType.name}`;
+                    chartTitle.textContent = chartType.name;
+                    
+                    // 更新图表数据
+                    updateChart(data, chartType.dataKey);
+                });
+            })
+            .catch(error => {
+                console.error('获取数据失败:', error);
+                showNoDataMessage();
+            });
+        
+        // 初始化图表
+        function initChart(data, dataKey) {
+            const ctx = document.getElementById('performanceChart').getContext('2d');
+            
+            // 准备数据
+            const chartData = prepareChartData(data, dataKey);
+            
+            // 创建图表
+            performanceChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: chartData.labels,
+                    datasets: chartData.datasets
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: '测试时间'
+                            }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: getYAxisTitle(dataKey)
+                            },
+                            beginAtZero: true
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const label = context.dataset.label || '';
+                                    const value = context.parsed.y;
+                                    const completedPassengers = data.completedPassengers[context.datasetIndex][context.dataIndex];
+                                    return `${label}: ${value} (完成乘客: ${completedPassengers})`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+        
+        // 更新图表数据
+        function updateChart(data, dataKey) {
+            if (!performanceChart) return;
+            
+            const chartData = prepareChartData(data, dataKey);
+            
+            performanceChart.data.datasets = chartData.datasets;
+            performanceChart.options.scales.y.title.text = getYAxisTitle(dataKey);
+            
+            performanceChart.update();
+        }
+        
+        // 准备图表数据
+        function prepareChartData(data, dataKey) {
+            const labels = data.runs;
+            const datasets = [];
+            
+            // 为每个测试对象创建一个数据集
+            data.testObjects.forEach((testObject, index) => {
+                const color = getRandomColor(index);
+                
+                datasets.push({
+                    label: testObject,
+                    data: data[dataKey][index],
+                    borderColor: color,
+                    backgroundColor: color + '33', // 添加透明度
+                    tension: 0.1,
+                    fill: false
+                });
+            });
+            
+            return { labels, datasets };
+        }
+        
+        // 获取Y轴标题
+        function getYAxisTitle(dataKey) {
+            switch(dataKey) {
+                case 'tmax': return '系统运行时间 (秒)';
+                case 'wt': return '平均完成时间 (秒)';
+                case 'w': return '系统耗电量';
+                default: return '';
+            }
+        }
+        
+        // 生成随机颜色
+        function getRandomColor(index) {
+            // 预定义的颜色数组，确保高对比度
+            const colors = [
+                '#4285F4', // 蓝色
+                '#EA4335', // 红色
+                '#34A853', // 绿色
+                '#FBBC05', // 黄色
+                '#FF6D01', // 橙色
+                '#46BDC6', // 青色
+                '#7B1FA2', // 紫色
+                '#0097A7', // 蓝绿色
+                '#689F38', // 浅绿色
+                '#D81B60', // 粉色
+                '#5D4037', // 棕色
+                '#455A64', // 蓝灰色
+                '#F57C00', // 深橙色
+                '#039BE5', // 浅蓝色
+                '#8D6E63'  // 浅棕色
+            ];
+            
+            // 如果索引超出预定义颜色范围，则生成随机颜色
+            if (index < colors.length) {
+                return colors[index];
+            } else {
+                const r = Math.floor(Math.random() * 200);
+                const g = Math.floor(Math.random() * 200);
+                const b = Math.floor(Math.random() * 200);
+                return `rgb(${r}, ${g}, ${b})`;
+            }
+        }
+        
+        // 显示无数据消息
+        function showNoDataMessage() {
+            document.getElementById('chart-container').style.display = 'none';
+            document.getElementById('no-data-message').style.display = 'flex';
+            document.querySelector('.slider-container').style.display = 'none';
+        }
+    });
+</script>
+{% endblock %}
