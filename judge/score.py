@@ -149,7 +149,7 @@ def get_column_name(filepath):
     path = os.path.normpath(filepath)
     parts = path.split(os.sep)
     if len(parts) >= 3:
-        return f"{parts[-3]}_{parts[-2]}"
+        return f"{parts[-3]}-{parts[-2]}"
     elif len(parts) == 2:
         return parts[-2]
     return os.path.basename(os.path.dirname(filepath))
@@ -183,13 +183,13 @@ def main():
      # 准备CSV数据
     csv_data = {
         "测试案例": col_name,
-        "系统运行时间(Tmax)": f"{results['system_time']:.2f}",
-        "平均完成时间(WT)": f"{results['average_completion']:.2f}",
-        "系统耗电量(W)": f"{results['power_consumption']:.2f}",
-        "ARRIVE操作次数": results['arrive_count'],
-        "OPEN操作次数": results['open_count'],
-        "CLOSE操作次数": results['close_count'],
-        "完成乘客数": f"{results['completed']}/{results['total']}"
+        "系统运行时间(Tmax)": f"{result['system_time']:.2f}",
+        "平均完成时间(WT)": f"{result['average_completion_time']:.2f}",
+        "系统耗电量(W)": f"{result['power_consumption']:.2f}",
+        "ARRIVE操作次数": result['arrive_count'],
+        "OPEN操作次数": result['open_count'],
+        "CLOSE操作次数": result['close_count'],
+        "完成乘客数": f"{result['completed_passengers']}/{result['total_passengers']}"
     }
     
     # 写入CSV文件
