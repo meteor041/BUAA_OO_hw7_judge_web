@@ -1,7 +1,7 @@
 import random
 import time
 import argparse
-
+from collections import defaultdict
 
 
 def generate_random_floats_one_decimal(num: int, min_val: float = 0.0, max_val: float = 1.0):
@@ -38,12 +38,46 @@ def generate_random_floats_one_decimal(num: int, min_val: float = 0.0, max_val: 
 
     return sorted(random_list)
 
+def generate_spaced_sorted_array(k, g, m, M):
+    """
+    生成升序数组，满足:
+    - 每个数间隔 ≥ g
+    - 最小值 ≥ m, 最大值 ≤ M
+    :param k: 数组长度
+    :param g: 最小间隔 (gap)
+    :param m: 最小值下限
+    :param M: 最大值上限
+    :return: 升序列表，如 [a1, a2, ..., ak]
+    """
+    # 检查是否有解
+    required_space = m + (k - 1) * g
+    if required_space > M:
+        raise ValueError(f"无解: 需要至少 {required_space}，但 M={M}")
+    
+    # 生成 k 个 [0, 1) 的随机数并排序
+    rand_numbers = sorted(random.random() for _ in range(k))
+    
+    # 线性变换到 [m, M - (k-1)*g] 范围
+    scale = (M - (k - 1) * g - m)
+    a = [m + x * scale for x in rand_numbers]
+    
+    # 确保间隔 ≥ g
+    for i in range(1, k):
+        a[i] = max(a[i], a[i - 1] + g)
+        
+    # 确保精度为小数点后一位
+    a = [round(i * 10) / 10.0 for i in a]
+    
+    return a
+
 def main():
     parser = argparse.ArgumentParser(description="Generate elevator simulation requests.")
     parser.add_argument("--num_requests", type=int, default=50, help="Number of requests to generate (1-100).")
     parser.add_argument("--time_limit", type=int, default=50, help="Limit of input time(1.0-50.0)")
     parser.add_argument("--seed", type=int, default=None, help="Random seed for reproducibility.")
     parser.add_argument("--duplicate_times", type=int, default=1, help="Number of requests to generate.")
+    parser.add_argument("--num_schedule", type=int, default=1, help="Number of schedule requests.")
+    parser.add_argument("--schedule_gap", type=int, default=10, help="Minimum time gap between schedule requests")
     args = parser.parse_args()
 
     if not 1 <= args.num_requests <= 100:
@@ -53,37 +87,43 @@ def main():
     if args.seed is not None:
         random.seed(args.seed)
 
-    floors = ["B4", "B3", "B2", "B1", "F1", "F2", "F3", "F4", "F5", "F6", "F7"]
-    elevator_ids = list(range(1, 7))
-    passenger_id_counter = 1
+    floors = ["B2", "B1", "F1", "F2", "F3", "F4", "F5"]
+    passenger_id_counter =0
     timestamps = generate_random_floats_one_decimal(args.num_requests, min_val=1.0, max_val=args.time_limit)
     elevator_used_count = [0] * 11
-    def generate_request(timestamp, floors, elevator_ids, priority, duplicate_times):
+    passengers_ids = list(range(0, args.num_requests * args.duplicate_times))
+    random.shuffle(passengers_ids)
+    def generate_request(timestamp, floors, priority, duplicate_times):
         nonlocal passenger_id_counter
         nonlocal elevator_used_count
         from_floor = random.choice(floors)
         to_floor = random.choice(floors)
         while from_floor == to_floor:
             to_floor = random.choice(floors)
-
-        elevator_id = random.choice(elevator_ids)
-        while elevator_used_count[elevator_ids.index(elevator_id)] > 30 - duplicate_times:
-            elevator_id = random.choice(elevator_ids)
         s = ''
         for _ in range(1, duplicate_times + 1):
-            s += f"[{timestamp:.1f}]{passenger_id_counter}-PRI-{priority}-FROM-{from_floor}-TO-{to_floor}-BY-{elevator_id}\n"
+            s += f"[{timestamp:.1f}]{passengers_ids[passenger_id_counter]}-PRI-{priority}-FROM-{from_floor}-TO-{to_floor}\n"
             passenger_id_counter += 1
-            elevator_used_count[elevator_ids.index(elevator_id)] += 1
         return s
-
+    ans = defaultdict(list)
     for i in range(args.num_requests):
-        # passenger_id = f"{passenger_id_counter}"
         priority = random.randint(1, 2)
         timestamp = timestamps[i]
-        request = generate_request(timestamp, floors, elevator_ids, priority, args.duplicate_times)
-        print(request, end="")
+        request = generate_request(timestamp, floors, priority, args.duplicate_times)
+        ans[timestamp].append(request)
+    schedule_timesatmps = generate_spaced_sorted_array(min(args.num_schedule, args.time_limit // args.schedule_gap), args.schedule_gap, 1, args.time_limit)
+    for time in schedule_timesatmps:
+        elevator_id = random.randint(1, 6)
+        speed = random.choice([0.2, 0.3, 0.4, 0.5])
+        to_floor = random.choice(floors)
+        request =  f"[{time:.1f}]SCHE-{elevator_id}-{speed}-{to_floor}\n"
+        ans[time].append(request)
+    sorted_ans = {k : ans[k] for k in sorted(ans.keys())}
+    for l in sorted_ans.values():
+        for s in l:
+            print(s, end="")
+        
 
-        # passenger_id_counter += 1
 
 
 if __name__ == "__main__":

@@ -12,9 +12,8 @@ NUM_REQUESTS=${2:-50}  # 默认值
 TIME_LIMIT=${3:-10}    # 默认值
 USER_INPUT=${4:0}
 DUPLICATE_TIMES=$((RANDOM % 7 + 1))
-NUM_SCHEDULE=${5:1}
 MAX_CONCURRENT=16      #  服务器内存有限，降低并发数量
-PROGRAM_DIR="program"  #  jar 包所在的目录
+PROGRAM_DIR="program_mu"  #  jar 包所在的目录
 
 # 检查程序目录是否存在
 if [ ! -d "$PROGRAM_DIR" ]; then
@@ -34,7 +33,7 @@ for i in $(seq 1 $NUM_ITERATIONS); do
     		if [[ $# -eq 1 ]]; then
       			input_content=$(python3 judge/gen.py)
     		else
-      			input_content=$(python3 judge/gen.py --num_request=$NUM_REQUESTS --time_limit=$TIME_LIMIT --duplicate_times=$DUPLICATE_TIMES --num_schedule=$NUM_SCHEDULE)
+      			input_content=$(python3 judge/gen.py --num_request=$NUM_REQUESTS --time_limit=$TIME_LIMIT --duplicate_times=$DUPLICATE_TIMES)
     		fi
     		echo "$input_content" > stdin.txt
 	else
@@ -52,7 +51,7 @@ for i in $(seq 1 $NUM_ITERATIONS); do
         jar_filename_noext="${jar_filename%.*}"  # 去掉 .jar 后缀
 
 
-        log_dir="log/$jar_filename_noext/$timestamp"
+        log_dir="log_mu/$jar_filename_noext/$timestamp"
         mkdir -p "$log_dir"
         touch "$log_dir/result.txt"
 
@@ -99,7 +98,7 @@ java_pid=$!
         wait $PID  # 等待 PID 对应的进程结束
         echo -n "iteration $i : " >> "$log_dir/result.txt"
         # 分析结果和计算得分
-        python3 judge/judge.py --input_file="$log_dir/input$i.txt" --output_file="$log_dir/output$i.txt" | tee -a "$log_dir/result.txt" "log/$jar_filename_noext/allResult.txt"
+        python3 judge/judge.py --input_file="$log_dir/input$i.txt" --output_file="$log_dir/output$i.txt" | tee -a "$log_dir/result.txt" "log_mu/$jar_filename_noext/allResult.txt"
         return_code=$?
         if [ $return_code -ne 0 ]; then
           echo "  Error: Python judge script failed with return code: $return_code"

@@ -1,5 +1,0 @@
-iteration 1 : Validation Error: Invalid input format: 
-Trun: 59.4530
-WT: 0.0000
-W: 292.0000
-  ----------------------------------------
