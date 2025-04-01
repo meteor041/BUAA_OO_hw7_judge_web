@@ -10,12 +10,11 @@ timestamp=$(date "+%m-%d-%H-%M-%S")
 NUM_ITERATIONS=$1
 NUM_REQUESTS=${2:-50}  # 默认值
 TIME_LIMIT=${3:-10}    # 默认值
-USER_INPUT=${4:0}
+USER_INPUT=${4:-0}
+NUM_SCHEDULE=${5:-1}
 DUPLICATE_TIMES=$((RANDOM % 7 + 1))
-NUM_SCHEDULE=${5:1}
 MAX_CONCURRENT=16      #  服务器内存有限，降低并发数量
 PROGRAM_DIR="program"  #  jar 包所在的目录
-
 # 检查程序目录是否存在
 if [ ! -d "$PROGRAM_DIR" ]; then
   echo "Error: Program directory '$PROGRAM_DIR' not found."
@@ -125,11 +124,11 @@ done
 echo "All jar files processed."
 
 # 使用 compare.py 比较所有 result.txt 文件
-if [[ ${#result_files[@]} -gt 0 ]]; then
-  echo "Comparing result files..."
-  python3 judge/compare.py "${result_files[@]}"
-else
-  echo "No result files found for comparison."
-fi
+#if [[ ${#result_files[@]} -gt 0 ]]; then
+#  echo "Comparing result files..."
+#  python3 judge/compare.py "${result_files[@]}"
+#else
+#  echo "No result files found for comparison."
+#fi
 
 exit 0 

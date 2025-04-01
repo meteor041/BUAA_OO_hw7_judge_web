@@ -532,8 +532,8 @@ def main():
 
     args = parser.parse_args()
     
-    input_file = parser.input_file
-    output_file = parser.output_file
+    input_file = args.input_file
+    output_file = args.output_file
     
     judge = Judge()
     result, message = judge.validate_output(input_file, output_file)
