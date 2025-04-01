@@ -291,7 +291,7 @@ class Judge:
             
             # 验证移动是否合法（非空电梯或有RECEIVE的乘客）
             if not elevator.in_schedule and not elevator.passengers and not elevator.received_passengers:
-                return False, f"第{line_num}行: 电梯{elevator_id}为空且未RECEIVE到任何乘客，移动不合法"
+                return False, f"第{line_num}行: 电梯{elevator_id}为空且未RECEIVE到任何乘客或接受临时调度请求，移动不合法"
             
             # 验证移动是否跨层
             current_floor_idx = self.floor_index[elevator.floor]
