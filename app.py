@@ -306,12 +306,9 @@ def chart():
 def chart_data():
     """提供图表数据的API"""
     result_file = os.path.join(LOG_FOLDER, 'results.csv')
-<<<<<<< HEAD
     
-=======
     # result_file = os.path.abspath(os.path.join(LOG_FOLDER, 'results.csv'))
     app.logger.debug(f"result_file: {result_file}")
->>>>>>> c19821e3f355d39d3bb7bea9d0efc61cbc07f670
     # 检查文件是否存在
     if not os.path.exists(result_file):
         return jsonify({'error': 'No data available'})
