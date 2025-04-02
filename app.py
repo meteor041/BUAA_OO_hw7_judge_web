@@ -26,6 +26,14 @@ app.config['MAX_CONTENT_LENGTH'] = MAX_FILE_SIZE
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 os.makedirs(LOG_FOLDER, exist_ok=True)
 
+import logging
+
+# 配置日志
+logging.basicConfig(level=logging.DEBUG,  # 设置日志级别为 DEBUG，会输出所有级别的日志
+                    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
+app.logger.setLevel(logging.DEBUG) # 确保 Flask app 的 logger 也设置为 DEBUG
+
 # 当前运行状态
 running_status = {
     'is_running': False,
@@ -296,7 +304,12 @@ def chart():
 def chart_data():
     """提供图表数据的API"""
     result_file = os.path.join(LOG_FOLDER, 'results.csv')
+<<<<<<< HEAD
     
+=======
+    # result_file = os.path.abspath(os.path.join(LOG_FOLDER, 'results.csv'))
+    app.logger.debug(f"result_file: {result_file}")
+>>>>>>> c19821e3f355d39d3bb7bea9d0efc61cbc07f670
     # 检查文件是否存在
     if not os.path.exists(result_file):
         return jsonify({'error': 'No data available'})
@@ -345,8 +358,11 @@ def chart_data():
                 })
         
         # 按时间倒序排序并取最近15次运行
-        sorted_times = sorted(test_runs.keys(), reverse=True)
-        recent_times = sorted_times[:15]
+        sorted_times = sorted(test_runs.keys(), reverse=False)
+        if len(sorted_times) < 15:
+            recent_times = sorted_times
+        else:
+            recent_times = sorted_times[-15:]
         
         # 准备返回数据
         result = {
