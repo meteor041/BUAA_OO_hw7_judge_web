@@ -16,6 +16,7 @@
             <li><strong>JAR包管理</strong>：上传、查看、下载和删除电梯程序JAR包</li>
             <li><strong>程序运行</strong>：配置参数并运行电梯程序，实时查看运行状态</li>
             <li><strong>日志查看</strong>：浏览和下载程序运行产生的日志文件</li>
+            <li><strong>性能图表</strong>：比较电梯程序的性能</li>
         </ul>
         
         <h3>使用流程</h3>
@@ -23,6 +24,7 @@
             <li>在【<a href="{{ url_for('jar_manager') }}">JAR管理</a>】页面上传您的电梯程序JAR包</li>
             <li>在【<a href="{{ url_for('run_program') }}">运行评测</a>】页面配置参数并运行程序</li>
             <li>在【<a href="{{ url_for('logs') }}">日志查看</a>】页面查看和分析运行结果</li>
+            <li>在【<a href="{{ url_for('chart') }}">性能图表</a>】页面性能比较结果</li>
         </ol>
 
 	<h3>提示</h3>
@@ -37,6 +39,7 @@
             <a href="{{ url_for('jar_manager') }}" class="btn btn-primary">管理JAR包</a>
             <a href="{{ url_for('run_program') }}" class="btn btn-primary">运行评测</a>
             <a href="{{ url_for('logs') }}" class="btn btn-primary">查看日志</a>
+            <a href="{{ url_for('chart') }}" class="btn btn-primary">性能图表</a>
         </div>
     </div>
 </div>
