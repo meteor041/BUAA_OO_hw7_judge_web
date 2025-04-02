@@ -27,6 +27,18 @@
                 <small class="form-text text-muted">时间限制（秒），默认为10</small>
             </div>
             
+            <div class="form-group">
+                <label for="duplicate_times">重复请求:</label>
+                <input type="number" class="form-control" id="duplicate_times" name="duplicate_times" min="1" max="7" value="1" required>
+                <small class="form-text text-muted">每条请求的重复次数，默认为1，最大为7</small>
+            </div>
+
+            <div class="form-group">
+                <label for="num_schedule">临时调度次数:</label>
+                <input type="number" class="form-control" id="num_schedule" name="num_schedule" min="1" max="10" value="1" required>
+                <small class="form-text text-muted">临时调度次数，默认为1，最大为10</small>
+            </div>
+
             <button type="submit" class="btn btn-primary" id="run-button" {% if is_running %}disabled{% endif %}>
                 {% if is_running %}运行中...{% else %}运行{% endif %}
             </button>

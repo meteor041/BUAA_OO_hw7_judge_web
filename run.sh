@@ -10,9 +10,9 @@ timestamp=$(date "+%m-%d-%H-%M-%S")
 NUM_ITERATIONS=$1
 NUM_REQUESTS=${2:-50}  # 默认值
 TIME_LIMIT=${3:-10}    # 默认值
-USER_INPUT=${4:-0}
+DUPLICATE_TIMES=${4:-1}
 NUM_SCHEDULE=${5:-1}
-DUPLICATE_TIMES=$((RANDOM % 7 + 1))
+USER_INPUT=${6:-0}
 MAX_CONCURRENT=16      #  服务器内存有限，降低并发数量
 PROGRAM_DIR="program"  #  jar 包所在的目录
 # 检查程序目录是否存在
