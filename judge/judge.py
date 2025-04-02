@@ -13,6 +13,7 @@ class ElevatorState:
         self.door_open = False  # 初始状态门关闭
         self.passengers = set()  # 电梯内的乘客ID集合
         self.speed = 0.4  # 默认速度0.4秒/层
+        self.speed_temp = None
         self.in_schedule = False  # 是否在临时调度中
         self.schedule_target = None  # 临时调度目标楼层
         self.schedule_accept_time = None  # 接收临时调度的时间
@@ -189,7 +190,7 @@ class Judge:
             elevator = self.elevators[elevator_id]
             elevator.schedule_accept_time = timestamp
             elevator.schedule_target = target_floor
-            elevator.speed = speed
+            elevator.speed_temp = speed
             
             return True, ""
         
@@ -221,7 +222,7 @@ class Judge:
             # 更新电梯状态
             elevator.in_schedule = True
             elevator.schedule_begin_time = timestamp
-            
+            elevator.speed = elevator.speed_temp
             # 取消该电梯之前的所有RECEIVE
             for passenger in self.passengers.values():
                 if passenger.assigned_elevator == elevator_id and not passenger.in_elevator:
