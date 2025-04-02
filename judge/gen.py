@@ -87,7 +87,8 @@ def main():
     if args.seed is not None:
         random.seed(args.seed)
 
-    floors = ["B2", "B1", "F1", "F2", "F3", "F4", "F5"]
+    floors = ["B4", "B3", "B2", "B1", "F1", "F2", "F3", "F4", "F5", "F6",  "F7"]
+    sche_floors = ["B2", "B1", "F1", "F2", "F3", "F4", "F5"]
     passenger_id_counter =0
     timestamps = generate_random_floats_one_decimal(args.num_requests, min_val=1.0, max_val=args.time_limit)
     elevator_used_count = [0] * 11
@@ -115,7 +116,7 @@ def main():
     for time in schedule_timesatmps:
         elevator_id = random.randint(1, 6)
         speed = random.choice([0.2, 0.3, 0.4, 0.5])
-        to_floor = random.choice(floors)
+        to_floor = random.choice(sche_floors)
         request =  f"[{time:.1f}]SCHE-{elevator_id}-{speed}-{to_floor}\n"
         ans[time].append(request)
     sorted_ans = {k : ans[k] for k in sorted(ans.keys())}
