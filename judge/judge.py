@@ -315,7 +315,7 @@ class Judge:
             # 更新电梯状态
             elevator.floor = floor
             elevator.last_arrive_time = timestamp
-            move_times += 1
+            elevator.move_times = elevator.move_times + 1
             return True, ""
         
         # OPEN: 电梯开门
