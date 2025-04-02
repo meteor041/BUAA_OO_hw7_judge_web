@@ -51,29 +51,37 @@ def generate_and_distribute(k, n, gap):
     返回:
         包含6个列表的字典
     """
-    # 生成k个1到n之间的随机浮点数（保留一位小数）
-    numbers = sorted(round(random.uniform(1, n), 1) for _ in range(k))
-    
     # 初始化6个列表
     lists = defaultdict(list)
     
+    # 生成k个随机浮点数（1到n，保留1位小数）
+    numbers = [round(random.uniform(1, n), 1) for _ in range(k)]
+    
+    # 遍历所有生成的数
     for num in numbers:
-        assigned = False
+        allocated = False  # 标记是否成功分配
         
-        # 尝试将数字分配到合适的列表中
-        for list_num in range(6):
-            # 检查当前列表是否为空，或者与所有现有元素的差值大于gap
-            if not lists[list_num] or all(abs(num - x) > gap for x in lists[list_num]):
-                lists[list_num].append(num)
-                assigned = True
+        # 尝试分配到6个列表中的某一个
+        for i in range(6):
+            can_allocate = True
+            
+            # 检查当前列表中的所有数是否与num的差值都大于gap
+            for existing_num in lists[i]:
+                if abs(existing_num - num) <= gap:
+                    can_allocate = False
+                    break
+            
+            # 如果满足条件，则放入该列表
+            if can_allocate:
+                lists[i].append(num)
+                allocated = True
                 break
         
-        # 如果没有列表满足条件，则分配到元素最少的列表
-        if not assigned:
-            min_len_list = min(lists.keys(), key=lambda x: len(lists[x]))
-            lists[min_len_list].append(num)
+        # 如果无法分配到任何列表，跳过该数
+        if not allocated:
+            continue
     
-    return dict(lists)
+    return dict(lists)  # 转换为普通字典返回
 
 def main():
     parser = argparse.ArgumentParser(description="Generate elevator simulation requests.")
@@ -122,10 +130,9 @@ def main():
         if i not in schedule_timesatmps.keys():
             continue
         for time in schedule_timesatmps[i]:
-            elevator_id = random.randint(1, 6)
             speed = random.choice([0.2, 0.3, 0.4, 0.5])
             to_floor = random.choice(sche_floors)
-            request =  f"[{time:.1f}]SCHE-{elevator_id}-{speed}-{to_floor}\n"
+            request =  f"[{time:.1f}]SCHE-{i}-{speed}-{to_floor}\n"
             ans[time].append(request)
     sorted_ans = {k : ans[k] for k in sorted(ans.keys())}
     for l in sorted_ans.values():
