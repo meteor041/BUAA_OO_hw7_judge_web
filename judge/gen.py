@@ -132,7 +132,7 @@ def main():
         for time in schedule_timesatmps[i]:
             speed = random.choice([0.2, 0.3, 0.4, 0.5])
             to_floor = random.choice(sche_floors)
-            request =  f"[{time:.1f}]SCHE-{i}-{speed}-{to_floor}\n"
+            request =  f"[{time:.1f}]SCHE-{i+1}-{speed}-{to_floor}\n"
             ans[time].append(request)
     sorted_ans = {k : ans[k] for k in sorted(ans.keys())}
     for l in sorted_ans.values():
