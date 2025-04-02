@@ -35,8 +35,8 @@
 
             <div class="form-group">
                 <label for="num_schedule">临时调度次数:</label>
-                <input type="number" class="form-control" id="num_schedule" name="num_schedule" min="1" max="10" value="1" required>
-                <small class="form-text text-muted">临时调度次数，默认为1，最大为10</small>
+                <input type="number" class="form-control" id="num_schedule" name="num_schedule" min="0" max="20" value="1" required>
+                <small class="form-text text-muted">临时调度次数，默认为1，最小为0，最大为10</small>
             </div>
 
             <button type="submit" class="btn btn-primary" id="run-button" {% if is_running %}disabled{% endif %}>

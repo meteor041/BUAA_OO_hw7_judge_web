@@ -38,37 +38,42 @@ def generate_random_floats_one_decimal(num: int, min_val: float = 0.0, max_val: 
 
     return sorted(random_list)
 
-def generate_spaced_sorted_array(k, g, m, M):
+def generate_and_distribute(k, n, gap):
     """
-    生成升序数组，满足:
-    - 每个数间隔 ≥ g
-    - 最小值 ≥ m, 最大值 ≤ M
-    :param k: 数组长度
-    :param g: 最小间隔 (gap)
-    :param m: 最小值下限
-    :param M: 最大值上限
-    :return: 升序列表，如 [a1, a2, ..., ak]
-    """
-    # 检查是否有解
-    required_space = m + (k - 1) * g
-    if required_space > M:
-        raise ValueError(f"无解: 需要至少 {required_space}，但 M={M}")
+    随机生成k个1到n之间的浮点数（小数点后一位），分配到6个列表中，
+    确保同一列表中的元素差值大于gap
     
-    # 生成 k 个 [0, 1) 的随机数并排序
-    rand_numbers = sorted(random.random() for _ in range(k))
-    
-    # 线性变换到 [m, M - (k-1)*g] 范围
-    scale = (M - (k - 1) * g - m)
-    a = [m + x * scale for x in rand_numbers]
-    
-    # 确保间隔 ≥ g
-    for i in range(1, k):
-        a[i] = max(a[i], a[i - 1] + g)
+    参数:
+        k: 要生成的浮点数总数
+        n: 最大值范围(1到n)
+        gap: 同一列表中元素的最小差值
         
-    # 确保精度为小数点后一位
-    a = [round(i * 10) / 10.0 for i in a]
+    返回:
+        包含6个列表的字典
+    """
+    # 生成k个1到n之间的随机浮点数（保留一位小数）
+    numbers = sorted(round(random.uniform(1, n), 1) for _ in range(k))
     
-    return a
+    # 初始化6个列表
+    lists = defaultdict(list)
+    
+    for num in numbers:
+        assigned = False
+        
+        # 尝试将数字分配到合适的列表中
+        for list_num in range(6):
+            # 检查当前列表是否为空，或者与所有现有元素的差值大于gap
+            if not lists[list_num] or all(abs(num - x) > gap for x in lists[list_num]):
+                lists[list_num].append(num)
+                assigned = True
+                break
+        
+        # 如果没有列表满足条件，则分配到元素最少的列表
+        if not assigned:
+            min_len_list = min(lists.keys(), key=lambda x: len(lists[x]))
+            lists[min_len_list].append(num)
+    
+    return dict(lists)
 
 def main():
     parser = argparse.ArgumentParser(description="Generate elevator simulation requests.")
@@ -112,13 +117,16 @@ def main():
         timestamp = timestamps[i]
         request = generate_request(timestamp, floors, priority, args.duplicate_times)
         ans[timestamp].append(request)
-    schedule_timesatmps = generate_spaced_sorted_array(min(args.num_schedule, args.time_limit // args.schedule_gap), args.schedule_gap, 1, args.time_limit)
-    for time in schedule_timesatmps:
-        elevator_id = random.randint(1, 6)
-        speed = random.choice([0.2, 0.3, 0.4, 0.5])
-        to_floor = random.choice(sche_floors)
-        request =  f"[{time:.1f}]SCHE-{elevator_id}-{speed}-{to_floor}\n"
-        ans[time].append(request)
+    schedule_timesatmps = generate_and_distribute(args.num_schedule, args.time_limit, args.schedule_gap)
+    for i in range(6):
+        if i not in schedule_timesatmps.keys():
+            continue
+        for time in schedule_timesatmps[i]:
+            elevator_id = random.randint(1, 6)
+            speed = random.choice([0.2, 0.3, 0.4, 0.5])
+            to_floor = random.choice(sche_floors)
+            request =  f"[{time:.1f}]SCHE-{elevator_id}-{speed}-{to_floor}\n"
+            ans[time].append(request)
     sorted_ans = {k : ans[k] for k in sorted(ans.keys())}
     for l in sorted_ans.values():
         for s in l:
