@@ -220,7 +220,7 @@ class Judge:
             
             # 验证电梯是否在接收临时调度请求和开始临时调度请求之间只移动了小于两层距离
             if move_times - schedule_accept_move_times > 2:
-                raise False, f"第{line_num}行: 电梯{elevator_id}未能在接收临时调度后的两次移动楼层操作内开始临时调度"
+                return False, f"第{line_num}行: 电梯{elevator_id}未能在接收临时调度后的两次移动楼层操作内开始临时调度"
             
             # 更新电梯状态
             elevator.in_schedule = True
