@@ -295,7 +295,7 @@ def chart():
 @app.route('/chart_data')
 def chart_data():
     """提供图表数据的API"""
-    result_file = os.path.join(LOG_FOLDER, 'result.csv')
+    result_file = os.path.join(LOG_FOLDER, 'results.csv')
     
     # 检查文件是否存在
     if not os.path.exists(result_file):
@@ -317,7 +317,7 @@ def chart_data():
         data = rows[1:]  # 跳过标题行
         
         # 按测试时间分组
-        time_pattern = r'_(\d{2}-\d{2}-\d{2}-\d{2}-\d{2})$'
+        time_pattern = r'-(\d{2}-\d{2}-\d{2}-\d{2}-\d{2})$'
         test_runs = defaultdict(list)
         
         for row in data:
@@ -330,7 +330,7 @@ def chart_data():
             
             if time_match:
                 test_time = time_match.group(1)  # 提取时间部分
-                test_object = test_case.replace('_' + test_time, '')  # 提取测试对象部分
+                test_object = test_case.replace('-' + test_time, '')  # 提取测试对象部分
                 
                 # 将数据添加到对应的测试时间组
                 test_runs[test_time].append({
