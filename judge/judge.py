@@ -20,7 +20,9 @@ class ElevatorState:
         self.schedule_begin_time = None  # 开始临时调度的时间
         self.last_arrive_time = 0  # 上次到达时间，用于验证移动速度
         self.received_passengers = set()  # 已接收但尚未进入电梯的乘客
-
+        self.move_times = 0 # 移动次数
+        self.schedule_accept_move_times = 0 # 接收临时调度时的移动次数
+        
     def __str__(self):
         return f"电梯{self.id}: 楼层={self.floor}, 门={'开' if self.door_open else '关'}, 乘客={self.passengers}, 速度={self.speed}, 临时调度={self.in_schedule}"
 
@@ -191,7 +193,7 @@ class Judge:
             elevator.schedule_accept_time = timestamp
             elevator.schedule_target = target_floor
             elevator.speed_temp = speed
-            
+            elevator.schedule_accept_move_times = elevator.move_times
             return True, ""
         
         # SCHE-BEGIN: 开始临时调度
@@ -200,7 +202,8 @@ class Judge:
             timestamp, elevator_id = match.groups()
             timestamp = float(timestamp)
             elevator_id = int(elevator_id)
-            
+            move_times = self.elevators[elevator_id].move_times
+            schedule_accept_move_times = self.elevators[elevator_id].schedule_accept_move_times
             # 验证电梯ID
             if elevator_id < 1 or elevator_id > 6:
                 return False, f"第{line_num}行: 电梯ID({elevator_id})超出范围[1-6]"
@@ -211,13 +214,13 @@ class Judge:
             if elevator.schedule_accept_time is None:
                 return False, f"第{line_num}行: 电梯{elevator_id}未接收临时调度请求就开始临时调度"
             
-            # 验证响应时间
-            if timestamp - elevator.schedule_accept_time > 6:
-                return False, f"第{line_num}行: 电梯{elevator_id}的临时调度响应时间({timestamp - elevator.schedule_accept_time}s)超过6s"
-            
             # 验证电梯门是否关闭
             if elevator.door_open:
                 return False, f"第{line_num}行: 电梯{elevator_id}开始临时调度时门未关闭"
+            
+            # 验证电梯是否在接收临时调度请求和开始临时调度请求之间只移动了小于两层距离
+            if move_times - schedule_accept_move_times > 2:
+                raise False, f"第{line_num}行: 电梯{elevator_id}未能在接收临时调度后的两次移动楼层操作内开始临时调度"
             
             # 更新电梯状态
             elevator.in_schedule = True
@@ -260,6 +263,10 @@ class Judge:
             # 验证电梯内是否有乘客
             if elevator.passengers:
                 return False, f"第{line_num}行: 电梯{elevator_id}结束临时调度时电梯内仍有乘客: {elevator.passengers}"
+            
+             # 验证响应时间
+            if timestamp - elevator.schedule_accept_time > 6:
+                return False, f"第{line_num}行: 电梯{elevator_id}的临时调度响应时间({timestamp - elevator.schedule_accept_time}s)超过6s"
             
             # 更新电梯状态
             elevator.in_schedule = False
@@ -308,7 +315,7 @@ class Judge:
             # 更新电梯状态
             elevator.floor = floor
             elevator.last_arrive_time = timestamp
-            
+            move_times += 1
             return True, ""
         
         # OPEN: 电梯开门
