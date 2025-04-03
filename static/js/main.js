@@ -73,6 +73,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // 运行状态轮询
     const terminalOutput = document.getElementById('terminal-output');
     const runButton = document.getElementById('run-button');
+    const customRunButton = document.getElementById('custom-run-button');
     
     function updateRunningStatus() {
         if (terminalOutput) {
@@ -88,10 +89,14 @@ document.addEventListener('DOMContentLoaded', function() {
                         terminalOutput.textContent = outputHtml;
                         terminalOutput.scrollTop = terminalOutput.scrollHeight;
                         
-                        // 禁用运行按钮
+                        // 禁用所有运行按钮
                         if (runButton) {
                             runButton.disabled = true;
                             runButton.textContent = '运行中...';
+                        }
+                        if (customRunButton) {
+                            customRunButton.disabled = true;
+                            customRunButton.textContent = '运行中...';
                         }
                         
                         // 继续轮询
@@ -107,19 +112,27 @@ document.addEventListener('DOMContentLoaded', function() {
                             terminalOutput.scrollTop = terminalOutput.scrollHeight;
                         }
                         
-                        // 启用运行按钮
+                        // 启用所有运行按钮
                         if (runButton) {
                             runButton.disabled = false;
                             runButton.textContent = '运行';
+                        }
+                        if (customRunButton) {
+                            customRunButton.disabled = false;
+                            customRunButton.textContent = '运行';
                         }
                     }
                 })
                 .catch(error => {
                     console.error('获取运行状态时出错:', error);
-                    // 出错时也要启用按钮
+                    // 出错时也要启用所有按钮
                     if (runButton) {
                         runButton.disabled = false;
                         runButton.textContent = '运行';
+                    }
+                    if (customRunButton) {
+                        customRunButton.disabled = false;
+                        customRunButton.textContent = '运行';
                     }
                 });
         }
@@ -130,6 +143,27 @@ document.addEventListener('DOMContentLoaded', function() {
         updateRunningStatus();
     }
 
+    // 模式切换功能
+    const modeToggleBtn = document.getElementById('mode-toggle-btn');
+    const randomInputMode = document.getElementById('random-input-mode');
+    const customInputMode = document.getElementById('custom-input-mode');
+    
+    if (modeToggleBtn && randomInputMode && customInputMode) {
+        modeToggleBtn.addEventListener('click', function() {
+            if (randomInputMode.style.display !== 'none') {
+                // 切换到自定义输入模式
+                randomInputMode.style.display = 'none';
+                customInputMode.style.display = 'block';
+                modeToggleBtn.textContent = '切换到随机输入模式';
+            } else {
+                // 切换到随机输入模式
+                randomInputMode.style.display = 'block';
+                customInputMode.style.display = 'none';
+                modeToggleBtn.textContent = '切换到自定义输入模式';
+            }
+        });
+    }
+    
     // 运行参数验证
     const runForm = document.getElementById('run-form');
     if (runForm) {
@@ -154,4 +188,17 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-}); 
+    
+    // 自定义输入验证
+    const customInputForm = document.getElementById('custom-input-form');
+    if (customInputForm) {
+        customInputForm.addEventListener('submit', function(e) {
+            const customInput = document.getElementById('custom-input').value;
+            
+            if (!customInput.trim()) {
+                e.preventDefault();
+                alert('请输入自定义测试数据');
+            }
+        });
+    }
+});

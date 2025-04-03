@@ -7,8 +7,13 @@
     <div class="card-header">
         运行评测
     </div>
-    <div class="card-body">
-        <form id="run-form" method="POST" action="{{ url_for('run_program') }}">
+<div class="card-body">
+        <div class="mode-toggle mb-3">
+            <button type="button" class="btn btn-primary" id="mode-toggle-btn">切换到自定义输入模式</button>
+        </div>
+        
+        <div id="random-input-mode">
+            <form id="run-form" method="POST" action="{{ url_for('run_program') }}">
             <div class="form-group">
                 <label for="num_iterations">迭代次数:</label>
                 <input type="number" class="form-control" id="num_iterations" name="num_iterations" min="1" value="1" required>
@@ -39,10 +44,23 @@
                 <small class="form-text text-muted">临时调度次数，默认为1，最小为0，最大为10</small>
             </div>
 
-            <button type="submit" class="btn btn-primary" id="run-button" {% if is_running %}disabled{% endif %}>
-                {% if is_running %}运行中...{% else %}运行{% endif %}
-            </button>
-        </form>
+                <button type="submit" class="btn btn-primary" id="run-button" {% if is_running %}disabled{% endif %}>
+                    {% if is_running %}运行中...{% else %}运行{% endif %}
+                </button>
+            </form>
+        </div>
+        
+        <div id="custom-input-mode" style="display: none;">
+            <form id="custom-input-form" method="POST" action="{{ url_for('run_custom_input') }}">
+                <div class="form-group">
+                    <label for="custom-input">自定义输入:</label>
+                    <textarea class="form-control" id="custom-input" name="custom_input" rows="10" placeholder="在此输入测试数据..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" id="custom-run-button" {% if is_running %}disabled{% endif %}>
+                    {% if is_running %}运行中...{% else %}运行{% endif %}
+                </button>
+            </form>
+        </div>
         
         <hr>
         
@@ -55,4 +73,4 @@
 {% endfor %}{% else %}程序尚未运行或没有输出{% endif %}</div>
     </div>
 </div>
-{% endblock %} 
+{% endblock %}

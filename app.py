@@ -163,6 +163,64 @@ def run_program():
                           output=running_status['output'],
                           start_time=running_status['start_time'])
 
+@app.route('/run_custom_input', methods=['POST'])
+def run_custom_input():
+    if running_status['is_running']:
+        flash('已有程序在运行，请等待完成', 'error')
+        return redirect(url_for('run_program'))
+    
+    # Get custom input from form
+    custom_input = request.form.get('custom_input', '')
+    
+    # 将所有换行符统一为\n
+    custom_input = custom_input.replace('\r\n', '\n').replace('\r', '\n')
+    
+    # Save to stdin.txt
+    with open('stdin.txt', 'w') as f:
+        f.write(custom_input)
+    
+    # Start thread to run the script with custom input
+    threading.Thread(target=run_custom_script).start()
+    
+    flash('程序已开始运行，请等待结果', 'success')
+    return redirect(url_for('run_program'))
+
+def run_custom_script():
+    # Update running status
+    running_status['is_running'] = True
+    running_status['output'] = []
+    running_status['start_time'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    
+    try:
+        # Run with custom input (USER_INPUT=1)
+        cmd = "./run.sh 0 0 0 0 0 1"
+        
+        # Run command and get output in real-time
+        process = subprocess.Popen(
+            cmd, 
+            shell=True, 
+            stdout=subprocess.PIPE, 
+            stderr=subprocess.STDOUT,
+            text=True,
+            bufsize=1,
+            universal_newlines=True
+        )
+        
+        # Read output
+        for line in process.stdout:
+            line = line.strip()
+            running_status['output'].append(line)
+        
+        # Wait for process to finish
+        process.wait()
+        
+        if process.returncode != 0:
+            running_status['output'].append(f"程序退出，返回代码：{process.returncode}")
+    except Exception as e:
+        running_status['output'].append(f"发生错误：{str(e)}")
+    finally:
+        running_status['is_running'] = False
+
 def run_script(num_iterations, num_requests, time_limit, duplicate_times, num_schedule):
     # 更新运行状态
     running_status['is_running'] = True
