@@ -193,7 +193,7 @@ def run_custom_script():
     
     try:
         # Run with custom input (USER_INPUT=1)
-        cmd = "./run.sh 0 0 0 0 0 1"
+        cmd = "./run.sh 1 0 0 0 0 1"
         
         # Run command and get output in real-time
         process = subprocess.Popen(
