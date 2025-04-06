@@ -67,6 +67,7 @@ for i in $(seq 1 $NUM_ITERATIONS); do
         #使用./datainput_student_linux_x86_64 作为输入
 	(
    	    cmd=(
+	/usr/bin/time -f "\nCPU: %U+%S=%e\nMem: %M KB" -o "$log_dir/result.txt" -a \
   timeout 60s bash -c '
     ./datainput_student_linux_x86_64 |
     java -Xms512m -Xmx768m -XX:MetaspaceSize=64m -XX:MaxMetaspaceSize=128m -jar "$1" \

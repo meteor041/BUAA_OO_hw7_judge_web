@@ -121,7 +121,7 @@ def main():
         return s
     ans = defaultdict(list)
     for i in range(args.num_requests):
-        priority = random.randint(1, 2)
+        priority = random.randint(1, 100)
         timestamp = timestamps[i]
         request = generate_request(timestamp, floors, priority, args.duplicate_times)
         ans[timestamp].append(request)
