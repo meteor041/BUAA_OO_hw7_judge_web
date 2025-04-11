@@ -43,7 +43,7 @@ def generate_input(mode: str, request_num: int, duplicate_times: int,
 
     commands: List[Tuple[float, str]] = []
     passenger_id_counter = 1
-    last_sche_update_time = 0.0
+    last_sche_update_time = [0.0] * 7
     updated_elevators: Set[int] = set()
     sched_elevators_mutual: Set[int] = set() # Only for mutual mode constraint
 
@@ -92,7 +92,7 @@ def generate_input(mode: str, request_num: int, duplicate_times: int,
         speed = random.choice(SCHE_SPEEDS)
 
         # Ensure time constraints
-        timestamp = max(MIN_START_TIME, last_sche_update_time + MIN_SCHE_UPDATE_INTERVAL)
+        timestamp = max(MIN_START_TIME, last_sche_update_time[target_floor] + MIN_SCHE_UPDATE_INTERVAL)
         timestamp = random.uniform(timestamp, time_limit) # Add some randomness
         timestamp = min(time_limit, timestamp) # Ensure within limit
 
@@ -102,7 +102,7 @@ def generate_input(mode: str, request_num: int, duplicate_times: int,
 
         command_str = f"SCHE-{elevator_id}-{speed}-{target_floor}"
         commands.append((timestamp, command_str))
-        last_sche_update_time = timestamp
+        last_sche_update_time[target_floor] = timestamp
         actual_sche_times += 1
         if mode == 'mutual':
             sched_elevators_mutual.add(elevator_id)
@@ -121,7 +121,7 @@ def generate_input(mode: str, request_num: int, duplicate_times: int,
         target_floor = random.choice(UPDATE_TARGET_FLOORS)
 
         # Ensure time constraints
-        timestamp = max(MIN_START_TIME, last_sche_update_time + MIN_SCHE_UPDATE_INTERVAL)
+        timestamp = MIN_START_TIME
         timestamp = random.uniform(timestamp, time_limit) # Add some randomness
         timestamp = min(time_limit, timestamp) # Ensure within limit
 
