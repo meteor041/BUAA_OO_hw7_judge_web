@@ -3,7 +3,7 @@ import argparse
 import random
 import sys
 from typing import List, Tuple, Set, Dict
-
+from collections import defaultdict
 # --- Constants ---
 FLOORS = ["B4", "B3", "B2", "B1", "F1", "F2", "F3", "F4", "F5", "F6", "F7"]
 FLOOR_MAP = {name: i for i, name in enumerate(FLOORS)} # Map floor name to index for easier comparison
@@ -43,7 +43,7 @@ def generate_input(mode: str, request_num: int, duplicate_times: int,
 
     commands: List[Tuple[float, str]] = []
     passenger_id_counter = 1
-    last_sche_update_time = [0.0] * 7
+    last_sche_update_time = defaultdict(int)
     updated_elevators: Set[int] = set()
     sched_elevators_mutual: Set[int] = set() # Only for mutual mode constraint
 
