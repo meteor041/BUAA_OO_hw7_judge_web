@@ -1,216 +1,174 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
+# score.py
 import argparse
-import sys
 import re
-from collections import defaultdict
-import os
-import csv
-class Score:
-    """电梯模拟程序性能评估"""
-    def __init__(self):
-        # 正则表达式模式
-        self.input_passenger_pattern = re.compile(r'\[(\d+\.\d+)\](\d+)-PRI-(\d+)-FROM-([BF]\d+)-TO-([BF]\d+)')
-        
-        self.output_arrive_pattern = re.compile(r'\[\s*(\d+\.\d+)\]ARRIVE-([BF]\d+)-(\d+)')
-        self.output_open_pattern = re.compile(r'\[\s*(\d+\.\d+)\]OPEN-([BF]\d+)-(\d+)')
-        self.output_close_pattern = re.compile(r'\[\s*(\d+\.\d+)\]CLOSE-([BF]\d+)-(\d+)')
-        self.output_out_pattern = re.compile(r'\[\s*(\d+\.\d+)\]OUT-([SF])-(\d+)-([BF]\d+)-(\d+)')
-        
-        # 统计数据
-        self.passenger_requests = {}  # 乘客请求信息: {passenger_id: (request_time, priority, from_floor, to_floor)}
-        self.passenger_completions = {}  # 乘客完成信息: {passenger_id: completion_time}
-        
-        self.arrive_count = 0  # ARRIVE操作计数
-        self.open_count = 0    # OPEN操作计数
-        self.close_count = 0   # CLOSE操作计数
-        
-        self.final_timestamp = 0.0  # 最后一条输出的时间戳
-    
-    def parse_input(self, input_file):
-        """解析输入文件，提取乘客请求信息"""
-        with open(input_file, 'r') as f:
+import sys
+from typing import Dict, Optional, Tuple
+
+# --- Constants ---
+TIME_PRECISION = 1e-6
+
+# --- Parsing Patterns ---
+# Input pattern to get passenger request time and priority
+INPUT_PASSENGER_PATTERN = re.compile(r"\[(\d+\.\d+)\](\d+)-PRI-(\d+)-FROM-([A-Z0-9]+)-TO-([A-Z0-9]+)$")
+
+# Output patterns to get completion time and action counts
+OUTPUT_OUT_S_PATTERN = re.compile(r"\[(\d+\.\d+)\]OUT-S-(\d+)-([A-Z0-9]+)-(\d+)$")
+OUTPUT_ACTION_PATTERN = re.compile(r"\[(\d+\.\d+)\](ARRIVE|OPEN|CLOSE)-.*") # General pattern for actions and final time
+
+class PassengerScoreInfo:
+    def __init__(self, request_time: float, priority: int):
+        self.request_time = request_time
+        self.priority = priority
+        self.completion_time: Optional[float] = None
+
+def calculate_score(input_filepath: str, output_filepath: str, real_time: Optional[float]):
+    """Parses input and output files to calculate performance metrics."""
+
+    passengers: Dict[int, PassengerScoreInfo] = {}
+    t_final: float = 0.0
+    arrive_count: int = 0
+    open_count: int = 0
+    close_count: int = 0
+
+    # 1. Parse Input File for Passenger Info
+    try:
+        with open(input_filepath, 'r') as f:
+            for line in f:
+                match = INPUT_PASSENGER_PATTERN.match(line.strip())
+                if match:
+                    timestamp, p_id_str, prio_str, _, _ = match.groups()
+                    p_id = int(p_id_str)
+                    priority = int(prio_str)
+                    request_time = float(timestamp)
+                    if p_id in passengers:
+                        # This shouldn't happen with valid gen.py, but check anyway
+                        print(f"Warning: Duplicate passenger ID {p_id} found in input file.", file=sys.stderr)
+                    passengers[p_id] = PassengerScoreInfo(request_time=request_time, priority=priority)
+    except FileNotFoundError:
+        print(f"Error: Input file not found: {input_filepath}", file=sys.stderr)
+        sys.exit(1)
+    except Exception as e:
+        print(f"Error reading input file {input_filepath}: {e}", file=sys.stderr)
+        sys.exit(1)
+
+    if not passengers:
+        print("Warning: No passenger requests found in the input file.", file=sys.stderr)
+        # Allow scoring to proceed, WT will be 0 or undefined
+
+    # 2. Parse Output File for Completion Times and Action Counts
+    try:
+        with open(output_filepath, 'r') as f:
             for line in f:
                 line = line.strip()
                 if not line:
                     continue
-                
-                # 解析乘客请求
-                passenger_match = self.input_passenger_pattern.match(line)
-                if passenger_match:
-                    timestamp, passenger_id, priority, from_floor, to_floor = passenger_match.groups()
-                    timestamp = float(timestamp)
-                    passenger_id = int(passenger_id)
-                    priority = int(priority)
-                    
-                    # 存储乘客请求信息
-                    self.passenger_requests[passenger_id] = (timestamp, priority, from_floor, to_floor)
-    
-    def parse_output(self, output_file):
-        """解析输出文件，计算性能指标"""
-        with open(output_file, 'r') as f:
-            for line in f:
-                line = line.strip()
-                if not line:
-                    continue
-                
-                # 提取时间戳
-                timestamp_match = re.match(r'\[\s*(\d+\.\d+)\]', line)
-                if timestamp_match:
-                    timestamp = float(timestamp_match.group(1))
-                    self.final_timestamp = max(self.final_timestamp, timestamp)
-                
-                # 统计ARRIVE操作
-                if self.output_arrive_pattern.match(line):
-                    self.arrive_count += 1
-                    continue
-                
-                # 统计OPEN操作
-                if self.output_open_pattern.match(line):
-                    self.open_count += 1
-                    continue
-                
-                # 统计CLOSE操作
-                if self.output_close_pattern.match(line):
-                    self.close_count += 1
-                    continue
-                
-                # 记录乘客完成时间
-                out_match = self.output_out_pattern.match(line)
+
+                # Check for OUT-S first
+                out_match = OUTPUT_OUT_S_PATTERN.match(line)
                 if out_match:
-                    timestamp, status, passenger_id, floor, elevator_id = out_match.groups()
-                    timestamp = float(timestamp)
-                    passenger_id = int(passenger_id)
-                    
-                    # 只记录成功完成的乘客
-                    if status == 'S':
-                        self.passenger_completions[passenger_id] = timestamp
-    
-    def calculate_average_completion_time(self):
-        """计算平均完成时间(WT)"""
-        total_weighted_time = 0.0
-        total_weight = 0.0
-        
-        for passenger_id, completion_time in self.passenger_completions.items():
-            if passenger_id in self.passenger_requests:
-                request_time, priority, _, _ = self.passenger_requests[passenger_id]
-                completion_duration = completion_time - request_time
-                
-                # 使用优先级作为权重
-                total_weighted_time += completion_duration * priority
-                total_weight += priority
-        
-        # 避免除以零
-        if total_weight == 0:
-            return 0.0
-        
-        return total_weighted_time / total_weight
-    
-    def calculate_power_consumption(self):
-        """计算系统耗电量(W)"""
-        # 根据规则计算总耗电量
-        # ARRIVE: 0.4单位
-        # OPEN: 0.1单位
-        # CLOSE: 0.1单位
-        return 0.4 * self.arrive_count + 0.1 * self.open_count + 0.1 * self.close_count
-    
-    def evaluate(self, input_file, output_file, real_time=None):
-        """评估电梯模拟程序的性能"""
-        # 解析输入和输出文件
-        self.parse_input(input_file)
-        self.parse_output(output_file)
-        
-        # 计算系统运行时间(Tmax)
-        if real_time is None:
-            real_time = self.final_timestamp  # 如果未提供实际运行时间，使用最后一条输出的时间戳
-        
-        system_time = max(real_time, self.final_timestamp)
-        
-        # 计算平均完成时间(WT)
-        average_completion_time = self.calculate_average_completion_time()
-        
-        # 计算系统耗电量(W)
-        power_consumption = self.calculate_power_consumption()
-        
-        # 返回评估结果
-        return {
-            "system_time": system_time,
-            "average_completion_time": average_completion_time,
-            "power_consumption": power_consumption,
-            "arrive_count": self.arrive_count,
-            "open_count": self.open_count,
-            "close_count": self.close_count,
-            "completed_passengers": len(self.passenger_completions),
-            "total_passengers": len(self.passenger_requests)
-        }
+                    timestamp_str, p_id_str, _, _ = out_match.groups()
+                    timestamp = float(timestamp_str)
+                    p_id = int(p_id_str)
 
-def get_column_name(filepath):
-    """生成列名：父父文件夹_父文件夹"""
-    path = os.path.normpath(filepath)
-    parts = path.split(os.sep)
-    if len(parts) >= 3:
-        return f"{parts[-3]}-{parts[-2]}"
-    elif len(parts) == 2:
-        return parts[-2]
-    return os.path.basename(os.path.dirname(filepath))
+                    if p_id in passengers:
+                        # Record the *first* completion time for a passenger
+                        if passengers[p_id].completion_time is None:
+                            passengers[p_id].completion_time = timestamp
+                    else:
+                        # Passenger in output but not input? Judge should have caught this.
+                        print(f"Warning: OUT-S for passenger {p_id} found in output, but not in input.", file=sys.stderr)
 
-def main():
-    #if len(sys.argv) < 3:
-    #    print("Usage: python score.py <input_file> <output_file> [real_time]")
-    #    sys.exit(1)
-    parser = argparse.ArgumentParser(description="Validate elevator simulation output.")
-    parser.add_argument("--input_file", default="input.txt", help="Path to the input file (generated by gen.py).")
-    parser.add_argument("--output_file", default="output.txt",
-                        help="Path to the output file (from the elevator simulation).")
-    parser.add_argument("--real_time", type=float, default=None)
-    parser.add_argument("--csv_file", default="log/results.csv", help="CSV结果文件路径")
+                    # Update t_final based on this action
+                    t_final = max(t_final, timestamp)
+                    continue # Move to next line after processing OUT-S
+
+                # Check for general actions (ARRIVE, OPEN, CLOSE) and update t_final
+                action_match = OUTPUT_ACTION_PATTERN.match(line)
+                if action_match:
+                    timestamp_str, action_type = action_match.groups()
+                    timestamp = float(timestamp_str)
+                    t_final = max(t_final, timestamp) # Update final timestamp
+
+                    if action_type == "ARRIVE":
+                        arrive_count += 1
+                    elif action_type == "OPEN":
+                        open_count += 1
+                    elif action_type == "CLOSE":
+                        close_count += 1
+
+    except FileNotFoundError:
+        print(f"Error: Output file not found: {output_filepath}", file=sys.stderr)
+        sys.exit(1)
+    except Exception as e:
+        print(f"Error reading output file {output_filepath}: {e}", file=sys.stderr)
+        sys.exit(1)
+
+    # 3. Calculate Metrics
+
+    # T_max_score
+    t_max_score = t_final
+    if real_time is not None:
+        t_max_score = max(t_final, real_time)
+
+    # Weighted Average Completion Time (WT)
+    total_weighted_time = 0.0
+    total_priority = 0
+    missing_completion = False
+    for p_id, info in passengers.items():
+        if info.completion_time is None:
+            print(f"Error: Passenger {p_id} never completed (no OUT-S found). Cannot calculate score.", file=sys.stderr)
+            missing_completion = True
+            # Judge should prevent this, but handle defensively.
+            # Depending on rules, might assign a penalty time or exit.
+            # For now, we'll prevent WT calculation.
+            break # Stop calculation if any passenger failed
+
+        if info.priority <= 0:
+             print(f"Warning: Passenger {p_id} has non-positive priority {info.priority}. Skipping for WT calculation.", file=sys.stderr)
+             continue # Skip passengers with invalid priority for WT
+
+        completion_duration = info.completion_time - info.request_time
+        if completion_duration < -TIME_PRECISION:
+             print(f"Warning: Passenger {p_id} completed at {info.completion_time:.1f} before request time {info.request_time:.1f}. Check output.", file=sys.stderr)
+             # Proceed with calculation, but flag the issue.
+
+        total_weighted_time += completion_duration * info.priority
+        total_priority += info.priority
+
+    wt = 0.0
+    if missing_completion:
+        wt = float('inf') # Indicate failure
+        print("WT calculation skipped due to incomplete passengers.", file=sys.stderr)
+    elif total_priority > 0:
+        wt = total_weighted_time / total_priority
+    elif passengers: # Passengers exist, but total_priority is 0 (e.g., all skipped)
+         print("Warning: Total priority sum is zero. WT calculation resulted in 0.", file=sys.stderr)
+         wt = 0.0
+    # else: wt remains 0.0 if no passengers
+
+
+    # System Power Consumption (W)
+    power_consumption = 0.4 * arrive_count + 0.1 * open_count + 0.1 * close_count
+
+    # 4. Output Results
+    print(f"T_max_score: {t_max_score:.4f}")
+    if not missing_completion:
+        print(f"WT: {wt:.4f}")
+    else:
+        print(f"WT: INF (Incomplete passengers)")
+    print(f"W: {power_consumption:.4f}")
+
+    # Optional: Print counts for debugging
+    # print(f"Debug: T_final={t_final:.4f}, Arrive={arrive_count}, Open={open_count}, Close={close_count}")
+
+
+# --- Argument Parsing ---
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Calculate performance score for elevator simulation.")
+    parser.add_argument("input_file", help="Path to the input command file (e.g., input.txt).")
+    parser.add_argument("output_file", help="Path to the elevator program's output log file (e.g., output.txt).")
+    parser.add_argument("--real_time", type=float, help="(Optional) Actual execution time of the program.")
 
     args = parser.parse_args()
-    
-    input_file = args.input_file
-    output_file = args.output_file
-    #input_file = sys.argv[1]
-    #output_file = sys.argv[2]
-    
-    # 可选的实际运行时间参数
-    real_time = args.real_time
-    
-    score = Score()
-    result = score.evaluate(input_file, output_file, real_time)
-    
-    # 生成表格数据
-    col_name = get_column_name(args.output_file)
-     # 准备CSV数据
-    csv_data = {
-        "测试案例": col_name,
-        "系统运行时间(Tmax)": f"{result['system_time']:.2f}",
-        "平均完成时间(WT)": f"{result['average_completion_time']:.2f}",
-        "系统耗电量(W)": f"{result['power_consumption']:.2f}",
-        "ARRIVE操作次数": result['arrive_count'],
-        "OPEN操作次数": result['open_count'],
-        "CLOSE操作次数": result['close_count'],
-        "完成乘客数": f"{result['completed_passengers']}/{result['total_passengers']}"
-    }
-    
-    # 写入CSV文件
-    file_exists = os.path.isfile(args.csv_file)
-    with open(args.csv_file, mode='a' if file_exists else 'w', newline='', encoding='utf-8') as f:
-        writer = csv.DictWriter(f, fieldnames=csv_data.keys())
-        
-        if not file_exists:
-            writer.writeheader()  # 只有文件不存在时才写表头
-        writer.writerow(csv_data)
-        
-    # 输出评估结果
-    print("电梯模拟程序性能评估结果:")
-    print(f"系统运行时间(Tmax): {result['system_time']:.2f}秒")
-    print(f"平均完成时间(WT): {result['average_completion_time']:.2f}秒")
-    print(f"系统耗电量(W): {result['power_consumption']:.2f}单位")
-    print("\n详细统计:")
-    print(f"ARRIVE操作次数: {result['arrive_count']}")
-    print(f"OPEN操作次数: {result['open_count']}")
-    print(f"CLOSE操作次数: {result['close_count']}")
-    print(f"完成的乘客请求: {result['completed_passengers']}/{result['total_passengers']}")
 
-if __name__ == "__main__":
-    main()
+    calculate_score(args.input_file, args.output_file, args.real_time)
