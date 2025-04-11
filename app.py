@@ -146,6 +146,7 @@ def run_program():
         time_limit = request.form.get('time_limit', 10, type=int)
         duplicate_times = request.form.get('duplicate_times', 10, type=int)
         num_schedule = request.form.get('num_schedule', 10, type=int)
+        update_times = request.form.get('update_times', 3, type=int)
         
         # 验证参数
         if num_iterations < 1:
@@ -153,7 +154,7 @@ def run_program():
             return redirect(url_for('run_program'))
         
         # 启动线程运行程序
-        threading.Thread(target=run_script, args=(num_iterations, num_requests, time_limit, duplicate_times, num_schedule)).start()
+        threading.Thread(target=run_script, args=(num_iterations, num_requests, time_limit, duplicate_times, num_schedule, update_times)).start()
         
         flash('程序已开始运行，请等待结果', 'success')
         return redirect(url_for('run_program'))
@@ -193,7 +194,7 @@ def run_custom_script():
     
     try:
         # Run with custom input (USER_INPUT=1)
-        cmd = "./run.sh 1 0 0 0 0 1"
+        cmd = "./run.sh 1 0 0 0 0 0 1"
         
         # Run command and get output in real-time
         process = subprocess.Popen(
@@ -221,7 +222,7 @@ def run_custom_script():
     finally:
         running_status['is_running'] = False
 
-def run_script(num_iterations, num_requests, time_limit, duplicate_times, num_schedule):
+def run_script(num_iterations, num_requests, time_limit, duplicate_times, num_schedule, update_times):
     # 更新运行状态
     running_status['is_running'] = True
     running_status['output'] = []
@@ -229,7 +230,7 @@ def run_script(num_iterations, num_requests, time_limit, duplicate_times, num_sc
     
     try:
         # 构建命令
-        cmd = f"./run.sh {num_iterations} {num_requests} {time_limit} {duplicate_times} {num_schedule}"
+        cmd = f"./run.sh {num_iterations} {num_requests} {time_limit} {duplicate_times} {num_schedule} {update_times}"
         
         # 运行命令并实时获取输出
         process = subprocess.Popen(

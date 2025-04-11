@@ -44,6 +44,12 @@
                 <small class="form-text text-muted">临时调度次数，默认为1，最小为0，最大为10</small>
             </div>
 
+            <div class="form-group">
+                <label for="update_times">双轿厢更新次数:</label>
+                <input type="number" class="form-control" id="update_times" name="update_times" min="0" max="3" value="3" required>
+                <small class="form-text text-muted">双轿厢更新次数，默认为3</small>
+            </div>
+
                 <button type="submit" class="btn btn-primary" id="run-button" {% if is_running %}disabled{% endif %}>
                     {% if is_running %}运行中...{% else %}运行{% endif %}
                 </button>
