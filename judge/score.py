@@ -165,8 +165,8 @@ def calculate_score(input_filepath: str, output_filepath: str, real_time: Option
 # --- Argument Parsing ---
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Calculate performance score for elevator simulation.")
-    parser.add_argument("input_file", help="Path to the input command file (e.g., input.txt).")
-    parser.add_argument("output_file", help="Path to the elevator program's output log file (e.g., output.txt).")
+    parser.add_argument("--input_file", help="Path to the input command file (e.g., input.txt).")
+    parser.add_argument("--output_file", help="Path to the elevator program's output log file (e.g., output.txt).")
     parser.add_argument("--real_time", type=float, help="(Optional) Actual execution time of the program.")
 
     args = parser.parse_args()

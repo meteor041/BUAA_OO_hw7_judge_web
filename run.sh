@@ -30,14 +30,9 @@ for i in $(seq 1 $NUM_ITERATIONS); do
     
 	if [[ $USER_INPUT -eq 0 ]]; then
 		# 生成输入文件，并将其保存到变量
-		if [[ $# -eq 1 ]]; then
-			input_content=$(python3 judge/gen.py)
-		else
-			input_content=$(python3 judge/gen.py --mode='strong' --request_num=$NUM_REQUESTS --time_limit=$TIME_LIMIT --duplicate_times=$DUPLICATE_TIMES --sche_times=$NUM_SCHEDULE --update_times=$UPDATE_TIMES -o stdin.txt)
-		fi
-	else
-		input_content=`cat stdin.txt`
-	fi
+        python3 judge/gen.py --mode='strong' --request_num=$NUM_REQUESTS --time_limit=$TIME_LIMIT --duplicate_times=$DUPLICATE_TIMES --sche_times=$NUM_SCHEDULE --update_times=$UPDATE_TIMES -o stdin.txt
+    fi	
+    input_content=`cat stdin.txt`
 	
  
     # 遍历 jar 文件
@@ -76,7 +71,7 @@ for i in $(seq 1 $NUM_ITERATIONS); do
 			python3 judge/judge.py --input_file="$log_dir/input$i.txt" --output_file="$log_dir/output$i.txt" | tee -a "$log_dir/result.txt" "log/$jar_filename_noext/allResult.txt"
 			return_code=$?
 			if [ $return_code -ne 0 ]; then
-				echo "  Error: Python judge script failed with return code: $return_code"
+				# echo "  Error: Python judge script failed with return code: $return_code"
 				result=false
 			fi
 
