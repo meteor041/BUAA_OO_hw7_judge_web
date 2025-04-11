@@ -44,6 +44,7 @@ def generate_input(mode: str, request_num: int, duplicate_times: int,
     commands: List[Tuple[float, str]] = []
     passenger_id_counter = 1
     last_sche_update_time = defaultdict(int)
+    update_time = defaultdict(int)
     updated_elevators: Set[int] = set()
     sched_elevators_mutual: Set[int] = set() # Only for mutual mode constraint
 
@@ -71,44 +72,7 @@ def generate_input(mode: str, request_num: int, duplicate_times: int,
             commands.append((timestamp, command_str))
             passenger_id_counter += 1
 
-    # 3. Generate SCHE Requests
-    actual_sche_times = 0
-    max_sche = MAX_STRONG_SCHE if mode == 'strong' else len(ELEVATOR_IDS) # Mutual: max 1 per elevator
-    sche_limit = min(sche_times, max_sche)
-
-    available_for_sche = list(set(ELEVATOR_IDS) - updated_elevators)
-    if mode == 'mutual':
-        available_for_sche = list(set(available_for_sche) - sched_elevators_mutual)
-
-    random.shuffle(available_for_sche)
-
-    for i in range(sche_limit):
-        if not available_for_sche:
-            print(f"Warning: Not enough available elevators for {sche_limit} SCHE requests. Generated {actual_sche_times}.", file=sys.stderr)
-            break
-
-        elevator_id = available_for_sche.pop()
-        target_floor = random.choice(SCHE_TARGET_FLOORS)
-        speed = random.choice(SCHE_SPEEDS)
-
-        # Ensure time constraints
-        timestamp = max(MIN_START_TIME, last_sche_update_time[target_floor] + MIN_SCHE_UPDATE_INTERVAL)
-        timestamp = random.uniform(timestamp, time_limit) # Add some randomness
-        timestamp = min(time_limit, timestamp) # Ensure within limit
-
-        if timestamp > time_limit: # Cannot generate more within time limit
-             print(f"Warning: Cannot generate SCHE request within time limit. Generated {actual_sche_times}.", file=sys.stderr)
-             break
-
-        command_str = f"SCHE-{elevator_id}-{speed}-{target_floor}"
-        commands.append((timestamp, command_str))
-        last_sche_update_time[target_floor] = timestamp
-        actual_sche_times += 1
-        if mode == 'mutual':
-            sched_elevators_mutual.add(elevator_id)
-
-
-    # 4. Generate UPDATE Requests
+    # 3. Generate UPDATE Requests
     actual_update_times = 0
     available_for_update = list(set(ELEVATOR_IDS) - updated_elevators)
 
@@ -131,7 +95,8 @@ def generate_input(mode: str, request_num: int, duplicate_times: int,
 
         command_str = f"UPDATE-{elevator_a}-{elevator_b}-{target_floor}"
         commands.append((timestamp, command_str))
-        last_sche_update_time = timestamp
+        update_time[elevator_a] = timestamp
+        update_time[elevator_b] = timestamp
         actual_update_times += 1
 
         # Remove updated elevators from available lists
@@ -139,11 +104,47 @@ def generate_input(mode: str, request_num: int, duplicate_times: int,
         updated_elevators.add(elevator_b)
         available_for_update.remove(elevator_a)
         available_for_update.remove(elevator_b)
-        if elevator_a in available_for_sche: available_for_sche.remove(elevator_a)
-        if elevator_b in available_for_sche: available_for_sche.remove(elevator_b)
+        # if elevator_a in available_for_sche: available_for_sche.remove(elevator_a)
+        # if elevator_b in available_for_sche: available_for_sche.remove(elevator_b)
         if mode == 'mutual':
              if elevator_a in sched_elevators_mutual: sched_elevators_mutual.remove(elevator_a)
              if elevator_b in sched_elevators_mutual: sched_elevators_mutual.remove(elevator_b)
+             
+    # 4. Generate SCHE Requests
+    actual_sche_times = 0
+    max_sche = MAX_STRONG_SCHE if mode == 'strong' else len(ELEVATOR_IDS) # Mutual: max 1 per elevator
+    sche_limit = min(sche_times, max_sche)
+
+    available_for_sche = list(set(ELEVATOR_IDS) - updated_elevators)
+    if mode == 'mutual':
+        available_for_sche = list(set(available_for_sche) - sched_elevators_mutual)
+
+    random.shuffle(available_for_sche)
+    
+    for i in range(sche_limit):
+        if not available_for_sche:
+            print(f"Warning: Not enough available elevators for {sche_limit} SCHE requests. Generated {actual_sche_times}.", file=sys.stderr)
+            break
+
+        elevator_id = available_for_sche.pop()
+        target_floor = random.choice(SCHE_TARGET_FLOORS)
+        speed = random.choice(SCHE_SPEEDS)
+
+        # Ensure time constraints
+        timestamp = max(MIN_START_TIME, last_sche_update_time[elevator_id] + MIN_SCHE_UPDATE_INTERVAL)
+        timestamp = random.uniform(timestamp, time_limit) # Add some randomness
+        timestamp = min(time_limit, timestamp) # Ensure within limit
+
+        if timestamp > time_limit or timestamp >= update_time[elevator_id]: # Cannot generate more within time limit
+             print(f"Warning: Cannot generate SCHE request within time limit. Generated {actual_sche_times}.", file=sys.stderr)
+             break
+
+        command_str = f"SCHE-{elevator_id}-{speed}-{target_floor}"
+        commands.append((timestamp, command_str))
+        last_sche_update_time[elevator_id] = timestamp
+        actual_sche_times += 1
+        if mode == 'mutual':
+            sched_elevators_mutual.add(elevator_id)
 
 
     # 5. Sort and Finalize Commands
